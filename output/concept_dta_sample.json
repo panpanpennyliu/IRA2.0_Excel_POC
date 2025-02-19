@@ -1,0 +1,865 @@
+{
+  "frames": [
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Exce",
+		  "windowLeftUpperPoint": "0,0",
+		  "mousePoint": "0,0",
+		  "relativeMouseClickPoint": "0,0",
+		  "action": "LEFT_CLICK",
+		  "id": 257
+		},
+		"dense_caption": {
+		  "visual_elements": {
+			"background": "White",
+			"grid_lines": "Light gray",
+			"font": "Calibri",
+			"font_size": "11",
+			"cell_color": "White",
+			"highlighted_cells": "None"
+		  },
+		  "layout": {
+			"structure": "Grid layout with rows and columns",
+			"active_sheet": "Sheet1",
+			"scroll_position": "Top left corner",
+			"zoom_level": "100%"
+		  },
+		  "styling": {
+			"header": {
+			  "font_weight": "Normal",
+			  "alignment": "Left"
+			},
+			"cell_formatting": {
+			  "number_format": "General",
+			  "conditional_formatting": "None"
+			},
+			"toolbar": {
+			  "buttons": "Standard Excel functions",
+			  "color_scheme": "Green and gray"
+			}
+		  }
+		},
+		"element_description": [
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "light gray",
+			  "text_content": "File",
+			  "visible_styling_details": "Bold font, standard menu item styling"
+			},
+			"position_information": {
+			  "location": "top left corner",
+			  "relationship_to_other_elements": "to the left of the 'Home' tab"
+			},
+			"element_function": "Opens the file menu for actions like creating, opening, or saving files.",
+			"element_type": "menu item"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "light gray",
+			  "text_content": "Home",
+			  "visible_styling_details": "Bold font, standard menu item styling"
+			},
+			"position_information": {
+			  "location": "next to the 'File' menu",
+			  "relationship_to_other_elements": "to the right of the 'File' tab"
+			},
+			"element_function": "Provides access to common formatting and editing tools.",
+			"element_type": "menu item"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "light gray",
+			  "text_content": "Cut",
+			  "visible_styling_details": "Icon with scissors, standard button styling"
+			},
+			"position_information": {
+			  "location": "in the toolbar below the menu",
+			  "relationship_to_other_elements": "to the left of the 'Copy' button"
+			},
+			"element_function": "Removes the selected content and places it on the clipboard.",
+			"element_type": "button"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "light gray",
+			  "text_content": "Copy",
+			  "visible_styling_details": "Icon with two overlapping sheets, standard button styling"
+			},
+			"position_information": {
+			  "location": "next to the 'Cut' button",
+			  "relationship_to_other_elements": "to the right of the 'Cut' button"
+			},
+			"element_function": "Copies the selected content to the clipboard without removing it.",
+			"element_type": "button"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "light gray",
+			  "text_content": "Paste",
+			  "visible_styling_details": "Icon with clipboard, standard button styling"
+			},
+			"position_information": {
+			  "location": "next to the 'Copy' button",
+			  "relationship_to_other_elements": "to the right of the 'Copy' button"
+			},
+			"element_function": "Inserts the content from the clipboard at the current cursor position.",
+			"element_type": "button"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "light gray",
+			  "text_content": "Tell me what you want to do",
+			  "visible_styling_details": "Input field with placeholder text"
+			},
+			"position_information": {
+			  "location": "top center of the window",
+			  "relationship_to_other_elements": "below the toolbar"
+			},
+			"element_function": "Allows users to search for commands or features within the application.",
+			"element_type": "text field"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1719822686609_outputfiles",
+		"state_transition_caption": ""
+	  },
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "mousePoint": "0,0",
+		  "relativeMouseClickPoint": "1,1",
+		  "action": "LEFT_CLICK",
+		  "id": 266
+		},
+		"dense_caption": {
+		  "visual_elements": {
+			"background": "White",
+			"grid_lines": "Visible, light gray",
+			"font": "Calibri, size 11",
+			"cell_color": "White",
+			"header_color": "Light gray",
+			"alignment": "Left-aligned text in cells"
+		  },
+		  "layout": {
+			"structure": "Spreadsheet format with rows and columns",
+			"row_count": 55,
+			"column_count": 28,
+			"active_sheet": "Sheet1"
+		  },
+		  "styling": {
+			"font_style": "Normal",
+			"cell_formatting": "No special formatting applied",
+			"conditional_formatting": "None visible",
+			"notes": "Excel interface elements visible at the top"
+		  }
+		},
+		"element_description": [
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "white background with grid lines",
+			  "text_content": "Empty cells with no visible text",
+			  "visible_styling_details": "Grid layout with column headers labeled A to AM"
+			},
+			"position_information": {
+			  "location": "center of the frame",
+			  "relationship_to_other_elements": "No other elements are visible in the frame"
+			},
+			"element_function": "This area is used for data entry, allowing users to input and manipulate data in a spreadsheet format.",
+			"element_type": "Spreadsheet grid"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "green header",
+			  "text_content": "Excel application title and menu options",
+			  "visible_styling_details": "Menu bar with options like File, Home, Insert, etc."
+			},
+			"position_information": {
+			  "location": "top of the frame",
+			  "relationship_to_other_elements": "Above the spreadsheet grid"
+			},
+			"element_function": "Provides access to various functionalities and settings of the Excel application.",
+			"element_type": "Menu bar"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "gray",
+			  "text_content": "Status bar with accessibility message",
+			  "visible_styling_details": "Displays information about the current state of the application"
+			},
+			"position_information": {
+			  "location": "bottom of the frame",
+			  "relationship_to_other_elements": "Below the spreadsheet grid"
+			},
+			"element_function": "Displays status messages and information about the application.",
+			"element_type": "Status bar"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1719822686609_outputfiles",
+		"state_transition_caption": "The user clicked on an empty cell in the spreadsheet, transitioning from a view of the Excel interface with visible menu options to a focused state on the spreadsheet grid with no visible text."
+	  },
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "action": "KEY_DOWN",
+		  "id": 301,
+		  "keyCode": "Ctrl"
+		},
+		"dense_caption": "The image displays a blank spreadsheet interface of Microsoft Excel. The layout features a grid of empty cells arranged in rows and columns, with the first row containing column headers labeled A through AM. The top menu bar includes options such as 'File', 'Home', 'Insert', 'Page Layout', 'Formulas', 'Data', 'Review', and 'View', along with formatting tools for font, alignment, and number styles. The interface is predominantly white with a green header, typical of Excel's design. There is also a warning message indicating a product activation issue in the top right corner.",
+		"element_description": [
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "white background with grid lines",
+			  "text_content": "",
+			  "visible_styling_details": "Grid layout with rows and columns, no visible borders or shading"
+			},
+			"position_information": {
+			  "location": "center of the frame",
+			  "relationship_to_other_elements": "No other elements are present in the image"
+			},
+			"element_function": "This area is typically used for data entry or display in a spreadsheet format, allowing users to input and manipulate data.",
+			"element_type": "Grid or Table"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "green header",
+			  "text_content": "Excel",
+			  "visible_styling_details": "Title bar with application name and menu options"
+			},
+			"position_information": {
+			  "location": "top of the frame",
+			  "relationship_to_other_elements": "Above the main grid area"
+			},
+			"element_function": "Indicates the application being used, providing access to menu options for file management and editing.",
+			"element_type": "Title Bar"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "gray",
+			  "text_content": "File, Home, Insert, Page Layout, Formulas, Data, Review, View, Help",
+			  "visible_styling_details": "Menu bar with dropdown options"
+			},
+			"position_information": {
+			  "location": "below the title bar",
+			  "relationship_to_other_elements": "Directly above the main grid area"
+			},
+			"element_function": "Provides access to various functionalities and tools within the application.",
+			"element_type": "Menu Bar"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "light gray",
+			  "text_content": "Tell me what you want to do",
+			  "visible_styling_details": "Search bar with placeholder text"
+			},
+			"position_information": {
+			  "location": "top right corner",
+			  "relationship_to_other_elements": "To the right of the menu bar"
+			},
+			"element_function": "Allows users to search for features or help within the application.",
+			"element_type": "Search Bar"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1719822686609_outputfiles",
+		"state_transition_caption": "The user transitioned from a blank spreadsheet interface with a grid of empty cells to a state where the Ctrl key is pressed, indicating an intention to perform a keyboard shortcut."
+	  },
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "mousePoint": "0,0",
+		  "relativeMouseClickPoint": "0,0",
+		  "action": "MOUSE_OPERATION",
+		  "id": 314
+		},
+		"dense_caption": {
+		  "visual_elements": {
+			"background": "White",
+			"grid_lines": "Visible, light gray",
+			"font": "Calibri, size 11",
+			"cell_formatting": "Default, no special formatting applied"
+		  },
+		  "layout": {
+			"structure": "Spreadsheet layout with rows and columns",
+			"active_cell": "A1 highlighted",
+			"sheet_tabs": "Single sheet named 'Sheet1' at the bottom"
+		  },
+		  "styling": {
+			"header": "Standard Excel ribbon at the top with various tools",
+			"icons": "Standard Excel icons for functions like save, undo, etc.",
+			"zoom": "100% zoom level indicated"
+		  }
+		},
+		"element_description": [
+		  {
+			"visual_description": {
+			  "shape": "Rectangular cell",
+			  "color": "White background with black grid lines",
+			  "text_content": "1",
+			  "visible_styling_details": "Text is centered in the cell, using a standard font."
+			},
+			"position_information": {
+			  "location": "Cell A1",
+			  "relationship_to_other_elements": "Located at the top-left corner of the grid."
+			},
+			"element_function": "Used for data entry; users can click to edit the cell content.",
+			"element_type": "Text field"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "Rectangular cell",
+			  "color": "White background with black grid lines",
+			  "text_content": "",
+			  "visible_styling_details": "Empty cell with no visible text."
+			},
+			"position_information": {
+			  "location": "Cell B1",
+			  "relationship_to_other_elements": "Directly to the right of Cell A1."
+			},
+			"element_function": "Used for data entry; users can click to input data.",
+			"element_type": "Text field"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "Rectangular cell",
+			  "color": "White background with black grid lines",
+			  "text_content": "",
+			  "visible_styling_details": "Empty cell with no visible text."
+			},
+			"position_information": {
+			  "location": "Cell C1",
+			  "relationship_to_other_elements": "Directly to the right of Cell B1."
+			},
+			"element_function": "Used for data entry; users can click to input data.",
+			"element_type": "Text field"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "Toolbar",
+			  "color": "Gray background with colored buttons",
+			  "text_content": "Home, Insert, Page Layout, etc.",
+			  "visible_styling_details": "Contains various buttons and dropdowns for functionality."
+			},
+			"position_information": {
+			  "location": "Top of the window",
+			  "relationship_to_other_elements": "Above the grid area."
+			},
+			"element_function": "Provides access to various features and tools; users can click buttons to perform actions.",
+			"element_type": "Toolbar"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "Button",
+			  "color": "Colored button with text",
+			  "text_content": "Save",
+			  "visible_styling_details": "Highlighted button with a distinct color."
+			},
+			"position_information": {
+			  "location": "In the toolbar",
+			  "relationship_to_other_elements": "To the right of other toolbar buttons."
+			},
+			"element_function": "Used to save the current document; users click to execute the save action.",
+			"element_type": "Button"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1719822686609_outputfiles",
+		"state_transition_caption": "The user interacted with the spreadsheet by clicking on cell A1, which is now highlighted with the text '1', while the previously empty cells B1 and C1 remain unchanged."
+	  },
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "action": "KEY_DOWN",
+		  "id": 1719822686609
+		},
+		"dense_caption": {
+		  "visual_elements": {
+			"background": "White",
+			"grid_lines": "Light gray",
+			"font": "Calibri",
+			"font_size": "11",
+			"cell_color": "White",
+			"header_color": "Light green",
+			"button_color": "Various colors for different functions"
+		  },
+		  "layout": {
+			"structure": "Grid layout with rows and columns",
+			"header": "Top row with column labels (A, B, C, etc.)",
+			"footer": "Status bar at the bottom",
+			"menu": "Ribbon interface at the top with tabs for different functions"
+		  },
+		  "styling": {
+			"alignment": "Left-aligned text in cells",
+			"cell_formatting": "Borders around cells",
+			"conditional_formatting": "Highlighted cells for specific conditions",
+			"icons": "Various icons for functions like save, print, etc."
+		  }
+		},
+		"element_description": [
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "white",
+			  "text_content": "1",
+			  "visible_styling_details": "bordered cell with a grid layout"
+			},
+			"position_information": {
+			  "location": "A1",
+			  "relative_position": "top-left corner of the grid"
+			},
+			"element_function": "This cell is used for data entry, allowing users to input numerical or textual data.",
+			"element_type": "text field"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "light gray",
+			  "text_content": "File, Home, Insert, Page Layout, Formulas, Data, Review, View",
+			  "visible_styling_details": "menu bar with dropdown options"
+			},
+			"position_information": {
+			  "location": "top of the window",
+			  "relative_position": "above the grid area"
+			},
+			"element_function": "This menu bar provides access to various functionalities and tools within the application.",
+			"element_type": "menu"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "green",
+			  "text_content": "Excel",
+			  "visible_styling_details": "application title bar"
+			},
+			"position_information": {
+			  "location": "top center of the window",
+			  "relative_position": "above the menu bar"
+			},
+			"element_function": "Displays the name of the application and provides window controls.",
+			"element_type": "title bar"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "gray",
+			  "text_content": "Accessibility: Good to go",
+			  "visible_styling_details": "status bar at the bottom"
+			},
+			"position_information": {
+			  "location": "bottom of the window",
+			  "relative_position": "below the grid area"
+			},
+			"element_function": "Indicates the current accessibility status of the document.",
+			"element_type": "status bar"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1719822686609_outputfiles",
+		"state_transition_caption": "The user likely pressed a key, as the active cell remains A1 with the same content, but the interface now shows a status bar indicating 'Accessibility: Good to go' and a menu bar with dropdown options."
+	  },
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Exce",
+		  "windowLeftUpperPoint": "0,0",
+		  "mousePoint": "0,0",
+		  "relativeMouseClickPoint": "0,0",
+		  "action": "LEFT_CLICK",
+		  "id": 257
+		},
+		"dense_caption": {
+		  "visual_elements": {
+			"background": "White",
+			"grid_lines": "Light gray",
+			"font": "Calibri",
+			"font_size": "11",
+			"cell_color": "White",
+			"header_color": "Green"
+		  },
+		  "layout": {
+			"structure": "Grid layout with rows and columns",
+			"active_sheet": "Sheet1",
+			"cell_selection": "No cells selected"
+		  },
+		  "styling": {
+			"alignment": "Left-aligned text",
+			"cell_formatting": "Standard cell formatting",
+			"conditional_formatting": "None applied",
+			"input_cells": "No input cells highlighted"
+		  }
+		},
+		"element_description": [
+		  {
+			"visual_description": {
+			  "shape": "Rectangular",
+			  "color": "White background with gray grid lines",
+			  "text_content": "Empty cells with no visible text",
+			  "visible_styling_details": "Grid layout with column headers labeled A to AM"
+			},
+			"position_information": {
+			  "location": "Center of the frame",
+			  "relationship_to_other_elements": "Surrounded by a toolbar at the top and a status bar at the bottom"
+			},
+			"element_function": "Allows users to input and manipulate data in a spreadsheet format",
+			"element_type": "Spreadsheet grid"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "Rectangular",
+			  "color": "Green background with white text",
+			  "text_content": "Excel title bar with 'Excel - Product Activation Failed'",
+			  "visible_styling_details": "Standard title bar with minimize, maximize, and close buttons"
+			},
+			"position_information": {
+			  "location": "Top of the frame",
+			  "relationship_to_other_elements": "Above the spreadsheet grid"
+			},
+			"element_function": "Displays the application name and status, allows window management",
+			"element_type": "Title bar"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "Rectangular",
+			  "color": "Gray background with white text",
+			  "text_content": "Toolbar with various icons and dropdowns",
+			  "visible_styling_details": "Standard ribbon interface with tabs like Home, Insert, Page Layout, etc."
+			},
+			"position_information": {
+			  "location": "Directly below the title bar",
+			  "relationship_to_other_elements": "Above the spreadsheet grid"
+			},
+			"element_function": "Provides access to various tools and features for spreadsheet manipulation",
+			"element_type": "Toolbar"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "Rectangular",
+			  "color": "Gray background",
+			  "text_content": "Status bar with accessibility message",
+			  "visible_styling_details": "Displays information about the current state of the application"
+			},
+			"position_information": {
+			  "location": "Bottom of the frame",
+			  "relationship_to_other_elements": "Below the spreadsheet grid"
+			},
+			"element_function": "Provides feedback and status information to the user",
+			"element_type": "Status bar"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1729852680109_outputfiles",
+		"state_transition_caption": "The user likely clicked on the spreadsheet grid in the Excel application, transitioning from an empty state with no cells selected to a state ready for data input."
+	  },
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "action": "KEY_DOWN",
+		  "id": 266,
+		  "keyCode": "0.0"
+		},
+		"dense_caption": "The image displays a blank Microsoft Excel spreadsheet interface. The top menu bar includes options such as 'File', 'Home', 'Insert', 'Page Layout', 'Formulas', 'Data', 'Review', and 'View'. The font is set to 'Calibri', size 11, with a standard alignment. The grid consists of empty cells arranged in rows and columns, with column headers labeled from A to AM. The status bar at the bottom indicates 'Accessibility: Good to go' and the zoom level is set to 100%. The overall layout is clean and organized, typical of a spreadsheet application.",
+		"element_description": [
+		  {
+			"visual_description": {
+			  "shape": "rectangle",
+			  "color": "white",
+			  "text_content": "",
+			  "visible_styling_details": "Grid layout with no visible borders or shading"
+			},
+			"position_information": {
+			  "location": "center of the image",
+			  "relationship_to_other_elements": "No other elements are present in the image"
+			},
+			"element_function": "This area serves as a blank spreadsheet for data entry and manipulation.",
+			"element_type": "Grid/Spreadsheet"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangle",
+			  "color": "green",
+			  "text_content": "Excel",
+			  "visible_styling_details": "Menu bar with various options like File, Home, Insert, etc."
+			},
+			"position_information": {
+			  "location": "top of the image",
+			  "relationship_to_other_elements": "Above the blank spreadsheet area"
+			},
+			"element_function": "Provides access to various functionalities and settings within the Excel application.",
+			"element_type": "Menu Bar"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangle",
+			  "color": "light gray",
+			  "text_content": "Sheet1",
+			  "visible_styling_details": "Tab style with a slight indentation"
+			},
+			"position_information": {
+			  "location": "bottom left corner of the image",
+			  "relationship_to_other_elements": "Below the menu bar and to the left of the spreadsheet area"
+			},
+			"element_function": "Indicates the current active sheet within the workbook.",
+			"element_type": "Tab"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangle",
+			  "color": "gray",
+			  "text_content": "Accessibility: Good to go",
+			  "visible_styling_details": "Status bar at the bottom of the window"
+			},
+			"position_information": {
+			  "location": "bottom of the image",
+			  "relationship_to_other_elements": "Below the spreadsheet area"
+			},
+			"element_function": "Displays the current status of accessibility features in the application.",
+			"element_type": "Status Bar"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1729852680109_outputfiles",
+		"state_transition_caption": "The user transitioned from a blank Excel spreadsheet interface with a menu bar and status bar indicating 'Accessibility: Good to go' to a state where a key was pressed, likely initiating data entry or command input."
+	  },
+	  {
+		"picture_information": {
+		  "id": 301,
+		  "action": "KEY_DOWN",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "windowRightBottomPoint": "2560,1408",
+		  "keyCode": "Ctrl"
+		},
+		"dense_caption": "The image displays a blank spreadsheet interface of Microsoft Excel. The layout features a grid of rows and columns, with the first row containing labels for columns A to AM. The toolbar at the top includes options for file management, formatting, and data manipulation. The font is set to Calibri, size 11, and the cells are currently empty, indicating no data input. The overall styling is clean and minimalistic, typical of spreadsheet applications, with a green header and a white workspace.",
+		"element_description": [
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "white background with black grid lines",
+			  "text_content": "",
+			  "visible_styling_details": "Grid layout with no visible content"
+			},
+			"position_information": {
+			  "location": "center of the frame",
+			  "relationship_to_other_elements": "No other elements are present in the image"
+			},
+			"element_function": "This area is likely used for data entry or display in a spreadsheet format, allowing users to input and manipulate data.",
+			"element_type": "Grid (Spreadsheet)"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "green header",
+			  "text_content": "Excel",
+			  "visible_styling_details": "Menu bar with various options like File, Home, Insert, etc."
+			},
+			"position_information": {
+			  "location": "top of the frame",
+			  "relationship_to_other_elements": "Above the main grid area"
+			},
+			"element_function": "Provides access to various functionalities and settings within the Excel application.",
+			"element_type": "Menu Bar"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "light gray",
+			  "text_content": "Tell me what you want to do",
+			  "visible_styling_details": "Search bar with a placeholder text"
+			},
+			"position_information": {
+			  "location": "top center, below the menu bar",
+			  "relationship_to_other_elements": "Directly below the menu bar"
+			},
+			"element_function": "Allows users to search for features or commands within the Excel application.",
+			"element_type": "Search Bar"
+		  }
+		],
+		"video_id": "301____Down____Test.xlsx-Excel____0.0_2557.1379____Ctrl",
+		"state_transition_caption": "The user transitioned from a blank Excel spreadsheet interface to a similar layout with an added search bar below the menu, indicating that they likely pressed the 'Ctrl' key to activate a search function."
+	  },
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "mousePoint": "0,0",
+		  "relativeMouseClickPoint": "0,0",
+		  "action": "MOUSE_OPERATION",
+		  "id": 314
+		},
+		"dense_caption": {
+		  "visual_elements": {
+			"background": "White",
+			"grid_lines": "Visible, light gray",
+			"cells": "Empty, no data",
+			"font": "Calibri, size 11",
+			"toolbar": "Standard Excel toolbar with various functions"
+		  },
+		  "layout": {
+			"structure": "Spreadsheet format with rows and columns",
+			"active_cell": "A1",
+			"sheet_name": "Sheet1",
+			"scroll_bar": "Visible on the right"
+		  },
+		  "styling": {
+			"header": "Bold font for column letters (A-Z)",
+			"alignment": "Default left alignment for cell content",
+			"conditional_formatting": "None applied",
+			"cell_formatting": "Standard cell format"
+		  }
+		},
+		"element_description": [
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "white",
+			  "text_content": "1",
+			  "visible_styling_details": "bordered cell with a grid layout"
+			},
+			"position_information": {
+			  "location": "cell A1",
+			  "relationship_to_other_elements": "top-left corner of the spreadsheet"
+			},
+			"element_function": "This cell is used for data entry, allowing users to input numerical or textual data.",
+			"element_type": "text field"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "green",
+			  "text_content": "Excel",
+			  "visible_styling_details": "menu bar with various options"
+			},
+			"position_information": {
+			  "location": "top of the window",
+			  "relationship_to_other_elements": "above the spreadsheet area"
+			},
+			"element_function": "This menu allows users to access various features and functionalities of the Excel application.",
+			"element_type": "menu bar"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "gray",
+			  "text_content": "Sheet1",
+			  "visible_styling_details": "tab style with a highlighted active sheet"
+			},
+			"position_information": {
+			  "location": "bottom left of the window",
+			  "relationship_to_other_elements": "below the menu bar and to the left of the spreadsheet"
+			},
+			"element_function": "This tab allows users to switch between different sheets within the workbook.",
+			"element_type": "tab"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1729852680109_outputfiles",
+		"state_transition_caption": "The user interacted with the Excel spreadsheet by clicking on cell A1, which is now highlighted, indicating a selection change from the previously blank interface."
+	  },
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "action": "KEY_DOWN",
+		  "id": 352,
+		  "keyCode": "Ctrl"
+		},
+		"dense_caption": {
+		  "visual_elements": {
+			"background": "White",
+			"grid_lines": "Visible, light gray",
+			"font": "Calibri, size 11",
+			"cell_formatting": "Default, no special formatting applied"
+		  },
+		  "layout": {
+			"structure": "Spreadsheet layout with rows and columns",
+			"active_cell": "A1",
+			"sheet_name": "Sheet1",
+			"scroll_position": "Top left corner"
+		  },
+		  "styling": {
+			"header": "Not visible, as no data is present",
+			"cell_color": "No fill color",
+			"alignment": "Default alignment, no text wrapping"
+		  }
+		},
+		"element_description": [
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "white",
+			  "text_content": "1",
+			  "visible_styling_details": "bordered cell with a grid layout"
+			},
+			"position_information": {
+			  "location": "top left corner of the grid",
+			  "relation_to_other_elements": "first cell in the first row and first column"
+			},
+			"element_function": "This cell is used for data entry, allowing users to input numerical or textual data.",
+			"element_type": "text field"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "green",
+			  "text_content": "Excel - Product Activation Failed",
+			  "visible_styling_details": "title bar with a notification message"
+			},
+			"position_information": {
+			  "location": "top center of the window",
+			  "relation_to_other_elements": "above the main grid area"
+			},
+			"element_function": "This title bar indicates the current status of the application and alerts the user about activation issues.",
+			"element_type": "notification bar"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "green",
+			  "text_content": "File, Home, Insert, Page Layout, Formulas, Data, Review, View, Help",
+			  "visible_styling_details": "menu bar with dropdown options"
+			},
+			"position_information": {
+			  "location": "top of the window",
+			  "relation_to_other_elements": "above the main grid and title bar"
+			},
+			"element_function": "This menu bar provides access to various features and functionalities of the application.",
+			"element_type": "menu bar"
+		  },
+		  {
+			"visual_description": {
+			  "shape": "rectangular",
+			  "color": "light gray",
+			  "text_content": "Sheet1",
+			  "visible_styling_details": "tab style with a label"
+			},
+			"position_information": {
+			  "location": "bottom left of the window",
+			  "relation_to_other_elements": "below the main grid area"
+			},
+			"element_function": "This tab allows users to navigate between different sheets within the workbook.",
+			"element_type": "tab control"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1729852680109_outputfiles",
+		"state_transition_caption": "The previous frame displayed an empty Excel spreadsheet with the active cell at A1, while the current frame shows a notification bar indicating 'Product Activation Failed' and the user likely pressed the Ctrl key, possibly to access a shortcut or command."
+	  }
+  ]
+}
