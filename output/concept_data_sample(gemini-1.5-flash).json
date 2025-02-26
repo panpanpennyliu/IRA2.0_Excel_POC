@@ -1,0 +1,518 @@
+{ 
+  "frames": [
+	{
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "mousePoint": "0,0",
+		  "relativeMouseClickPoint": "0,0",
+		  "action": "MOUSE_OPERATION",
+		  "id": 257
+		},
+		"dense_caption": "The image shows a spreadsheet program interface, specifically Microsoft Excel.  The sheet is mostly empty, displaying a grid of cells with row and column headers. The top shows the standard Excel menu bar with options like File, Home, Insert, etc., along with various formatting tools and a ribbon with formatting options. The title bar indicates the file name 'Test.xlsx' and a status message 'Product Activation Failed'. The bottom shows the sheet name 'Sheet1' and a status bar. The overall style is clean and simple, typical of a spreadsheet application. The color scheme is predominantly white and gray, with green accents in the ribbon and status bar. The layout is standard for spreadsheet software, with the menu bar at the top, followed by the ribbon, the spreadsheet grid, and the status bar.",
+		"element_description": [
+		  {
+			"visual_description": "A rectangular grid of cells, forming a spreadsheet.  The cells are white with thin gray borders.  The columns are labeled with letters (A, B, C, etc.) and the rows are labeled with numbers (1, 2, 3, etc.). The font is Calibri, size 11.",
+			"position_information": "The spreadsheet occupies the majority of the window, extending from near the top to the bottom and from the left to the right, excluding the ribbon at the top and the status bar at the bottom.",
+			"element_function": "Allows users to input, edit, and calculate data.  Users interact by selecting cells, entering data, applying formulas, and formatting the data.",
+			"element_type": "Spreadsheet"
+		  },
+		  {
+			"visual_description": "A ribbon at the top of the window containing various tabs (File, Home, Insert, etc.) and groups of buttons and controls within each tab.  The buttons have icons and text labels. The ribbon is green.",
+			"position_information": "Located at the very top of the window, above the spreadsheet.",
+			"element_function": "Provides access to various commands and features of the spreadsheet program. Users interact by clicking on tabs and buttons.",
+			"element_type": "Ribbon"
+		  },
+		  {
+			"visual_description": "A status bar at the bottom of the window displaying information such as 'Sheet1', 'Ready', and 'Accessibility: Good to go'.",
+			"position_information": "Located at the very bottom of the window, below the spreadsheet.",
+			"element_function": "Displays the current sheet name and the application status.  Provides accessibility information.",
+			"element_type": "Status Bar"
+		  },
+		  {
+			"visual_description": "A title bar at the very top of the window displaying 'Test.xlsx - Excel (Product Activation Failed)'",
+			"position_information": "At the topmost part of the window, above the ribbon.",
+			"element_function": "Displays the name of the currently open file and the application name.",
+			"element_type": "Title Bar"
+		  },
+		  {
+			"visual_description": "Various buttons and controls within the ribbon, such as 'Cut', 'Copy', 'Paste', 'Format Painter', 'Font', 'Alignment', 'Number', 'AutoSum', 'Sort & Filter', 'Add-ins', etc.  These have icons and/or text labels.",
+			"position_information": "Located within the ribbon at the top of the window, organized into logical groups.",
+			"element_function": "Provide quick access to common spreadsheet functions. Users interact by clicking on the buttons.",
+			"element_type": "Buttons, Dropdown Menus, and other Ribbon Controls"
+		  },
+		  {
+			"visual_description": "A small window in the top right corner displaying 'tsicent@163.com'.",
+			"position_information": "Located in the top right corner of the window, near the close button.",
+			"element_function": "Displays the user's email address or account information.",
+			"element_type": "Account Information Display"
+		  },
+		  {
+			"visual_description": "A message at the bottom of the window: '���� Windows ת�������á��Լ��� Windows��' (Activate Windows Go to Settings to activate Windows.)",
+			"position_information": "Located in the bottom-right corner of the window, above the status bar.",
+			"element_function": "Informs the user that Windows needs activation.",
+			"element_type": "System Message"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1719822686609_outputfiles",
+		"state_transition_caption": ""
+	  },
+	  {
+		"picture_information": {
+		  "id": 266,
+		  "action": "KEY_PRESS",
+		  "keyCode": "1",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "windowRightBottomPoint": "2557,1379"
+		},
+		"dense_caption": "The image shows a mostly empty Microsoft Excel spreadsheet. The spreadsheet is in English and Chinese. The title bar indicates that the file is named 'Test.xlsx' and that product activation has failed. The spreadsheet has a standard grid layout with rows and columns labeled with letters and numbers. The top of the image shows the Excel ribbon with various options for formatting, editing, and data manipulation. The bottom right corner shows a Windows activation prompt in Chinese. The overall style is clean and simple, typical of a spreadsheet application.",
+		"element_description": [
+		  {
+			"visual_description": "A ribbon at the top of the application window, containing various menu options and commands organized into tabs (Home, Insert, Page Layout, Formulas, Data, Review, View, Help). Each tab contains icons and text labels representing different functionalities.  The ribbon is a dark teal/green color.",
+			"position_information": "Located at the very top of the window, above the spreadsheet grid and other UI elements. It spans the entire width of the window.",
+			"element_function": "Provides access to the application's core functionalities, allowing users to perform actions such as formatting cells, inserting data, editing formulas, and managing the spreadsheet.",
+			"element_type": "Ribbon"
+		  },
+		  {
+			"visual_description": "A spreadsheet grid with rows and columns labeled with numbers and letters respectively. The cells are empty and have a white background with thin gray gridlines.",
+			"position_information": "Occupies the majority of the window's central area, below the ribbon and above the status bar. It is surrounded by the ribbon at the top, the status bar at the bottom, and column and row headers on the sides.",
+			"element_function": "The primary area for data entry, manipulation, and visualization in the spreadsheet application. Users interact with it by entering data, applying formulas, and formatting cells.",
+			"element_type": "Spreadsheet Grid"
+		  },
+		  {
+			"visual_description": "A status bar at the bottom of the window, displaying information such as sheet name, accessibility status, and zoom level.",
+			"position_information": "Located at the very bottom of the window, below the spreadsheet grid. It spans the entire width of the window.",
+			"element_function": "Provides feedback to the user about the current state of the application, such as the sheet's name, zoom level, and accessibility status.",
+			"element_type": "Status Bar"
+		  },
+		  {
+			"visual_description": "A title bar at the very top of the window, displaying the file name and application name.",
+			"position_information": "Located at the very top of the window, above the ribbon. It displays the file name 'Test.xlsx' and indicates that 'Product Activation Failed'.",
+			"element_function": "Displays the name of the currently open file and the application name. It also contains controls for minimizing, maximizing, and closing the window.",
+			"element_type": "Title Bar"
+		  },
+		  {
+			"visual_description": "Various buttons and dropdown menus within the ribbon, each with distinct icons and text labels. Examples include 'Cut', 'Copy', 'Paste', 'AutoSum', 'Sort & Filter', etc.",
+			"position_information": "Located within the ribbon at the top of the window. Their positions vary depending on the selected tab.",
+			"element_function": "These elements provide specific functionalities within the application, such as cutting, copying, pasting, and performing calculations.",
+			"element_type": "Buttons and Dropdown Menus"
+		  },
+		  {
+			"visual_description": "A small window at the bottom right corner, displaying a message about activating Windows.",
+			"position_information": "Located in the bottom right corner of the window, partially overlapping the spreadsheet grid.",
+			"element_function": "Informs the user that Windows needs activation.",
+			"element_type": "Notification/Message Box"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1719822686609_outputfiles",
+		"state_transition_caption": "The user likely pressed the '1' key to input data into the previously empty spreadsheet grid, transitioning from a mostly empty state to one where the first cell now contains the number '1'."
+	  },
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "action": "KEY_DOWN",
+		  "keyCode": "Ctrl",
+		  "id": 301
+		},
+		"dense_caption": "The image shows a mostly empty Microsoft Excel spreadsheet. The spreadsheet is in English and Chinese. The title bar indicates that the file is named 'Test.xlsx' and that product activation has failed. The spreadsheet has a standard grid layout with rows and columns labeled with letters and numbers. The top of the image shows the Excel ribbon with various options for formatting, editing, and data manipulation. The bottom right corner displays a Windows activation prompt in Chinese. The overall style is clean and simple, typical of a spreadsheet application.",
+		"element_description": [
+		  {
+			"visual_description": "A ribbon at the top of the application window, containing various menu options and commands organized into tabs (Home, Insert, Page Layout, Formulas, Data, Review, View, Help). Each tab displays a set of icons and text labels representing different functionalities. The ribbon is a dark teal color.",
+			"position_information": "Located at the very top of the application window, above the spreadsheet grid and other UI elements.",
+			"element_function": "Provides access to the application's core functionalities, allowing users to perform actions such as formatting cells, inserting data, editing formulas, and managing the spreadsheet.",
+			"element_type": "Ribbon"
+		  },
+		  {
+			"visual_description": "A spreadsheet grid occupying the majority of the application window. It consists of rows and columns, forming cells where data can be entered and manipulated. The cells are bordered by thin gray lines, and the grid is predominantly white.",
+			"position_information": "Located below the ribbon and takes up most of the window's space. It is the central element of the application.",
+			"element_function": "The primary area for data entry, manipulation, and visualization. Users interact with it by entering data, applying formulas, and formatting cells.",
+			"element_type": "Spreadsheet Grid"
+		  },
+		  {
+			"visual_description": "A status bar at the bottom of the application window, displaying information about the current sheet and application status. It shows the sheet name ('Sheet1'), accessibility status ('Accessibility: Good to go'), and zoom level.",
+			"position_information": "Located at the very bottom of the application window, below the spreadsheet grid.",
+			"element_function": "Provides feedback to the user about the current state of the application and the active sheet.",
+			"element_type": "Status Bar"
+		  },
+		  {
+			"visual_description": "A title bar at the very top of the window, displaying the application name ('Test.xlsx - Excel (Product Activation Failed)') and standard window controls (minimize, maximize, close).",
+			"position_information": "At the topmost part of the window, above the ribbon.",
+			"element_function": "Displays the application's title and provides controls for managing the window.",
+			"element_type": "Title Bar"
+		  },
+		  {
+			"visual_description": "Various buttons and dropdown menus within the ribbon, each with specific icons and text labels indicating their function (e.g., Cut, Copy, Paste, AutoSum, Sort & Filter).",
+			"position_information": "Located within the ribbon at the top of the window, organized into logical groups based on functionality.",
+			"element_function": "Enable users to perform specific actions related to data manipulation, formatting, and spreadsheet management.",
+			"element_type": "Buttons and Dropdown Menus"
+		  },
+		  {
+			"visual_description": "A cell selection area in the top-left corner of the spreadsheet grid, showing the column letters (A, B, C, etc.) and row numbers (1, 2, 3, etc.).",
+			"position_information": "Located at the intersection of the rows and columns in the spreadsheet grid.",
+			"element_function": "Allows users to identify and select specific cells or ranges of cells within the spreadsheet.",
+			"element_type": "Cell Selection Area"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1719822686609_outputfiles",
+		"state_transition_caption": "The user pressed the 'Ctrl' key while viewing an empty Excel spreadsheet with a status bar indicating 'Accessibility: Good to go' and a title bar showing 'Test.xlsx - Excel (Product Activation Failed)'."
+	  },
+	  {
+		"picture_information": {
+		  "id": 314,
+		  "action": "KEY_PRESS",
+		  "keyCode": "S",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "windowRightBottomPoint": "2557,1379"
+		},
+		"dense_caption": "The image shows a spreadsheet program interface, specifically an empty Microsoft Excel sheet. The sheet is mostly blank, with only the default gridlines visible. The top of the image displays the Excel ribbon, showing various options for formatting, editing, and data manipulation. The ribbon includes tabs like 'Home', 'Insert', 'Page Layout', 'Formulas', 'Data', 'Review', 'View', and 'Help'. The title bar indicates the file name 'Test.xlsx' and a status message 'Excel (Product Activation Failed)'. The bottom of the image shows the sheet name 'Sheet1' and a status indicator 'Ready Accessibility: Good to go'. The overall style is clean and minimalist, typical of a spreadsheet application. The layout is standard, with the ribbon at the top, the spreadsheet in the center, and the status bar at the bottom. The color scheme is predominantly white and gray, with green accents in the ribbon.",
+		"element_description": [
+		  {
+			"visual_description": "A grid of cells forming a spreadsheet. The cells are white with thin gray borders. The cells are empty, except for the number '1' in cell A1. The spreadsheet has column headers (A, B, C...AA, AB...) and row headers (1, 2, 3...). The font is Calibri, size 11.",
+			"position_information": "The spreadsheet occupies the majority of the window, extending from near the top to the bottom and from the left to the right, excluding the ribbon at the top and the status bar at the bottom.",
+			"element_function": "Allows users to input, edit, and calculate data. Users interact by selecting cells, entering data, and using formulas.",
+			"element_type": "Spreadsheet"
+		  },
+		  {
+			"visual_description": "A ribbon at the top of the window containing various tabs (File, Home, Insert, etc.) and groups of buttons and controls within each tab. The tabs are labeled with their respective names. Buttons have icons and text labels. The ribbon is green.",
+			"position_information": "Located at the top of the window, above the spreadsheet.",
+			"element_function": "Provides access to various commands and options for working with the spreadsheet. Users interact by clicking on tabs and buttons.",
+			"element_type": "Ribbon"
+		  },
+		  {
+			"visual_description": "A status bar at the bottom of the window displaying information such as 'Ready', 'Accessibility: Good to go', and zoom level.",
+			"position_information": "Located at the very bottom of the window, below the spreadsheet.",
+			"element_function": "Displays the current status of the application and provides quick access to certain settings. Users can interact with the zoom controls.",
+			"element_type": "Status Bar"
+		  },
+		  {
+			"visual_description": "A title bar at the very top of the window displaying 'Test.xlsx - Excel (Product Activation Failed)'",
+			"position_information": "At the topmost part of the window, above the ribbon.",
+			"element_function": "Displays the name of the currently open file and the application name.",
+			"element_type": "Title Bar"
+		  },
+		  {
+			"visual_description": "A series of buttons and controls in the top right corner of the window, including minimize, maximize, and close buttons. There is also a user account icon and a notification icon.",
+			"position_information": "Located in the top right corner of the window, next to the title bar.",
+			"element_function": "Allows users to control the window's state (minimize, maximize, close) and access user account settings and notifications.",
+			"element_type": "Window Controls"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1719822686609_outputfiles",
+		"state_transition_caption": "The user pressed the 'S' key to save the mostly empty Excel spreadsheet, which now shows the number '1' in cell A1, indicating data entry."
+	  },
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "action": "KEY_PRESS",
+		  "id": 352,
+		  "keyCode": "Ctrl"
+		},
+		"dense_caption": "The image shows a spreadsheet program interface, specifically an empty Microsoft Excel sheet. The sheet is mostly blank, with only the default gridlines visible. The top of the image displays the Excel ribbon, showing various options for formatting, editing, and data manipulation. The ribbon includes tabs like 'Home', 'Insert', 'Page Layout', 'Formulas', 'Data', 'Review', 'View', and 'Help'. The title bar indicates the file name 'Test.xlsx' and a status message 'Excel (Product Activation Failed)'. The bottom of the image shows the sheet name 'Sheet1' and a status indicator 'Ready Accessibility: Good to go'. The overall style is clean and minimalistic, typical of a spreadsheet application. The layout is standard, with the ribbon at the top, the spreadsheet in the center, and the status bar at the bottom. The color scheme is predominantly white and gray, with green accents in the ribbon.",
+		"element_description": [
+		  {
+			"visual_description": "A grid of cells forming a spreadsheet. The cells are white with thin gray borders. The cells are empty, except for the number '1' in cell A1. Row and column headers are visible, showing letters (A-AM) and numbers (1-55). The font is Calibri, size 11.",
+			"position_information": "The spreadsheet occupies the majority of the window, extending from near the top to the bottom and from the left to the right, excluding the ribbon at the top and the status bar at the bottom.",
+			"element_function": "Allows users to input, edit, and calculate data. Users interact by clicking on cells to enter data, using formulas, and applying formatting.",
+			"element_type": "Spreadsheet"
+		  },
+		  {
+			"visual_description": "A ribbon at the top of the window containing various menus and toolbars. The ribbon is green and contains various icons and text labels, such as 'File', 'Home', 'Insert', 'Page Layout', 'Formulas', 'Data', 'Review', 'View', 'Help', and various other commands.",
+			"position_information": "Located at the very top of the window, above the spreadsheet.",
+			"element_function": "Provides access to various commands and options for working with the spreadsheet. Users interact by clicking on menus, buttons, and toolbars.",
+			"element_type": "Ribbon"
+		  },
+		  {
+			"visual_description": "A status bar at the bottom of the window displaying information about the spreadsheet. It shows 'Sheet1', 'Ready', and accessibility information.",
+			"position_information": "Located at the very bottom of the window, below the spreadsheet.",
+			"element_function": "Displays the current sheet name, status messages, and other relevant information. Users can interact with some parts of the status bar, such as the zoom controls.",
+			"element_type": "Status Bar"
+		  },
+		  {
+			"visual_description": "A title bar at the very top of the window displaying the file name and application name. It also includes minimize, maximize, and close buttons.",
+			"position_information": "Located at the topmost part of the window, above the ribbon.",
+			"element_function": "Displays the file name and application name. The buttons allow users to minimize, maximize, or close the window.",
+			"element_type": "Title Bar"
+		  },
+		  {
+			"visual_description": "Various buttons and dropdown menus within the ribbon, such as 'Cut', 'Copy', 'Paste', 'Format Painter', 'Font', 'Alignment', 'Number', 'Conditional Formatting', 'Check Cell', 'Insert', 'Delete', 'Format', 'Clear', 'Sort & Filter', 'Add-ins', etc.",
+			"position_information": "Located within the ribbon at the top of the window.",
+			"element_function": "These elements provide various functionalities for manipulating the spreadsheet data and formatting. Users interact by clicking or selecting options from the menus and buttons.",
+			"element_type": "Buttons and Dropdown Menus"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1719822686609_outputfiles",
+		"state_transition_caption": "The user pressed the 'Ctrl' key while viewing an empty Microsoft Excel sheet with the title 'Test.xlsx', which remains unchanged in the current frame."
+	  },
+	  {
+		"picture_information": {
+		  "id": 257,
+		  "applicationTitle": "Click",
+		  "windowLeftUpperPoint": "0,0",
+		  "windowRightBottomPoint": "2557,1379",
+		  "mousePoint": "63,233",
+		  "relativeMouseClickPoint": "1,1",
+		  "action": "LEFT_CLICK"
+		},
+		"dense_caption": "The image shows a spreadsheet program interface, specifically Microsoft Excel. The sheet is mostly empty, displaying a grid of cells with row and column headers. The top shows the standard Excel menu bar with options like File, Home, Insert, etc., and various formatting tools. The title bar indicates the file name 'Test.xlsx' and a status message 'Product Activation Failed'. The bottom shows the sheet name 'Sheet1' and status indicators. The overall style is clean and simple, typical of a spreadsheet application. The layout is standard, with the menu bar at the top, the spreadsheet grid occupying most of the space, and status information at the bottom. The color scheme is predominantly white and gray, with green accents in the menu bar.",
+		"element_description": [
+		  {
+			"visual_description": "A rectangular grid of cells, each cell bordered by thin gray lines. The cells are empty and white.  The grid extends across the majority of the visible area. Row and column headers are visible, labeled with letters (A, B, C...) and numbers (1, 2, 3...). The font is Calibri, size 11.",
+			"position_information": "The grid occupies the central and largest portion of the window. It is located below the ribbon (menu bar) and above the status bar at the bottom.  It is surrounded by other UI elements such as the ribbon, scroll bars, and sheet tabs.",
+			"element_function": "This is the main workspace for data entry, manipulation, and visualization in a spreadsheet application. Users interact with it by selecting cells, entering data, applying formulas, and formatting.",
+			"element_type": "Spreadsheet Grid"
+		  },
+		  {
+			"visual_description": "A horizontal bar located at the top of the window. It contains various tabs (Home, Insert, Page Layout, etc.), groups of icons representing different functions (font formatting, alignment, number formatting, etc.), and dropdown menus.",
+			"position_information": "Located at the very top of the window, above the spreadsheet grid. It spans the entire width of the window.",
+			"element_function": "Provides access to various commands and tools for working with the spreadsheet. Users interact with it by clicking on tabs, icons, or dropdown menus to perform actions.",
+			"element_type": "Ribbon"
+		  },
+		  {
+			"visual_description": "A horizontal bar at the bottom of the window. It displays information about the current sheet, such as the sheet name ('Sheet1'), the status ('Ready'), and the zoom level.",
+			"position_information": "Located at the bottom of the window, below the spreadsheet grid. It spans the entire width of the window.",
+			"element_function": "Provides status information and allows users to quickly access sheet navigation and zoom controls.",
+			"element_type": "Status Bar"
+		  },
+		  {
+			"visual_description": "A series of buttons and dropdown menus located within the ribbon.  These include options for cutting, copying, pasting, formatting, and other actions.",
+			"position_information": "Located within the 'Home' tab of the ribbon, at the top of the window.",
+			"element_function": "These elements provide quick access to common editing and formatting functions. Users interact with them by clicking on the buttons or selecting options from the dropdown menus.",
+			"element_type": "Buttons and Dropdown Menus"
+		  },
+		  {
+			"visual_description": "A small bar at the bottom left corner of the window, displaying the sheet name 'Sheet1'.",
+			"position_information": "Located in the bottom-left corner of the window, next to the status bar.",
+			"element_function": "Indicates the currently active sheet in the workbook. Users can click on this to select a different sheet.",
+			"element_type": "Sheet Tab"
+		  },
+		  {
+			"visual_description": "A text box displaying 'Test.xlsx - Excel (Product Activation Failed)' in the title bar.",
+			"position_information": "Located at the very top of the window, in the title bar.",
+			"element_function": "Displays the name of the currently open file and its application.",
+			"element_type": "Title Bar"
+		  },
+		  {
+			"visual_description": "A series of icons and buttons located in the top right corner of the window. These include minimize, maximize, and close buttons, as well as an email address.",
+			"position_information": "Located in the top right corner of the window, in the title bar.",
+			"element_function": "These elements allow the user to control the window's state (minimize, maximize, close) and display account information.",
+			"element_type": "Window Controls"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1729852680109_outputfiles",
+		"state_transition_caption": ""
+	  },
+	  {
+		"picture_information": {
+		  "id": 266,
+		  "action": "KEY_PRESS",
+		  "keyCode": "1",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "windowRightBottomPoint": "2557,1379"
+		},
+		"dense_caption": "The image shows a mostly empty Microsoft Excel spreadsheet. The spreadsheet is in English and Chinese. The title bar indicates that the file is named 'Test.xlsx' and that product activation has failed. The spreadsheet has a standard grid layout with rows and columns labeled with letters and numbers. The top of the image shows the Excel ribbon with various options for formatting, editing, and data manipulation. The bottom right corner shows a Windows activation prompt in Chinese. The overall style is clean and simple, typical of a spreadsheet application.",
+		"element_description": [
+		  {
+			"visual_description": "A ribbon at the top of the application window, containing various menu options and commands organized into tabs (Home, Insert, Page Layout, Formulas, Data, Review, View, Help). Each tab contains several groups of buttons and controls.  The ribbon is a dark teal/green color.",
+			"position_information": "Located at the very top of the window, above the spreadsheet grid and other UI elements.",
+			"element_function": "Provides access to the application's core functionalities, such as formatting, editing, data manipulation, and viewing options. Users interact with it by clicking on tabs and buttons.",
+			"element_type": "Ribbon"
+		  },
+		  {
+			"visual_description": "A large grid of cells forming the main spreadsheet area.  Cells are bordered by thin gray lines.  The cells are currently empty.",
+			"position_information": "Occupies the majority of the window, below the ribbon and above the status bar. It is positioned centrally within the application window.",
+			"element_function": "The primary area for data entry, manipulation, and display. Users interact with it by selecting cells and entering data.",
+			"element_type": "Spreadsheet Grid"
+		  },
+		  {
+			"visual_description": "A status bar at the bottom of the window, displaying information about the current sheet and accessibility status.",
+			"position_information": "Located at the very bottom of the window, below the spreadsheet grid.",
+			"element_function": "Provides information about the current sheet, accessibility status, and other application status details.",
+			"element_type": "Status Bar"
+		  },
+		  {
+			"visual_description": "A title bar at the very top of the window, displaying the file name and application name.",
+			"position_information": "Located at the topmost part of the window, above the ribbon.",
+			"element_function": "Displays the name of the currently open file and the application name. It also contains controls for minimizing, maximizing, and closing the window.",
+			"element_type": "Title Bar"
+		  },
+		  {
+			"visual_description": "Various buttons and controls within the ribbon, such as 'Cut', 'Copy', 'Paste', 'Format Painter', 'Font', 'Alignment', 'Number', 'AutoSum', 'Sort & Filter', 'Find & Select', and 'Add-ins'.  These are typically represented by icons and/or text labels.",
+			"position_information": "Located within the ribbon at the top of the window, organized into logical groups and tabs.",
+			"element_function": "These buttons and controls provide specific actions related to data manipulation, formatting, and other spreadsheet operations. Users interact with them by clicking.",
+			"element_type": "Buttons, Dropdown Menus, and other Ribbon Controls"
+		  },
+		  {
+			"visual_description": "A sheet tab at the bottom left corner, labeled 'Sheet1'.",
+			"position_information": "Located at the bottom-left corner of the window, near the status bar.",
+			"element_function": "Indicates the currently active sheet within the workbook. Users can click on it to select different sheets.",
+			"element_type": "Sheet Tab"
+		  },
+		  {
+			"visual_description": "A message at the bottom right corner, indicating that Windows needs activation.",
+			"position_information": "Located at the bottom-right corner of the window, near the status bar.",
+			"element_function": "Informs the user that the operating system requires activation.",
+			"element_type": "System Message"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1729852680109_outputfiles",
+		"state_transition_caption": "The user pressed the '1' key, transitioning from a mostly empty spreadsheet interface to a state where the input of '1' is likely registered in the active cell."
+	  },
+	  {
+		"picture_information": {
+		  "id": 301,
+		  "action": "KEY_DOWN",
+		  "keyCode": "Ctrl",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "windowRightBottomPoint": "2557,1379",
+		  "mousePoint": null,
+		  "relativeMouseClickPoint": null
+		},
+		"dense_caption": "The image shows a mostly empty Microsoft Excel spreadsheet. The spreadsheet is in English and Chinese. The title bar indicates that the file is named 'Test.xlsx' and that product activation has failed. The spreadsheet has a standard grid layout with rows and columns labeled with letters and numbers. The top of the image shows the Excel ribbon with various options for formatting, editing, and data manipulation. The bottom right corner shows a Windows activation prompt in Chinese. The overall style is clean and simple, typical of a spreadsheet application.",
+		"element_description": [
+		  {
+			"visual_description": "A ribbon at the top of the application window, containing various menu options and commands.  It's a light gray color with dark gray text and icons.  The tabs are labeled 'Home', 'Insert', 'Page Layout', 'Formulas', 'Data', 'Review', 'View', and 'Help'.  There are also several icons and dropdown menus within each tab.",
+			"position_information": "Located at the very top of the window, above the spreadsheet grid and other UI elements.",
+			"element_function": "Provides access to the application's core functionalities, such as file management, editing, formatting, and data analysis. Users interact with it by clicking on tabs and selecting options from the menus and toolbars.",
+			"element_type": "Ribbon"
+		  },
+		  {
+			"visual_description": "A large grid of cells forming the main spreadsheet area.  The cells are white with thin gray borders.  The columns are labeled with letters (A, B, C, etc.) and the rows are labeled with numbers (1, 2, 3, etc.).",
+			"position_information": "Occupies the majority of the window, below the ribbon and above the status bar. It is the central focus of the application.",
+			"element_function": "Allows users to input, edit, and display data in a tabular format. Users interact with it by selecting cells and entering data.",
+			"element_type": "Spreadsheet Grid"
+		  },
+		  {
+			"visual_description": "A status bar at the bottom of the window, displaying information about the current sheet and application status. It's a light gray color with dark gray text.",
+			"position_information": "Located at the very bottom of the window, below the spreadsheet grid.",
+			"element_function": "Provides information about the current sheet, such as the sheet name and accessibility status. It also displays the zoom level and other application status messages.",
+			"element_type": "Status Bar"
+		  },
+		  {
+			"visual_description": "A series of buttons and dropdown menus located below the ribbon, providing quick access to common commands.  They are grouped into logical sections such as 'Font', 'Alignment', 'Number', 'Styles', 'Cells', and 'Editing'.  The buttons are typically icons or short text labels.",
+			"position_information": "Located below the ribbon, above the spreadsheet grid.  It's a horizontal toolbar.",
+			"element_function": "Provides quick access to frequently used commands and formatting options. Users interact with it by clicking on buttons and selecting options from dropdown menus.",
+			"element_type": "Toolbar"
+		  },
+		  {
+			"visual_description": "A small window at the top right corner of the application, displaying the user's email address and other account information. It's a light gray color with dark gray text.",
+			"position_information": "Located in the top right corner of the application window, near the close button.",
+			"element_function": "Displays user account information and provides access to account settings. Users may click to access more information or settings.",
+			"element_type": "Account Information Display"
+		  },
+		  {
+			"visual_description": "Standard window controls (Minimize, Maximize, Close) located in the top right corner of the application window.",
+			"position_information": "Located in the top right corner of the application window, next to the account information display.",
+			"element_function": "Allow users to minimize, maximize, or close the application window.",
+			"element_type": "Window Controls"
+		  },
+		  {
+			"visual_description": "A message at the bottom of the spreadsheet indicating that Windows needs to be activated.",
+			"position_information": "Located at the bottom of the spreadsheet, near the status bar.",
+			"element_function": "Informs the user that their copy of Windows is not activated.",
+			"element_type": "System Message"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1729852680109_outputfiles",
+		"state_transition_caption": "The user pressed the 'Ctrl' key while viewing a mostly empty Excel spreadsheet, which features a ribbon at the top, a grid of cells, and a Windows activation prompt in the bottom right corner."
+	  },
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "action": "KEY_PRESS",
+		  "id": 314,
+		  "keyCode": "S"
+		},
+		"dense_caption": "The image shows a mostly empty Microsoft Excel spreadsheet. The spreadsheet is in English and Chinese. The title bar indicates that the file is named 'Test.xlsx' and that product activation has failed. The spreadsheet has a standard grid layout with rows and columns labeled with letters and numbers. The ribbon at the top shows various Excel options, including formatting, editing, and add-ins. The bottom left corner shows the sheet name 'Sheet1' and accessibility information. The bottom right corner shows Windows activation prompt.",
+		"element_description": [
+		  {
+			"visual_description": "A grid of cells forming a spreadsheet.  The cells are white with thin gray borders.  The cells are empty, except for the number '1' in cell A1.  The spreadsheet has column headers (A, B, C...AA, AB...) and row headers (1, 2, 3...). The font is Calibri, size 11.",
+			"position_information": "The spreadsheet occupies the majority of the window, extending from near the top to the bottom and from the left to the right, excluding the ribbon at the top and the status bar at the bottom.",
+			"element_function": "Allows users to input, edit, and calculate data.  Users interact by selecting cells, typing data, and using formulas.",
+			"element_type": "Spreadsheet"
+		  },
+		  {
+			"visual_description": "A ribbon at the top of the window containing various tabs (File, Home, Insert, etc.) and groups of buttons and controls within each tab.  The tabs are labeled with their respective functions.  Buttons have icons and text labels.  The ribbon is green.",
+			"position_information": "Located at the top of the window, above the spreadsheet.",
+			"element_function": "Provides access to various commands and functions within the spreadsheet application. Users interact by clicking on tabs and buttons.",
+			"element_type": "Ribbon"
+		  },
+		  {
+			"visual_description": "A status bar at the bottom of the window displaying information such as 'Ready', 'Accessibility: Good to go', and zoom level.",
+			"position_information": "Located at the very bottom of the window, below the spreadsheet.",
+			"element_function": "Displays the application's status and provides information to the user.  It also contains controls for zoom level.",
+			"element_type": "Status Bar"
+		  },
+		  {
+			"visual_description": "A title bar at the very top of the window displaying the file name 'Test.xlsx - Excel (Product Activation Failed)' and window controls (minimize, maximize, close).",
+			"position_information": "Located at the topmost part of the window, above the ribbon.",
+			"element_function": "Displays the name of the open file and provides controls for managing the window.",
+			"element_type": "Title Bar"
+		  },
+		  {
+			"visual_description": "A small window in the top right corner displaying the user's email address 'tsicent@163.com'.",
+			"position_information": "Located in the top right corner of the window, near the window controls.",
+			"element_function": "Displays the currently logged-in user's account information.",
+			"element_type": "Account Information Display"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1729852680109_outputfiles",
+		"state_transition_caption": "The user pressed the 'S' key to save the mostly empty Excel spreadsheet, which now shows the number '1' in cell A1, indicating data entry."
+	  },
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "action": "KEY_PRESS",
+		  "id": 352,
+		  "keyCode": "Ctrl"
+		},
+		"dense_caption": "The image shows a spreadsheet program interface, specifically an empty Microsoft Excel sheet. The sheet is mostly blank, with only the default gridlines visible. The top of the image displays the Excel ribbon, showing various options for formatting, editing, and data manipulation. The ribbon includes tabs such as 'Home', 'Insert', 'Page Layout', 'Formulas', 'Data', 'Review', 'View', and 'Help'.  The title bar indicates the file name 'Test.xlsx' and a status message 'Excel (Product Activation Failed)'. The bottom of the image shows the sheet name 'Sheet1' and a status bar indicating 'Ready' and 'Accessibility: Good to go'. The overall style is clean and minimalistic, typical of a spreadsheet application. The layout is standard for Excel, with the ribbon at the top, the spreadsheet in the center, and the status bar at the bottom. The color scheme is primarily white and gray, with green accents in the ribbon.",
+		"element_description": [
+		  {
+			"visual_description": "A grid of cells forming a spreadsheet.  The cells are white with thin gray borders.  The cells are empty, except for the number '1' in cell A1.  The font is Calibri, size 11.",
+			"position_information": "The spreadsheet occupies the majority of the window, extending from the top-left corner to the bottom-right, below the ribbon and above the status bar.",
+			"element_function": "Allows users to input, edit, and manipulate data in a tabular format.  Users interact by clicking on cells to enter data, using formulas, and applying formatting.",
+			"element_type": "Spreadsheet"
+		  },
+		  {
+			"visual_description": "A ribbon at the top of the window containing various tabs (Home, Insert, Page Layout, etc.) and groups of buttons and controls within each tab.  The ribbon is green.",
+			"position_information": "Located at the top of the window, above the spreadsheet.",
+			"element_function": "Provides access to various commands and functions for working with the spreadsheet, such as formatting, editing, inserting data, and more. Users interact by clicking on the tabs and buttons.",
+			"element_type": "Ribbon"
+		  },
+		  {
+			"visual_description": "A status bar at the bottom of the window displaying information such as 'Ready', 'Accessibility: Good to go', and zoom level.",
+			"position_information": "Located at the bottom of the window, below the spreadsheet.",
+			"element_function": "Displays the current status of the application and provides quick access to certain settings. Users can interact with the zoom controls.",
+			"element_type": "Status Bar"
+		  },
+		  {
+			"visual_description": "A title bar at the very top of the window displaying 'Test.xlsx - Excel (Product Activation Failed)'",
+			"position_information": "At the very top of the window, above the ribbon.",
+			"element_function": "Displays the name of the currently open file and the application name.  It also contains controls for minimizing, maximizing, and closing the window.",
+			"element_type": "Title Bar"
+		  },
+		  {
+			"visual_description": "Various buttons and controls within the ribbon, such as 'Cut', 'Copy', 'Paste', 'Format Painter', font style and size selectors, alignment options, number formatting options, etc.  These elements have different colors and icons.",
+			"position_information": "Located within the ribbon, organized into groups based on function.",
+			"element_function": "Provide specific commands and functions for manipulating the spreadsheet data and formatting. Users interact by clicking on the buttons.",
+			"element_type": "Buttons, Dropdown Menus, and other Ribbon Controls"
+		  }
+		],
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1729852680109_outputfiles",
+		"state_transition_caption": "The user pressed the 'Ctrl' key while viewing an empty Microsoft Excel spreadsheet, which remained unchanged except for the key press action."
+	  }
+  ]
+}
