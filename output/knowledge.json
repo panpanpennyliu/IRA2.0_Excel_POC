@@ -1,0 +1,66 @@
+{
+  "business_flow": [
+    {
+      "step": 1,
+      "description": "User opens Microsoft Excel and views a mostly empty spreadsheet with a grid layout and the title bar indicating a product activation failure."
+    },
+    {
+      "step": 2,
+      "description": "User interacts with the spreadsheet, possibly pressing a key, which triggers the display of a Windows activation prompt in Chinese."
+    },
+    {
+      "step": 3,
+      "description": "User does not perform any significant action, resulting in no visible changes to the spreadsheet layout."
+    },
+    {
+      "step": 4,
+      "description": "User interacts with the spreadsheet again, leading to an update in the title bar to specifically display the file name 'Test.xlsx' while still indicating a product activation failure."
+    },
+    {
+      "step": 5,
+      "description": "User continues to interact with the spreadsheet, but no data is entered or modified, resulting in a blank appearance of the spreadsheet with only default gridlines visible."
+    }
+  ],
+  "business_flow_optimized": [
+    {
+      "step": 1,
+      "action": "Open Microsoft Excel",
+      "description": "Launch the Excel application to access the spreadsheet interface."
+    },
+    {
+      "step": 2,
+      "action": "Create or Open a Spreadsheet",
+      "description": "Create a new spreadsheet or open an existing one, ensuring the file is named appropriately (e.g., 'Test.xlsx')."
+    },
+    {
+      "step": 3,
+      "action": "Check Activation Status",
+      "description": "Verify the product activation status and address any activation prompts to ensure full functionality."
+    },
+    {
+      "step": 4,
+      "action": "Select Cell for Data Entry",
+      "description": "Click on the top-left cell (A1) or use keyboard navigation to select the desired cell for data entry."
+    },
+    {
+      "step": 5,
+      "action": "Enter Data",
+      "description": "Input the desired data into the selected cell (e.g., press '1' to enter the number '1' in cell A1)."
+    },
+    {
+      "step": 6,
+      "action": "Save Document",
+      "description": "Press the 'S' key or use the save option in the ribbon to save the spreadsheet, ensuring that all entered data is preserved."
+    },
+    {
+      "step": 7,
+      "action": "Continue Data Entry or Navigation",
+      "description": "Continue entering data or navigating through the spreadsheet as needed, utilizing keyboard shortcuts for efficiency."
+    },
+    {
+      "step": 8,
+      "action": "Monitor Activation Prompts",
+      "description": "Keep an eye on any activation prompts and address them as necessary to maintain access to all features."
+    }
+  ]
+}
