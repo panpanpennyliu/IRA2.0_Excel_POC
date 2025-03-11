@@ -1,66 +1,261 @@
 {
-  "business_flow": [
-    {
-      "step": 1,
-      "description": "User opens Microsoft Excel and views a mostly empty spreadsheet with a grid layout and the title bar indicating a product activation failure."
-    },
-    {
-      "step": 2,
-      "description": "User interacts with the spreadsheet, possibly pressing a key, which triggers the display of a Windows activation prompt in Chinese."
-    },
-    {
-      "step": 3,
-      "description": "User does not perform any significant action, resulting in no visible changes to the spreadsheet layout."
-    },
-    {
-      "step": 4,
-      "description": "User interacts with the spreadsheet again, leading to an update in the title bar to specifically display the file name 'Test.xlsx' while still indicating a product activation failure."
-    },
-    {
-      "step": 5,
-      "description": "User continues to interact with the spreadsheet, but no data is entered or modified, resulting in a blank appearance of the spreadsheet with only default gridlines visible."
-    }
-  ],
-  "business_flow_optimized": [
-    {
-      "step": 1,
-      "action": "Open Microsoft Excel",
-      "description": "Launch the Excel application to access the spreadsheet interface."
-    },
-    {
-      "step": 2,
-      "action": "Create or Open a Spreadsheet",
-      "description": "Create a new spreadsheet or open an existing one, ensuring the file is named appropriately (e.g., 'Test.xlsx')."
-    },
-    {
-      "step": 3,
-      "action": "Check Activation Status",
-      "description": "Verify the product activation status and address any activation prompts to ensure full functionality."
-    },
-    {
-      "step": 4,
-      "action": "Select Cell for Data Entry",
-      "description": "Click on the top-left cell (A1) or use keyboard navigation to select the desired cell for data entry."
-    },
-    {
-      "step": 5,
-      "action": "Enter Data",
-      "description": "Input the desired data into the selected cell (e.g., press '1' to enter the number '1' in cell A1)."
-    },
-    {
-      "step": 6,
-      "action": "Save Document",
-      "description": "Press the 'S' key or use the save option in the ribbon to save the spreadsheet, ensuring that all entered data is preserved."
-    },
-    {
-      "step": 7,
-      "action": "Continue Data Entry or Navigation",
-      "description": "Continue entering data or navigating through the spreadsheet as needed, utilizing keyboard shortcuts for efficiency."
-    },
-    {
-      "step": 8,
-      "action": "Monitor Activation Prompts",
-      "description": "Keep an eye on any activation prompts and address them as necessary to maintain access to all features."
-    }
-  ]
+  "framesInfo": [
+      {
+        "picture_information": {
+          "id": "250",
+          "action": "LEFT_CLICK",
+          "applicationTitle": "Test.xlsx-Excel",
+          "windowLeftUpperPoint": "0,0",
+          "windowRightBottomPoint": "2557,1379",
+          "mousePoint": "63,233"
+        },
+        "action_description": "Left clicked at point (63, 233) in the application Test.xlsx-Excel.",
+        "dense_caption": "The image shows a spreadsheet program interface. The main area is a grid of cells, typical of a spreadsheet. The top shows a menu bar with options like File, Home, Insert, etc., and a ribbon with formatting tools, including font styles, alignment, number formats, and conditional formatting options. The spreadsheet itself is mostly empty, with only the cell labels (A1, B1, etc.) visible. The bottom shows a status bar with information about the sheet and zoom level. The overall style is clean and functional, typical of a professional office application.",
+        "element_description": [
+          {
+            "visial_description": "A grid of cells forming a spreadsheet. Each cell is bordered by thin gray lines. The cells are empty, with no data or formatting applied. The grid extends across the majority of the visible area.",
+            "position_information": "The spreadsheet grid occupies the central and largest portion of the window, extending from near the top to the bottom and from the left to the right, below the ribbon and above the status bar.",
+            "element_function": "The primary function is data entry, storage, and manipulation. Users interact by selecting cells, entering data, applying formulas, and performing various calculations and analyses.",
+            "element_type": "Spreadsheet Grid"
+          },
+          {
+            "visial_description": "A ribbon at the top of the window, containing various tabs (Home, Insert, Page Layout, Formulas, Data, Review, View, Help) and groups of buttons and controls within each tab. The buttons have icons and text labels. The ribbon is green at the top and has a darker green accent.",
+            "position_information": "Located at the very top of the window, above the spreadsheet grid. It spans the entire width of the window.",
+            "element_function": "Provides access to various commands and features of the spreadsheet program. Users interact by clicking on tabs and buttons to perform actions such as formatting, inserting data, and performing calculations.",
+            "element_type": "Ribbon"
+          },
+          {
+            "visial_description": "A status bar at the very bottom of the window, displaying information such as 'Sheet1', 'Ready', and 'Accessibility: Good to go'. It also includes zoom controls.",
+            "position_information": "Located at the bottom of the window, below the spreadsheet grid. It spans the entire width of the window.",
+            "element_function": "Displays the current sheet name, program status, and zoom level. Users can interact with the zoom controls to adjust the view.",
+            "element_type": "Status Bar"
+          },
+          {
+            "visial_description": "A row of column headers (A, B, C, etc.) at the top of the spreadsheet grid, indicating the column labels.",
+            "position_information": "Located at the top of the spreadsheet grid, directly below the ribbon.",
+            "element_function": "Identifies the columns in the spreadsheet. Users can use these labels to navigate and reference specific columns.",
+            "element_type": "Column Headers"
+          },
+          {
+            "visial_description": "A column of row headers (1, 2, 3, etc.) at the left of the spreadsheet grid, indicating the row labels.",
+            "position_information": "Located at the left of the spreadsheet grid, extending from the top to the bottom.",
+            "element_function": "Identifies the rows in the spreadsheet. Users can use these labels to navigate and reference specific rows.",
+            "element_type": "Row Headers"
+          },
+          {
+            "visial_description": "Various buttons and controls within the ribbon, such as 'Cut', 'Copy', 'Paste', 'Format Painter', 'Font' controls, 'Alignment' controls, 'Number' format controls, and many others. These have icons and/or text labels.",
+            "position_information": "Located within the ribbon at the top of the window, organized into logical groups.",
+            "element_function": "Provide quick access to common spreadsheet functions. Users interact by clicking on the buttons to perform actions.",
+            "element_type": "Buttons and Controls (various)"
+          },
+          {
+            "visial_description": "A title bar at the very top of the window, displaying 'Test.xlsx - Excel'.",
+            "position_information": "Located at the very top of the window, above the ribbon.",
+            "element_function": "Displays the name of the currently open file and the application name.",
+            "element_type": "Title Bar"
+          },
+          {
+            "visial_description": "Minimize, Maximize, and Close buttons in the top right corner of the window.",
+            "position_information": "Located in the top right corner of the window, in the title bar.",
+            "element_function": "Standard window controls for minimizing, maximizing, and closing the window.",
+            "element_type": "Window Controls (Minimize, Maximize, Close)"
+          }
+        ],
+        "video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1729852680109_outputfiles",
+        "state_transition_caption": {
+          "frame_change": "In the previous frame, the screenshot displayed a spreadsheet program interface with a grid of empty cells, a ribbon at the top with various tabs and buttons, and a status bar at the bottom. The overall layout was clean and functional, typical of a professional office application. In the current frame, the user has left-clicked at the point (63, 233), likely selecting a specific cell within the spreadsheet grid. This action indicates that the user has interacted with the spreadsheet, possibly to enter data or perform a calculation.",
+          "user_action": "The user performed a left-click action at the coordinates (63, 233) within the application 'Test.xlsx-Excel'. This suggests that the user intended to select a cell in the spreadsheet grid, which may lead to further data entry or manipulation within that cell."
+        }
+      },
+      {
+        "picture_information": {
+          "id": "260",
+          "action": "KEY_PRESS",
+          "applicationTitle": "Test.xlsx-Excel",
+          "windowLeftUpperPoint": "0,0",
+          "windowRightBottomPoint": "2557,1379",
+          "keyCode": "1"
+        },
+        "action_description": "Key press '1' in application 'Test.xlsx-Excel'.",
+        "dense_caption": "The image shows a spreadsheet program interface. The top shows a menu bar with options like File, Home, Insert, Page Layout, Formulas, Data, Review, View, and Help. Below the menu bar is a ribbon with various formatting tools, including font styles, alignment options, number formats, and conditional formatting. The main part of the image is a large, empty spreadsheet grid with rows and columns labeled with numbers and letters. The bottom shows a status bar with information about the sheet and accessibility settings. The overall style is clean and functional, typical of spreadsheet software.",
+        "element_description": [
+          {
+            "visial_description": "A ribbon at the top of the application window, containing various menu options and controls.  It's primarily dark green with lighter green accents and white text.  The tabs are labeled 'Home', 'Insert', 'Page Layout', 'Formulas', 'Data', 'Review', 'View', and 'Help'.  Buttons and dropdown menus are visible within each tab.",
+            "position_information": "Located at the very top of the window, above the spreadsheet grid and other UI elements.",
+            "element_function": "Provides access to the application's core functionalities, such as file management, data manipulation, formatting, and viewing options. Users interact with it by clicking on tabs and buttons.",
+            "element_type": "Ribbon"
+          },
+          {
+            "visial_description": "A large grid of cells forming the main spreadsheet area.  The cells are white with thin gray borders.  Column headers (A, B, C, etc.) are visible at the top, and row numbers (1, 2, 3, etc.) are visible on the left.",
+            "position_information": "Occupies the majority of the window, below the ribbon and above the status bar. It's positioned centrally within the application window.",
+            "element_function": "The primary area for data entry, manipulation, and display. Users interact with it by selecting cells and entering data.",
+            "element_type": "Spreadsheet Grid"
+          },
+          {
+            "visial_description": "A status bar at the bottom of the window, displaying information about the current sheet and application status.  It contains the sheet name ('Sheet1'), and a status indicator ('Accessibility: Good to go').",
+            "position_information": "Located at the very bottom of the window, below the spreadsheet grid.",
+            "element_function": "Provides status updates and information about the current spreadsheet.  It also allows for quick navigation between sheets.",
+            "element_type": "Status Bar"
+          },
+          {
+            "visial_description": "A series of buttons and dropdown menus located below the ribbon, providing quick access to common spreadsheet functions.  These include options for formatting, calculations, sorting, filtering, and adding-ins.  The buttons are visually distinct with icons and labels.",
+            "position_information": "Positioned below the ribbon and above the spreadsheet grid. It's a horizontal bar of controls.",
+            "element_function": "Provides quick access to frequently used functions, saving users time and effort. Users interact with it by clicking on buttons and selecting options from dropdown menus.",
+            "element_type": "Toolbar"
+          }
+        ],
+        "video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1729852680109_outputfiles",
+        "state_transition_caption": {
+          "frame_change": "In the previous frame, the screenshot displayed a spreadsheet program interface with a grid of empty cells, a ribbon at the top with various tabs and buttons, and a status bar at the bottom showing information about the sheet. The user had just left-clicked at point (63, 233) within the application. In the current frame, the same spreadsheet interface is shown, but now the user has pressed the '1' key, indicating that the cell at the selected point has likely been activated for data entry, and the number '1' is now being input into the spreadsheet.",
+          "user_action": "The user action that most likely occurred between the two frames was the pressing of the '1' key, which suggests that the user intended to enter the number '1' into the currently selected cell in the spreadsheet."
+        }
+      },
+      {
+        "picture_information": {
+          "id": "310",
+          "action": "KEY_DOWN",
+          "applicationTitle": "Test.xlsx-Excel",
+          "windowLeftUpperPoint": "0,0",
+          "windowRightBottomPoint": "2557,1379",
+          "keyCode": "Ctrl"
+        },
+        "action_description": "Pressed Ctrl key in Test.xlsx-Excel.",
+        "dense_caption": "The image shows a spreadsheet program interface. The top shows a ribbon with various options like Home, Insert, Page Layout, Formulas, Data, Review, View, and Help. Below the ribbon is a large empty spreadsheet grid with rows and columns labeled with numbers and letters. The bottom shows a sheet tab labeled 'Sheet1' and a status bar with accessibility information and display settings.",
+        "element_description": [
+          {
+            "visial_description": "A ribbon at the top of the application window, containing various menu options and controls.  It's primarily dark green with lighter green accents and white text.  The tabs are labeled 'Home', 'Insert', 'Page Layout', 'Formulas', 'Data', 'Review', 'View', and 'Help'.  Buttons and dropdown menus are visible within each tab.",
+            "position_information": "Located at the very top of the window, above the spreadsheet grid and other UI elements. It spans the entire width of the window.",
+            "element_function": "Provides access to the application's core functionalities, such as editing, formatting, data manipulation, and viewing options. Users interact with it by clicking on tabs, buttons, and dropdown menus.",
+            "element_type": "Ribbon"
+          },
+          {
+            "visial_description": "A large grid of cells forming the main spreadsheet area.  The cells are white with thin gray borders.  Column headers (A, B, C, etc.) are visible at the top, and row numbers (1, 2, 3, etc.) are visible on the left.",
+            "position_information": "Occupies the majority of the window, below the ribbon and above the status bar. It's positioned centrally within the window.",
+            "element_function": "The primary area for data entry, manipulation, and display. Users interact with it by selecting cells, entering data, and applying formulas.",
+            "element_type": "Spreadsheet Grid"
+          },
+          {
+            "visial_description": "A status bar at the bottom of the window. It displays information such as 'Sheet1' (current sheet name) and accessibility status ('Accessibility: Good to go').",
+            "position_information": "Located at the very bottom of the window, below the spreadsheet grid. It spans the entire width of the window.",
+            "element_function": "Provides status updates and information about the current state of the application.  It's primarily for informational purposes.",
+            "element_type": "Status Bar"
+          },
+          {
+            "visial_description": "A series of buttons and dropdown menus located below the ribbon, providing quick access to common spreadsheet functions.  The buttons are small and rectangular, with icons and/or text labels.  The dropdown menus have small downward-pointing arrows.",
+            "position_information": "Positioned below the ribbon, above the spreadsheet grid. It's a horizontal bar of controls.",
+            "element_function": "Provides quick access to frequently used functions, such as auto-sum, formatting, sorting, and filtering. Users interact with them by clicking on buttons and selecting options from dropdown menus.",
+            "element_type": "Toolbar"
+          }
+        ],
+        "video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1729852680109_outputfiles",
+        "state_transition_caption": {
+          "frame_change": "In the previous frame, the screenshot displayed a spreadsheet interface in the application 'Test.xlsx-Excel' with a large empty grid for data entry, a ribbon at the top containing various menu options, and a status bar at the bottom showing the current sheet name and accessibility status. In the current frame, the same spreadsheet interface is shown, but the user has pressed the 'Ctrl' key, indicating a potential command or shortcut is being prepared for execution. The visual elements remain the same, but the focus has shifted to the user's intention to perform a keyboard shortcut.",
+          "user_action": "The user likely pressed the 'Ctrl' key, indicating they are preparing to execute a command that requires the control key, such as copying, pasting, or another function that utilizes keyboard shortcuts in the spreadsheet application."
+        }
+      },
+      {
+        "picture_information": {
+          "id": "322",
+          "action": "KEY_PRESS",
+          "applicationTitle": "Test.xlsx-Excel",
+          "windowLeftUpperPoint": "0,0",
+          "windowRightBottomPoint": "2557,1379",
+          "keyCode": "S"
+        },
+        "action_description": "Key press 'S' in application 'Test.xlsx-Excel'.",
+        "dense_caption": "A screenshot of a Microsoft Excel spreadsheet. The spreadsheet is mostly empty, with only the default gridlines and column/row headers visible. The top of the image shows the Excel ribbon, with various tabs and options available. The bottom shows the sheet name and status bar. The overall style is clean and simple, typical of a new, unedited Excel workbook.",
+        "element_description": [
+          {
+            "visial_description": "A rectangular grid of cells, extending across the majority of the window.  Cells are white with thin gray borders.  Rows and columns are numbered and lettered respectively. The top-left cell is labeled 'A1'.",
+            "position_information": "Occupies the central and largest portion of the window. Located below the ribbon and above the status bar.",
+            "element_function": "The primary area for data entry, manipulation, and display in a spreadsheet application. Users interact by clicking on cells to enter data, formulas, or formatting.",
+            "element_type": "Spreadsheet Grid"
+          },
+          {
+            "visial_description": "A horizontal bar at the top of the window containing various icons, menus, and text boxes.  The background is a dark green.  It contains several groups of buttons and dropdown menus.",
+            "position_information": "Located at the very top of the window, above the spreadsheet grid.",
+            "element_function": "Provides access to various commands and options for working with the spreadsheet. Users interact by clicking on buttons, selecting from menus, or typing into text boxes.",
+            "element_type": "Ribbon"
+          },
+          {
+            "visial_description": "A horizontal bar at the bottom of the window displaying information about the spreadsheet's status, such as the sheet name and accessibility status.",
+            "position_information": "Located at the very bottom of the window, below the spreadsheet grid.",
+            "element_function": "Displays the current status of the spreadsheet and provides quick access to certain settings.  Users may interact with the zoom controls.",
+            "element_type": "Status Bar"
+          },
+          {
+            "visial_description": "A series of buttons and dropdown menus within the ribbon, each with different icons and labels.  Examples include 'Cut', 'Copy', 'Paste', 'Font', 'Alignment', 'Number', 'Conditional Formatting', 'Sort & Filter', and 'Add-ins'.",
+            "position_information": "Located within the ribbon at the top of the window, organized into logical groups.",
+            "element_function": "These elements provide specific functions for editing, formatting, and manipulating data within the spreadsheet. Users interact by clicking on buttons or selecting from dropdown menus.",
+            "element_type": "Buttons, Dropdown Menus, and Text Boxes (within the Ribbon)"
+          },
+          {
+            "visial_description": "A small text box in the top-left corner of the spreadsheet grid, displaying 'A1'.",
+            "position_information": "Located in the top-left corner of the spreadsheet grid, indicating the currently selected cell.",
+            "element_function": "Shows the current cell's coordinates.  It is not directly interactive, but its value changes as the user selects different cells.",
+            "element_type": "Cell Reference Display"
+          },
+          {
+            "visial_description": "A tab at the bottom left corner of the window, labeled 'Sheet1'.",
+            "position_information": "Located at the bottom-left corner of the window, indicating the currently active sheet.",
+            "element_function": "Allows users to switch between different sheets within the workbook. Users interact by clicking on the tab.",
+            "element_type": "Sheet Tab"
+          }
+        ],
+        "video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1729852680109_outputfiles",
+        "state_transition_caption": {
+          "frame_change": "In the previous frame, the screenshot displayed a mostly empty Microsoft Excel spreadsheet with the ribbon at the top showing various tabs and options. The spreadsheet grid was visible below the ribbon, and the status bar at the bottom indicated the current sheet name and accessibility status. In the current frame, the same spreadsheet is shown, but now the user has pressed the 'S' key, indicating that they are likely attempting to save the document or enter data into a cell.",
+          "user_action": "The user pressed the 'S' key while working in the Excel application, which typically signifies a save action or the beginning of data entry in the selected cell."
+        }
+      },
+      {
+        "picture_information": {
+          "id": "350",
+          "action": "KEY_UP",
+          "applicationTitle": "Test.xlsx-Excel",
+          "windowLeftUpperPoint": "0,0",
+          "windowRightBottomPoint": "2557,1379",
+          "keyCode": "Ctrl"
+        },
+        "action_description": "KEY_UP action on Ctrl key in Test.xlsx-Excel application.",
+        "dense_caption": "The image shows a spreadsheet program interface. The top shows a menu bar with options like File, Home, Insert, Page Layout, Formulas, Data, Review, View, and Help. Below the menu bar is a ribbon with various formatting and editing tools. The main part of the image is a large grid of cells, typical of a spreadsheet. The cells are empty, and the grid lines are light gray. The bottom of the image shows a status bar with information about the sheet and accessibility.",
+        "element_description": [
+          {
+            "visial_description": "A ribbon at the top of the application window, containing various menu options and commands organized into tabs (Home, Insert, Page Layout, Formulas, Data, Review, View, Help). Each tab contains multiple buttons and dropdown menus with icons and text labels. The ribbon is dark green at the top and light green below.",
+            "position_information": "Located at the very top of the application window, above the spreadsheet grid and status bar. It spans the entire width of the window.",
+            "element_function": "Provides access to all the application's features and commands. Users interact with it by clicking on tabs, buttons, and dropdown menus to perform various actions.",
+            "element_type": "Ribbon"
+          },
+          {
+            "visial_description": "A large grid of cells forming the main spreadsheet area. Cells are bordered by thin gray lines. The cells are currently empty.",
+            "position_information": "Occupies the majority of the application window, below the ribbon and above the status bar. It is positioned centrally within the window.",
+            "element_function": "The primary area for data entry, manipulation, and display. Users interact with it by selecting cells and entering data, applying formulas, and formatting.",
+            "element_type": "Spreadsheet Grid"
+          },
+          {
+            "visial_description": "A status bar at the bottom of the application window, displaying information about the current state of the spreadsheet.",
+            "position_information": "Located at the very bottom of the application window, below the spreadsheet grid. It spans the entire width of the window.",
+            "element_function": "Displays information such as the sheet name, accessibility status, and zoom level. It also contains zoom controls.",
+            "element_type": "Status Bar"
+          },
+          {
+            "visial_description": "A series of buttons and dropdown menus located below the ribbon, providing quick access to common spreadsheet functions. These include options for formatting, inserting, deleting, and other actions. The buttons have icons and some have text labels.",
+            "position_information": "Located below the ribbon, above the spreadsheet grid. It is a horizontal bar that spans the width of the application window.",
+            "element_function": "Provides quick access to frequently used commands and functions. Users interact with it by clicking on the buttons or selecting options from the dropdown menus.",
+            "element_type": "Quick Access Toolbar"
+          },
+          {
+            "visial_description": "A cell in the spreadsheet, located at A1. It contains the number '1'.",
+            "position_information": "Located in the top-left corner of the spreadsheet grid.",
+            "element_function": "A single cell within the spreadsheet used for data entry and display.",
+            "element_type": "Cell"
+          }
+        ],
+        "video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1729852680109_outputfiles",
+        "state_transition_caption": {
+          "frame_change": "In the previous frame, the screenshot displayed a mostly empty Microsoft Excel spreadsheet with the user having pressed the 'S' key. The interface included a ribbon at the top with various tabs and options, a large grid of empty cells, and a status bar at the bottom. In the current frame, the screenshot shows the same Excel interface, but now the user has released the 'Ctrl' key, indicating a change in the user's interaction with the application. The spreadsheet grid remains empty, and the ribbon and status bar are unchanged.",
+          "user_action": "The user likely pressed and then released the 'Ctrl' key, which is often used in combination with other keys for shortcuts in Excel. This action suggests that the user was preparing to execute a command that requires the 'Ctrl' key, such as copying or pasting data, but has not yet completed that command."
+        }
+      }
+    ]
 }
