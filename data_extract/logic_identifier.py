@@ -3,8 +3,8 @@ from core.llm_chat import LLMChat
 model_type = 'ocr11'
 
 class LogicIdentifier:
-    def __init__(self, config):        
-        self.llm_chat = LLMChat(config, model_type)
+    def __init__(self):        
+        self.llm_chat = LLMChat()
         
     def merge_steps(self, concept_data):
         print("77777777")
