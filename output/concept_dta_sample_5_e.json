@@ -1,0 +1,43 @@
+{
+  "frames1": [
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Exce",
+		  "windowLeftUpperPoint": "0,0",
+		  "mousePoint": "105, 404",
+		  "relativeMouseClickPoint": "0,0",
+		  "action": "LEFT_CLICK",
+		  "click_Element":"cell A1",
+		  "id": 257
+		},
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1719822686609_outputfiles",
+		"state_transition_caption": "Left click the A1 cell."
+	  },
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "action": "KEY_PRESS",
+		  "id": 266,
+		  "keyCode": "1"
+		},
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1719822686609_outputfiles",
+		"state_transition_caption": "Enter '1' in cell A1: Enter 1 from keyboard."
+	  },
+	  {
+		"picture_information": {
+		  "windowRightBottomPoint": "2557,1379",
+		  "applicationTitle": "Test.xlsx-Excel",
+		  "windowLeftUpperPoint": "0,0",
+		  "action": "KEY_PRESS",
+		  "id": 301,
+		  "keyCode": "ctrl + s"
+		},
+		"video_id": "H18FAFI12PS0000_10.14.190.37_pl12345_1719822686609_outputfiles",
+		"state_transition_caption": "Save the excel file: Enter ctrl+s from keyboard."
+	  }
+
+  ]
+} 

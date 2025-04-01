@@ -14,6 +14,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from utils.logger_setup_data_extraction import logger
 from prompt.system_context import SYSTEM_CONTEXT, SYSTEM_CONTEXT_WITH_TOOLS
 from utils.logger_setup_data_extraction import logger
+from openai import OpenAI
 
 dotenv.load_dotenv(os.path.join('config', '.env'))
 
@@ -220,3 +221,42 @@ class LLMChat:
                     logger.info(f"Retrying in {sleep_time} seconds" )
                     time.sleep(sleep_time)
         return result   
+    
+    def image_respond_gemini(self, image_path, request, model_name):
+        result = ""
+        try:
+            base64_image = self.encode_image(image_path)
+        except Exception as e:
+                result = "Running Error"
+                self.logger.error('Exception: \n %s \n', e) 
+        
+        if result != "Running Error":
+            for attempt in range(5): #retry up to 5 times
+                try:
+                    self.openai_model = OpenAI(
+                        api_key=os.getenv("OPENAI_API_KEY"),
+                        base_url=os.getenv("OPENAI_API_BASE")
+                    )
+
+                    response = self.openai_model.chat.completions.create(
+                        model=model_name,
+                        messages=[
+                            {"role": "user", "content": [
+                                {"type": "text", "text": request},
+                                {"type": "image_url", "image_url": {
+                                    "url": f"data:image/png;base64,{base64_image}"}
+                                }
+                            ]}
+                        ],
+                        temperature=0.0,
+                    )
+                    result = response.choices[0].message.content               
+                    break
+
+                except Exception as e:
+                    result = "Running Error"
+                    sleep_time = 2 ** attempt
+                    logger.error(f"Exception: {e}")
+                    logger.info(f"Retrying in {sleep_time} seconds" )
+                    time.sleep(sleep_time)
+        return result 
