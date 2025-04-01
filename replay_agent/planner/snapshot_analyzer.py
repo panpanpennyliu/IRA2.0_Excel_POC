@@ -3,8 +3,10 @@ import pyautogui
 from replay_agent.planner.replayer_action import ReplayerAction
 from prompt.action_generator import PURPOSE
 from prompt.action_generator import ANALYZE_REQUEST
+from utils.json_processor import json_process
 
 import os
+import json
 
 
 from utils.logger_setup_data_extraction import logger
@@ -49,6 +51,10 @@ class SnapshotAnalyzer:
         analysis_request = f"ANALYZE_REQUEST:"+ANALYZE_REQUEST
         replayerAction = ReplayerAction(self.chat)
         action_replay = replayerAction.get_action(analysis_request, propose, knowledge_base)
+        action_replay_json = json_process(action_replay)
+        with open('output/action_text.json', 'w', encoding='utf-8') as f:
+            json.dump(action_replay_json, f, ensure_ascii=False, indent=4)
+
         
 
         # determine start action
