@@ -10,7 +10,7 @@
           "windowRightBottomPoint": "2557,1379",
           "mousePoint": "63,233"
         },
-        "action_description": "Left clicked at coordinates (63, 233) in the application Test.xlsx-Excel.",
+        "action_description": "Left clicked at coordinates (63, 233) in the application Test.xlsx-Excel, on 'Sheet1'",
         "dense_caption": "The image shows a spreadsheet program interface. The main area is a grid of cells, typical of a spreadsheet. The top shows a menu bar with options like File, Home, Insert, etc. A ribbon below the menu bar contains various formatting and editing tools. The spreadsheet itself is mostly empty, with only the cell labels (A1, A2, etc.) and gridlines visible. The color scheme is predominantly green and white, typical of Microsoft Excel. The bottom shows a status bar with information about the sheet and zoom level.",
         "element_description": [
           {
@@ -65,7 +65,7 @@
           "windowRightBottomPoint": "2557,1379",
           "keyCode": "1"
         },
-        "action_description": "Key press '1' in the application 'Test.xlsx-Excel'.",
+        "action_description": "Key press '1' in the application 'Test.xlsx-Excel', on 'Sheet1'",
         "dense_caption": "The image shows a spreadsheet program interface. The top shows a ribbon with various options like Home, Insert, Page Layout, Formulas, Data, Review, View, and Help. Below the ribbon is a large empty spreadsheet grid with rows and columns labeled with numbers and letters. The bottom shows a status bar with information about the sheet and display settings.",
         "element_description": [
           {
@@ -108,7 +108,7 @@
           "windowRightBottomPoint": "2557,1379",
           "keyCode": "Ctrl"
         },
-        "action_description": "Pressed Ctrl key in Test.xlsx-Excel.",
+        "action_description": "Pressed Ctrl key in Test.xlsx-Excel, on 'Sheet1'",
         "dense_caption": "The image shows a spreadsheet program interface. The top shows a ribbon with various options like Home, Insert, Page Layout, Formulas, Data, Review, View, and Help. Below the ribbon is a large empty spreadsheet grid with rows and columns labeled with numbers and letters. The bottom shows a sheet tab labeled 'Sheet1' and a status bar with accessibility information and zoom controls.",
         "element_description": [
           {
@@ -151,7 +151,7 @@
           "windowRightBottomPoint": "2557,1379",
           "keyCode": "S"
         },
-        "action_description": "Key press 'S' in application 'Test.xlsx-Excel'.",
+        "action_description": "Key press 'S' in application 'Test.xlsx-Excel', on 'Sheet1'",
         "dense_caption": "A screenshot of a Microsoft Excel spreadsheet. The spreadsheet is mostly empty, with only the default gridlines and column/row headers visible. The top of the image shows the Excel ribbon, with various tabs and options available. The bottom shows the sheet name and status bar. The overall style is clean and simple, typical of a new, unedited Excel workbook.",
         "element_description": [
           {
@@ -224,7 +224,7 @@
           "windowRightBottomPoint": "2557,1379",
           "keyCode": "Ctrl"
         },
-        "action_description": "KEY_UP action on Ctrl key in Test.xlsx-Excel application.",
+        "action_description": "KEY_UP action on Ctrl key in Test.xlsx-Excel application, on 'Sheet1'",
         "dense_caption": "The image shows a spreadsheet program interface. The top shows a menu bar with options like File, Home, Insert, Page Layout, Formulas, Data, Review, View, and Help. Below the menu bar is a ribbon with various formatting options, including font styles, alignment, number formats, and conditional formatting. The main part of the image is a large grid of cells, typical of a spreadsheet, which is currently empty. The bottom shows a status bar with information about the sheet and accessibility.",
         "element_description": [
           {
