@@ -1,6 +1,6 @@
 import json
 import re
-from utils.logger_setup_data_extraction import logger
+from utils.logger.logger_setup_data_extraction import logger
 
 def json_process(text):
     match = re.search(r'\{.*\}', text, re.DOTALL)

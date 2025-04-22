@@ -1,0 +1,9 @@
+{
+    "knowledgeJson": {
+      "business_flow": {
+        "step 1": "Left click on cell A1 in the spreadsheet to select it.",
+        "step 2": "Input the number '1' into the selected cell.",
+        "step 3": "Press Ctrl+S to save the document."
+      }
+    }
+}

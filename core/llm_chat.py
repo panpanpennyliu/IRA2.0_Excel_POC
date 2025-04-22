@@ -11,10 +11,12 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.runnables import RunnablePassthrough
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from utils.logger_setup_data_extraction import logger
+from utils.logger.logger_setup_data_extraction import logger
 from prompt.system_context import SYSTEM_CONTEXT, SYSTEM_CONTEXT_WITH_TOOLS
-from utils.logger_setup_data_extraction import logger
+from utils.logger.logger_setup_data_extraction import logger
 from openai import OpenAI
+from PIL import Image
+from google import genai
 
 dotenv.load_dotenv(os.path.join('config', '.env'))
 
@@ -223,6 +225,8 @@ class LLMChat:
         return result   
     
     def image_respond_gemini(self, image_path, request, model_name):
+        prompt = "You are a helpful assistant. Put each response in the json format as the output"
+        request = prompt + request
         result = ""
         try:
             base64_image = self.encode_image(image_path)
@@ -251,6 +255,33 @@ class LLMChat:
                         temperature=0.0,
                     )
                     result = response.choices[0].message.content               
+                    break
+
+                except Exception as e:
+                    result = "Running Error"
+                    sleep_time = 2 ** attempt
+                    logger.error(f"Exception: {e}")
+                    logger.info(f"Retrying in {sleep_time} seconds" )
+                    time.sleep(sleep_time)
+        return result 
+    
+    def image_respond_gemini_google(self, image_path, request, model_name):
+        result = ""
+        
+        if result != "Running Error":
+            for attempt in range(5): #retry up to 5 times
+                try:
+                    image = Image.open(image_path)
+                    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))  # Replace with your API key
+                    
+                    response = client.models.generate_content(
+                        model=model_name,
+                        contents=[image, request]
+                    )  
+
+                    # logger.info(f"image_response:\n {response}")  
+
+                    result = response.candidates[0].content.parts[0].text          
                     break
 
                 except Exception as e:

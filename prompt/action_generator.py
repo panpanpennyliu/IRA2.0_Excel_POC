@@ -1,31 +1,85 @@
 PURPOSE = """
-1.Enter the character '2' in cell G15 in Sheet2 of the excel file.
-2.Save the excel.
+Enter '11111' in Sheet2 G6 of Excel and save.
+"""
+
+ANALYZE_REQUEST_STEPS= """
+Based on the steps in the knowledge base, give the steps to implement PURPOSE.
+
+{
+    "steps": 
+    {
+        "1":"",
+        "2": "",
+        ...
+        "N": ""
+    }
+}
+
 """
 
 ANALYZE_REQUEST= """
-Based on the information in the knowledge base, describe how to implement PURPOSE in the Excel interface.
+Based on the information in the knowledge base, describe how to implement PURPOSE in the interface shown in the picture.
 
-1. Find the same type of action and action id required to implement PROPOSE based on the state_transition_caption in the knowledge base. If you cannot find a required action in the knowledge base, you need to name the required action, and the value of action id is "waiting to be added".
+1. Based on the state_transition_caption attribute in the knowledge base, find the same type of action and its action ID required to implement PROPOSE. 
+In Excel, click_Element has the following types: buttons with text, cells, and text boxes that can be entered except cells
+If the required action_type is in the knowledge base, and this action_type does not contain "CLICK", it can be regarded as an action with the same id. 
+If the required action_type contain "CLICK", and the required click_Element and the knowledge base are of the same type, it can be regarded as an action with the same id.
+If there is no same action_type or similar click_Element, the action_type and id is "unknow"
 
-2. Ensure that the order of actions is correct. The action chain must be generated strictly in the order specified by the user. The order of each action is represented by action_index, counting from 1.
-
-3. If the action is "LEFT_CLICK", "click_Element" is also returned, and its value is the name of the element clicked by the mouse.
+2. If the action is "LEFT_CLICK", "click_Element" and "click_Element_type" are returned at the same time, and their values are the element name and element type of the mouse click.
 If the action contains "KEY", "key_code" is also returned, and its value is the value required in PURPOSE.
+
+3. Ensure that the order of actions is correct. The action chain must be generated strictly in the order specified by the user. The order of each action is represented by action_index, counting from 1.
 
 4. Return actions in the following json format
     {
         "actions": [
             {
             "action_index":"",
-            "action": "",
+            "action_type": "",
             "id": ,
             (Optional)"key_code": "",
-            (Optional)"click_Element": "",
+            (Optional)"click_element": "",
+            (Optional)"click_element_type": "",
             "description":"",
             }
         ]
     }
+
+"""
+
+ANALYZE_REQUEST_ACTION= """
+
+1. According to the state_transition_caption attribute of actions in the knowledge base, select the action_type and id of the next action to be performed by PURPOSE in the interface shown in the image.
+If the action_type of the next step is in the knowledge base and the action_type does not contain "CLICK", it can be regarded as an action with the same ID.
+If the next action type contains "CLICK", the click_Element to be clicked includes the following click_Element_type types: buttons with text, cell, and text boxes that can be entered in addition to cells. If the click_Element of the next step is the same type as the knowledge base, it can be regarded as an action with the same ID.
+If the next action that can be executed in the image interface is not found in the knowledge base, the id and action_type are "unknow".
+If the next action is the last step to complete PURPOSE, the attribute "last_step":"yes"
+
+2. If the action is "LEFT_CLICK", "click_Element" and "click_Element_type" are returned at the same time, and their values are the element name and element type of the mouse click.
+If action contains "KEY", "key_code" is also returned, and its value is the value required in PURPOSE, and it is guaranteed that the input position has been selected in the image.
+
+3. Return the following action in json format
+{
+    "action_type": "",
+    "id": ,
+    (optional)"key_code": "",
+    (optional)"click_element": "",
+    (optional)"click_element_type":"",
+    "description":"",
+    "last_step":""
+}
+
+"""
+
+
+ACTION_VERIFY = """
+Verify whether the following operations are completed on the current interface:{description}
+If verification fails, return "unable".
+{{
+    "verify_result":"yes/no/unable"
+}}
+
 
 """
 
@@ -74,27 +128,33 @@ Use pixels as the unit of measurement. Only return the below json.
 
 """
 
-VARIFY_POSITION= """
-
-Is there any blue element totally inside the {element_name} of the Excel?
-If yes, please describe the shape of the element. 
-Important: If the blue element is not completely inside {element_name}, return no.
-
+VERIFY_POSITION_0= """
+In Excel, is {element_name} selected?
+If one of the following conditions occurs, it can be considered selected:
+1. The border becomes thicker or brighter
+2. There is a text input cursor inside
+3. The text inside is selected
 {{
     "{element_name}":
     {{
-        "RGB_element completely inside {element_name}":"yes/no",
-        "shape": "" 
+        "selected": "yes/no" 
     }}
+}}
+
+"""
+
+VERIFY_POSITION= """
+Is red X inside {element_name}?
+{{
+    "position":"yes/no"
 }}
 
 """
 
 
 GET_LABELS = """
-The first row label is at the front of the cell, and the column label is at the top, which is not part of the cell.
 Is there {element_name} in the image?
-If yes, there are blue numbers on the picture, please find the blue number in the "{element_name}"
+If yes, there are blue numbers on the picture, please find the best blue number in the "{element_name}"
 {{
     "{element_name}":
     {{
@@ -102,4 +162,53 @@ If yes, there are blue numbers on the picture, please find the blue number in th
         "grid_cell": ""
     }}
 }}
+"""
+
+IDENTIFY_TEXT_BOX_LABELS = """
+Please identify the red number in the blue box corresponding to the {element_name} in the picture.
+{{
+    "{element_name}":
+    {{
+        "exists": "true/false",
+        "number": ""
+    }}
+}}
+"""
+
+GET_TABLE_INITIAL_VALUE = """
+Describe the row and column labels of the red X in the cell.
+{
+    "row":"",
+    "column":""
+}
+"""
+
+DETERMINE_ACTION="""
+In Action, select the next action that should be performed to achieve the purpose in the image.
+If there is no executable action, return action_index: unknow, and describe the reason. 
+{
+    "action_index":"",
+    "description":""
+}
+
+"""
+
+DETERMINE_STEP="""
+In Steps, select next step to be executed to achieve the purpose according to the screen status in the image, and convert this step into the following action format.
+If no step can be selected, return step_index, step_description and unknown_reason, and step_index is unknown.
+The action_type describes the type of each operation in the step.
+The click_Element has the following types: text_button, cell, and text_box that can be entered except cells
+If the action_type contains "CLICK", "click_Element" and "click_Element_type" are returned at the same time, and their values are the element name and element type of the mouse click.
+If action contains "KEY", "key_code" is also returned, and its value is the value required in PURPOSE, and it is guaranteed that the input position has been selected in the image.
+* Important: According to the image.
+{
+    "step_index":"",
+    "step_description":"",
+    "action_type": "LEFT_CLICK/RIGHT_CLICK/KEY_WRITE/KEY_PRESS/KEY_HOTKEY",
+    (optional)"key_code": "",
+    (optional)"click_element": "",
+    (optional)"click_element_type":"text_button/cell/text_box/unknown",
+    (optional)"unknown_reason":""
+}
+
 """

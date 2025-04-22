@@ -77,6 +77,65 @@ class ImageEditor:
         cv2.imwrite(save_path, self.image)
         return input_boxes
     
+    def detect_table_lines(self, save_path):
+        gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
+        blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+        thresh = cv2.adaptiveThreshold(
+            blurred, 255,
+            cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+            cv2.THRESH_BINARY_INV, 11, 2
+        )
+        
+        kernel_h = cv2.getStructuringElement(cv2.MORPH_RECT, (50, 1))  # 水平核
+        kernel_v = cv2.getStructuringElement(cv2.MORPH_RECT, (1, 50))  # 垂直核
+        horizontal = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel_h)
+        vertical = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel_v)
+        table_lines = cv2.add(horizontal, vertical)
+        
+        lines = cv2.HoughLinesP(table_lines, 1, np.pi/180, 100, minLineLength=300, maxLineGap=10)
+        
+        # contours, _ = cv2.findContours(table_lines, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        # largest_contour = max(contours, key=cv2.contourArea)
+        # x, y, w, h = cv2.boundingRect(largest_contour)
+
+        horizontal, vertical = merge_lines(lines)
+
+        mask_horizontal = lines_to_mask((1400, 2240), horizontal, thickness=2)
+        mask_vertical = lines_to_mask((1400, 2240), vertical, thickness=2)
+
+        table_lines = cv2.add(mask_horizontal, mask_vertical)
+
+        contours, _ = cv2.findContours(table_lines, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        largest_contour = max(contours, key=cv2.contourArea)
+        x, y, w, h = cv2.boundingRect(largest_contour)
+
+        horizontal_table = []
+        vertical_table = []
+
+        for line in horizontal:
+            x1, y1, x2, y2 = line
+            if (x1 >= x and x2 <= x+w and y1 >= y and y2 <= y+h and (x2 - x1)> w/2):
+                horizontal_table.append((x, y1, x+w, y2))
+                cv2.line(self.image, (x, y1), (x+w, y2), (255, 0, 0), 2)
+        for line in vertical:
+            x1, y1, x2, y2 = line
+            if (x1 >= x and x2 <= x+w and y1 >= y and y2 <= y+h and  (y2 - y1)> h/2):
+                vertical_table.append((x1, y, x2, y+h))
+                cv2.line(self.image, (x1, y), (x2, y+h), (255, 0, 0), 2)
+
+        horizontal_table.sort(key=lambda x: x[1])
+        vertical_table.sort(key=lambda x: x[0])
+
+        # contours, _ = cv2.findContours(table_lines, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        # largest_contour = max(contours, key=cv2.contourArea)
+        # x, y, w, h = cv2.boundingRect(largest_contour)
+        # table_roi = img[y:y+h, x:x+w]
+
+        cv2.imwrite(save_path, self.image)
+        return horizontal_table, vertical_table
+    
+
+    
     def add_star(self, x, y):
         self.load_image()
         center = (x, y)
@@ -215,30 +274,110 @@ class ImageEditor:
         return center_x, center_y
     
     def add_X(self, x, y, radius, save_path):
-        # 重新加载原图，防止叠加绘制
+        # Reload the original image to prevent overlapping drawings
         self.load_image()
-        
-        # 红色在 BGR 格式中表示为 (0, 0, 255)
+
+        # Convert the image to grayscale
+        gray_image = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
+
+        # Convert grayscale image back to BGR to draw colored shapes
+        self.image = cv2.cvtColor(gray_image, cv2.COLOR_GRAY2BGR)
+
+        # Define red color in BGR format
         red = (0, 0, 255)
-        thickness = 2  # 可根据需要调整线宽
+        thickness = 2  # Adjust line thickness as needed
 
-        # 绘制从左上到右下的对角线
+        # Draw the diagonal lines forming the "X"
         cv2.line(self.image, (x - radius, y - radius), (x + radius, y + radius), red, thickness)
-        # 绘制从左下到右上的对角线
         cv2.line(self.image, (x - radius, y + radius), (x + radius, y - radius), red, thickness)
-        
+
+        # Resize the image if necessary
         height, width = self.image.shape[:2]
-        resize_width = width 
-        resize_height = height 
+        resize_width = width
+        resize_height = height
+        img_resize = cv2.resize(self.image, (resize_width, resize_height))
 
-        img_resize  = cv2.resize(self.image,(resize_width,resize_height))
-
+        # Save the modified image
         cv2.imwrite(save_path, img_resize)
 
         return save_path
 
 
 
+def merge_lines(lines, angle_threshold=10, merge_threshold=1):
+    horizontal = []
+    vertical = []
+    
+    for line in lines:
+        x1, y1, x2, y2 = line[0]
+        dx = x2 - x1
+        dy = y2 - y1
+        angle = np.degrees(np.arctan2(abs(dy), abs(dx)) if dx != 0 else np.pi/2)
+        
+        if angle < angle_threshold or angle > 180 - angle_threshold:
+            horizontal.append(line[0])
+        elif 90 - angle_threshold < angle < 90 + angle_threshold:
+            vertical.append(line[0])
+    
+    horizontal_sorted = sorted(horizontal, key=lambda x: (x[1] + x[3])/2)
+    merged_h = []
+    current_group = []
+    
+    for line in horizontal_sorted:
+        y_center = (line[1] + line[3])/2
+        if not current_group:
+            current_group.append(line)
+        else:
+            last_y = (current_group[-1][1] + current_group[-1][3])/2
+            if abs(y_center - last_y) <= merge_threshold:
+                current_group.append(line)
+            else:
+                merged_h.append(current_group)
+                current_group = [line]
+    if current_group:
+        merged_h.append(current_group)
+    
+    final_horizontal = []
+    for group in merged_h:
+        min_x = min(min(line[0], line[2]) for line in group)
+        max_x = max(max(line[0], line[2]) for line in group)
+        avg_y = int(np.mean([(line[1] + line[3])/2 for line in group]))
+        final_horizontal.append([min_x, avg_y, max_x, avg_y])
+    
+    # 合并垂直线
+    vertical_sorted = sorted(vertical, key=lambda x: (x[0] + x[2])/2)
+    merged_v = []
+    current_group = []
+    
+    for line in vertical_sorted:
+        x_center = (line[0] + line[2])/2
+        if not current_group:
+            current_group.append(line)
+        else:
+            last_x = (current_group[-1][0] + current_group[-1][2])/2
+            if abs(x_center - last_x) <= merge_threshold:
+                current_group.append(line)
+            else:
+                merged_v.append(current_group)
+                current_group = [line]
+    if current_group:
+        merged_v.append(current_group)
+    
+    final_vertical = []
+    for group in merged_v:
+        min_y = min(min(line[1], line[3]) for line in group)
+        max_y = max(max(line[1], line[3]) for line in group)
+        avg_x = int(np.mean([(line[0] + line[2])/2 for line in group]))
+        final_vertical.append([avg_x, min_y, avg_x, max_y])
+    
+    return final_horizontal, final_vertical
+
+def lines_to_mask(image_shape, lines, thickness=2):
+    mask = np.zeros(image_shape, dtype=np.uint8)  
+    for line in lines:
+        x1, y1, x2, y2 = line
+        cv2.line(mask, (x1, y1), (x2, y2), color=255, thickness=thickness)
+    return mask
 
 
 
