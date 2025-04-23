@@ -44,23 +44,31 @@ class AutomatedActions:
 
         # 3
         steps_replay_json = replayerAction.get_respond_prompt(knowledge_base, purpose, analysis_request)
-        steps = steps_replay_json["steps"] 
+        flow_steps = steps_replay_json["steps"] 
 
-        steps_knowledge_path = os.path.join(self.image_folder_path, "action_knowledge_list.json")
-        with open(steps_knowledge_path, 'w', encoding='utf-8') as f:
-            json.dump(steps_replay_json, f, ensure_ascii=False, indent=4)
+        # steps_knowledge_path = os.path.join(self.image_folder_path, "action_knowledge_list.json")
+        # with open(steps_knowledge_path, 'w', encoding='utf-8') as f:
+        #     json.dump(steps_replay_json, f, ensure_ascii=False, indent=4)
+        
+        # flow_steps_status = False
+        flow_steps["status"] = False
+        # steps = []
+
+        steps_json = {
+            "flow_steps":flow_steps
+        }
 
         # generate actions
-
-
 
         screenshot_capture = ScreenshotCapture(self.image_folder_path)
 
         action_index = 0
         step_index = 0
         actions_list = []
+        
+        
 
-        while 1:
+        while not steps_json["flow_steps"]["status"]:
             screenshot = screenshot_capture.get_screen_snapshot("screenshot_" + str(action_index) + ".png")
             determine_step = DETERMINE_STEP
 
@@ -100,13 +108,14 @@ class AutomatedActions:
                         if verify_result == "no" :
                             logger.info("Error Handling-----2")
                             return
-                        elif len(steps[0]) > step_index:
+                        elif len(flow_steps[0]) > step_index:
                             action_index += 1
                             action_from_step["action_index"] = action_index
                             actions_list.append(action_from_step)
                         else:
                             action_from_step["action_index"] = action_index
                             actions_list.append(action_from_step)
+                            steps_json["flow_steps"]["status"] = True
                             break
                     
 
@@ -119,9 +128,13 @@ class AutomatedActions:
                 logger.info("Error Handling---Unknow step")
                 # 当前界面不能执行steps_index + 1
                 exception_manager = ExceptionManager()
-                exception_steps = exception_manager.plan_for_exception(steps[str(step_index + 1)],"",screenshot)
-
-
+                exception_steps = exception_manager.plan_for_exception(flow_steps[str(step_index + 1)],"",screenshot)
+                exception_steps_json = json.loads(exception_steps)
+                exception_steps_json["status"] = False
+                steps_json["exception_steps_" + str(step_index + 1)] = exception_steps_json
+                steps_knowledge_path = os.path.join(self.image_folder_path, "action_knowledge_list.json")
+                with open(steps_knowledge_path, 'w', encoding='utf-8') as f:
+                    json.dump(steps_json, f, ensure_ascii=False, indent=4)
                 return
 
         action_execute_json = {

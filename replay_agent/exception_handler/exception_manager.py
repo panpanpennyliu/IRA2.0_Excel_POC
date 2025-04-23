@@ -15,6 +15,8 @@ from core.llm_chat import LLMChat
 from langchain.output_parsers import StructuredOutputParser, ResponseSchema
 from langchain.prompts import PromptTemplate
 
+import pyautogui
+
 
 class ExceptionManager:
     def __init__(self):
@@ -167,11 +169,21 @@ class ExceptionManager:
         action_steps = json_response.get("ActionSteps")
         # send email to the team to ask for help
         logger.info(f"Sending email for help: {suggestion}")
-        root = tk.Tk()
-        root.withdraw()
-        messagebox.showinfo("Ask for help", f"Suggestion: {suggestion} \nPlease click 'OK' to continue")
-        root.destroy()
-        return action_steps
+        # root = tk.Tk()
+        # root.withdraw()
+        # messagebox.showinfo("Ask for help", f"Suggestion: {suggestion} \nPlease click 'OK' to continue")
+        # root.destroy()
+        pyautogui.alert(f"Suggestion: {suggestion} \nPlease click 'OK' to continue", title='Ask for help')
+        steps_dict = {}
+        for step in action_steps:
+            step_number, step_description = step.split(": ", 1)
+            # 只保留具体描述部分
+            _, description = step_description.split(" - ", 1)
+            steps_dict[step_number] = description
+
+        # 转换为 JSON 字符串
+        steps_json = json.dumps(steps_dict, indent=4)
+        return steps_json
 
     def ask_for_help(self, step_description, next_step_description):
         # Logic to ask for help when exception cannot be handled
