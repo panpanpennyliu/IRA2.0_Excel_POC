@@ -35,7 +35,7 @@ class OcrPosition:
                 return x, y
         select_element_number = CORRECT_COORDINATE.format(element_name=element_name)
         replayerAction = ReplayerAction(self.chat)
-        select_element_number_json = replayerAction.analyst_image(output_path, select_element_number)
+        select_element_number_json = replayerAction.analyst_image(output_path,[] ,select_element_number)
         Number = select_element_number_json["Number"]
         coordinate = elements_in_range[int(Number)].get("coordinates")
         x = coordinate.get("x")

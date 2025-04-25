@@ -16,6 +16,8 @@ from langchain.output_parsers import StructuredOutputParser, ResponseSchema
 from langchain.prompts import PromptTemplate
 
 import pyautogui
+from replay_agent.screenshot_processor.screenshot_capture import ScreenshotCapture
+import threading
 
 
 class ExceptionManager:
@@ -169,17 +171,26 @@ class ExceptionManager:
         action_steps = json_response.get("ActionSteps")
         # send email to the team to ask for help
         logger.info(f"Sending email for help: {suggestion}")
+        
+
+        
+        folder_path = os.path.dirname(image_path)
+        screenshot_capture = ScreenshotCapture(folder_path)
+        ask_for_help_path= os.path.basename(image_path).replace("screenshot_", "ask_for_help_")
+        screenshot_thread = threading.Thread(target=screenshot_capture.get_screen_snapshot, args=(ask_for_help_path,))
+        screenshot_thread.start()
+        
+        # screenshot_capture.get_screen_snapshot(os.path.basename(image_path).replace("screenshot", "ask_for_help"))
+        # pyautogui.alert(f"Suggestion: {suggestion} \nPlease click 'OK' to continue", title='Ask for help')
+        # print(f"Number of Tk instances: {len(tk._default_root.children)}")
+
         # root = tk.Tk()
         # root.withdraw()
         # messagebox.showinfo("Ask for help", f"Suggestion: {suggestion} \nPlease click 'OK' to continue")
         # root.destroy()
-        pyautogui.alert(f"Suggestion: {suggestion} \nPlease click 'OK' to continue", title='Ask for help')
-        steps_dict = {}
-        for step in action_steps:
-            step_number, step_description = step.split(": ", 1)
-            # 只保留具体描述部分
-            _, description = step_description.split(" - ", 1)
-            steps_dict[step_number] = description
+        # screenshot_thread.join()        
+
+        steps_dict = {str(index + 1): step for index, step in enumerate(action_steps)}
 
         # 转换为 JSON 字符串
         steps_json = json.dumps(steps_dict, indent=4)

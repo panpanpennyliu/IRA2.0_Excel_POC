@@ -1,5 +1,5 @@
 PURPOSE = """
-Enter '11111' in Sheet2 G6 of Excel and save.
+Enter '11111' in G6 of Excel and save.
 """
 
 ANALYZE_REQUEST_STEPS= """
@@ -74,10 +74,10 @@ If action contains "KEY", "key_code" is also returned, and its value is the valu
 
 
 ACTION_VERIFY = """
-Verify whether the following operations are completed on the current interface:{description}
-If verification fails, return "unable".
+Whether the current step is executed successfully:{description}
 {{
-    "verify_result":"yes/no/unable"
+    "executed":"true/false/unable judge",
+    "reason":""
 }}
 
 
@@ -167,11 +167,8 @@ If yes, there are blue numbers on the picture, please find the best blue number 
 IDENTIFY_TEXT_BOX_LABELS = """
 Please identify the red number in the blue box corresponding to the {element_name} in the picture.
 {{
-    "{element_name}":
-    {{
-        "exists": "true/false",
-        "number": ""
-    }}
+    "exists": "true/false",
+    "number": ""
 }}
 """
 
@@ -193,14 +190,14 @@ If there is no executable action, return action_index: unknow, and describe the 
 
 """
 
-DETERMINE_STEP="""
-In Steps, select next step to be executed to achieve the purpose according to the screen status in the image, and convert this step into the following action format.
+DETERMINE_STEP_0="""
+According to the screenshot, select next step in steps to achieve the purpose, and convert this step into the following action format.
 If no step can be selected, return step_index, step_description and unknown_reason, and step_index is unknown.
 The action_type describes the type of each operation in the step.
 The click_Element has the following types: text_button, cell, and text_box that can be entered except cells
 If the action_type contains "CLICK", "click_Element" and "click_Element_type" are returned at the same time, and their values are the element name and element type of the mouse click.
 If action contains "KEY", "key_code" is also returned, and its value is the value required in PURPOSE, and it is guaranteed that the input position has been selected in the image.
-* Important: According to the image.
+* Important: According to the image select one step!!!
 {
     "step_index":"",
     "step_description":"",
@@ -212,3 +209,52 @@ If action contains "KEY", "key_code" is also returned, and its value is the valu
 }
 
 """
+
+DETERMINE_STEP_0="""
+Step:{step} 
+According to the screenshot, 
+1. Determine whether the current screen can execute this step. 
+2. Confirm whether step has been executed. 
+{{
+    "can_execute":"True/False",
+    "executed":"True/False/Unable",
+    "description":""
+}}
+
+"""
+
+DETERMINE_STEP="""
+
+The current screen of the image executes {step}. Is it possible to execute it?
+{{
+    "can_execute":"True/False",
+    "reason":""
+}}
+
+"""
+
+STEP_TO_ACTION="""
+According to the screenshot, convert this step into the format of one or more actions.
+Step:{step} 
+The action_type describes the type of each operation in the step.
+The click_Element has the following types: text_button, cell, and text_box that can be entered except cells
+If the action_type contains "CLICK", "click_Element" and "click_Element_type" are returned at the same time, and their values are the element name and element type of the mouse click.
+If action contains "KEY", "key_code" is also returned, and its value is the value required in PURPOSE, and it is guaranteed that the input position has been selected in the image.
+{{
+    "actions": 
+    [
+        {{
+            "action_index":"",
+            "description":"",
+            "action_type": "LEFT_CLICK/RIGHT_CLICK/KEY_WRITE/KEY_PRESS/KEY_HOTKEY/KEY_DOWN/KEY_UP",
+            "key_code": "",
+            "click_element": "",
+            "click_element_type":"text_button/cell/text_box/unknown",
+        }}
+    ]
+    
+}}
+
+"""
+
+
