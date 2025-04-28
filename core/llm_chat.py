@@ -254,7 +254,9 @@ class LLMChat:
                         ],
                         temperature=0.0,
                     )
-                    result = response.choices[0].message.content               
+                    
+                    result = response.choices[0].message.content    
+                    logger.info(f"image_response:\n {result}")             
                     break
 
                 except Exception as e:
@@ -279,7 +281,7 @@ class LLMChat:
                         contents=[image, request]
                     )  
 
-                    # logger.info(f"image_response:\n {response}")  
+                    logger.info(f"image_response:\n {response}")  
 
                     result = response.candidates[0].content.parts[0].text          
                     break

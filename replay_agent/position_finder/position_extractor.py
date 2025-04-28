@@ -33,7 +33,7 @@ class PositionExtractor:
         
         imageEditor = ImageEditor(image_path)
 
-        save_path_mark_text_box = os.path.join (image_folder_path, element_name + "_mark_text_box.png")
+        save_path_mark_text_box = os.path.join (image_folder_path, "position_"+ element_name + "_mark_text_box.png")
 
         input_boxes = imageEditor.mark_text_box(save_path_mark_text_box)
 
@@ -45,9 +45,9 @@ class PositionExtractor:
 
             replayerAction = ReplayerAction(self.chat)
 
-            text_box_labels_reply_json = replayerAction.analyst_image(save_path_mark_text_box, identify_text_box_labels)
+            text_box_labels_reply_json = replayerAction.analyst_image(save_path_mark_text_box,[], identify_text_box_labels)
 
-            number = int(text_box_labels_reply_json[element_name]["number"])
+            number = int(text_box_labels_reply_json["number"])
 
             x, y, w, h = input_boxes[number]
             e_x = x + w//2
@@ -70,14 +70,14 @@ class PositionExtractor:
 
         while index < 3:
 
-            save_path_mark_text_box = os.path.join (image_folder_path, element_name + "_table_lines.png")
+            save_path_mark_text_box = os.path.join (image_folder_path, "position_"+ element_name + "_table_lines.png")
 
             horizontal_table, vertical_table = imageEditor.detect_table_lines(save_path_mark_text_box)
             
             x0 = (vertical_table[0][0] + vertical_table[1][0]) // 2
             y0 = (horizontal_table[0][1] + horizontal_table[1][1]) // 2
 
-            initial_value_add_X_path = os.path.join(image_folder_path, element_name + "_initial_value_" + str(index) + ".png")
+            initial_value_add_X_path = os.path.join(image_folder_path, "position_"+ element_name + "_initial_value_" + str(index) + ".png")
             
             initial_value_add_X_image = imageEditor.add_X(x0, y0, 5, initial_value_add_X_path)
 
@@ -85,7 +85,7 @@ class PositionExtractor:
 
             replayerAction = ReplayerAction(self.chat)
 
-            table_initial_value_json = replayerAction.analyst_image(initial_value_add_X_image, get_table_initial_value)
+            table_initial_value_json = replayerAction.analyst_image(initial_value_add_X_image,[], get_table_initial_value)
 
             row_0 = table_initial_value_json["row"]
             column_0 = table_initial_value_json["column"]
@@ -121,14 +121,14 @@ class PositionExtractor:
             initial_coordinate = INITIAL_COORDINATE.format(element_name = element_name)
 
             replayerAction = ReplayerAction(self.chat)
-
-            initial_coordinate_json = replayerAction.analyst_image(image_path, initial_coordinate)
+            initial_coordinate_key_list = ["x", "y"]
+            initial_coordinate_json = replayerAction.analyst_image_gpt(image_path, initial_coordinate_key_list, initial_coordinate)
 
             init_x = initial_coordinate_json["x"]
             init_y = initial_coordinate_json["y"]
 
             # 2.ocr
-            save_path_ocr = os.path.join(image_folder_path, element_name + "_ocr_"+ str(init_x) + "_"+ str(init_y) + ".png")
+            save_path_ocr = os.path.join(image_folder_path, "position_"+ element_name + "_ocr_"+ str(init_x) + "_"+ str(init_y) + ".png")
             ocr_position = OcrPosition()
             e_x, e_y = ocr_position.correct_click_coordinates(element_name, init_x, init_y, image_path, save_path_ocr)
 
@@ -143,17 +143,17 @@ class PositionExtractor:
     
     def verify_position(self, x, y, element_name, image_folder_path, image_path, number):
 
-        verify_position_path = os.path.join(image_folder_path, element_name + "_verify_position_"+ str(number) +".png")
+        verify_position_path = os.path.join(image_folder_path, "position_"+ element_name + "_verify_position_"+ str(number) +".png")
         
         imageEditor = ImageEditor(image_path)
 
-        verify_add_X_image = imageEditor.add_X(x, y, 5, verify_position_path)
+        verify_add_X_image = imageEditor.add_X(x, y, 8, verify_position_path)
 
         verify_position = VERIFY_POSITION.format(element_name = element_name)
 
         replayerAction = ReplayerAction(self.chat)
 
-        verify_position_reply_json = replayerAction.analyst_image(verify_add_X_image, verify_position)
+        verify_position_reply_json = replayerAction.analyst_image(verify_add_X_image, [],verify_position)
 
         position_verify_result = verify_position_reply_json["position"]
 

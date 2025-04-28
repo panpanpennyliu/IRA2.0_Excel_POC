@@ -1,7 +1,7 @@
 from utils.logger.logger_setup_data_extraction import logger
 
 import pyautogui
-import os
+import os, time
 
 
 class ScreenshotCapture:
@@ -11,6 +11,7 @@ class ScreenshotCapture:
     def get_screen_snapshot(self, screenshot_name):
         try:
             logger.info(f"Start Screenshot.... ")
+            time.sleep(0.5)  # Optional: Wait for a moment before taking the screenshot
             screenshot = pyautogui.screenshot()
             file_path = os.path.join(self.image_folder_path, screenshot_name)
             screenshot.save(file_path)
