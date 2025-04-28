@@ -132,7 +132,7 @@ class ExceptionManager:
         logger.info(f"Performing action: {action}")
         self.executor.execute_action(action)
         
-    def plan_for_exception(self,step_description, next_step_description, image_path):
+    def plan_for_exception(self,exception_description, step_description, next_step_description, image_path):
         if step_description is None or step_description == "":
             logger.error("Step description is None")
             return
@@ -152,12 +152,12 @@ class ExceptionManager:
             template=PLAN_FOR_EXCEPTION,
             partial_variables={"response_format": response_format}
         )
-        prompt = partial_prompt.format(step_description=step_description, next_step_description=next_step_description)
+        prompt = partial_prompt.format(exception_description=exception_description, step_description=step_description, next_step_description=next_step_description)
         logger.info(f"Prompt: {prompt}")
         try:
             # ai_model = GenAIModel()
             # response = ai_model.process_image(output_path, prompt)
-            response = self.chat.image_respond(image_path, prompt, os.getenv("DEFAULTM_MODEL"))
+            response = self.chat.image_respond(image_path, prompt, os.getenv("MODEL_PLAN_FOR_EXCEPTION"))
         except Exception as e:
             logger.error(f"Error: {e}")
             return
@@ -169,11 +169,11 @@ class ExceptionManager:
         action_steps = json_response.get("ActionSteps")
         # send email to the team to ask for help
         logger.info(f"Sending email for help: {suggestion}")
-        # root = tk.Tk()
-        # root.withdraw()
+        root = tk.Tk()
+        root.attributes("-topmost", True)
+        root.withdraw()
         # messagebox.showinfo("Ask for help", f"Suggestion: {suggestion} \nPlease click 'OK' to continue")
-        # root.destroy()
-        pyautogui.alert(f"Suggestion: {suggestion} \nPlease click 'OK' to continue", title='Ask for help')
+        root.destroy()
         steps_dict = {}
         for step in action_steps:
             step_number, step_description = step.split(": ", 1)

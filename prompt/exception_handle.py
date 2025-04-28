@@ -36,17 +36,20 @@ Can you give me some suggestions to fix the problem so that I can continue to pe
 
 
 PLAN_FOR_EXCEPTION = """
-I am a RPA robot. I have performed an action step, but the action failed in the screenshot image:
- {step_description}
+I am a RPA robot. I have performed an action step, but the action failed and return an exception:
+{exception_description}
+Below is the action step description:
+{step_description}
 And next action step is:
- {next_step_description}
-Can you give me some suggestions to fix the problem so that I can continue to perform next action step?
-Action MUST be limited to the following types: KEY_PRESS, LEFT_CLICK, RIGHT_CLICK, DOUBLE_CLICK, SCROLL, HOTKEY.
+{next_step_description}
+Can you give me some suggestions to fix the exception so I can continue to perform next action step?
+
+Action MUST be limited to the following types: KEY_PRESS, LEFT_CLICK, RIGHT_CLICK, DOUBLE_CLICK, SCROLL, HOTKEY, SWITCH.
 Action example:
 <No>: <ACTION>-<Description of action>
 1: LEFT_CLICK - Left click the G15 cell in Sheet2.
 2: KEY_PRESS - Enter '2' in cell G15 from keyboard.
-3: HOTKEY - Save the excel file, enter ctrl+s from keyboard.
+3: SWITCH - Switch window to excel via calling api.
 
 {response_format}
 
