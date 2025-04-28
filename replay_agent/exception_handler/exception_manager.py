@@ -134,7 +134,7 @@ class ExceptionManager:
         logger.info(f"Performing action: {action}")
         self.executor.execute_action(action)
         
-    def plan_for_exception(self,step_description, next_step_description, image_path):
+    def plan_for_exception(self,exception_description, step_description, next_step_description, image_path):
         if step_description is None or step_description == "":
             logger.error("Step description is None")
             return
@@ -154,12 +154,12 @@ class ExceptionManager:
             template=PLAN_FOR_EXCEPTION,
             partial_variables={"response_format": response_format}
         )
-        prompt = partial_prompt.format(step_description=step_description, next_step_description=next_step_description)
+        prompt = partial_prompt.format(exception_description=exception_description, step_description=step_description, next_step_description=next_step_description)
         logger.info(f"Prompt: {prompt}")
         try:
             # ai_model = GenAIModel()
             # response = ai_model.process_image(output_path, prompt)
-            response = self.chat.image_respond(image_path, prompt, os.getenv("DEFAULTM_MODEL"))
+            response = self.chat.image_respond(image_path, prompt, os.getenv("MODEL_PLAN_FOR_EXCEPTION"))
         except Exception as e:
             logger.error(f"Error: {e}")
             return
@@ -172,8 +172,6 @@ class ExceptionManager:
         # send email to the team to ask for help
         logger.info(f"Sending email for help: {suggestion}")
         
-
-        
         folder_path = os.path.dirname(image_path)
         screenshot_capture = ScreenshotCapture(folder_path)
         ask_for_help_path= os.path.basename(image_path).replace("screenshot_", "ask_for_help_")
@@ -185,12 +183,14 @@ class ExceptionManager:
         # print(f"Number of Tk instances: {len(tk._default_root.children)}")
 
         # root = tk.Tk()
+        #root.attributes("-topmost", True)
         # root.withdraw()
         # messagebox.showinfo("Ask for help", f"Suggestion: {suggestion} \nPlease click 'OK' to continue")
         # root.destroy()
         # screenshot_thread.join()        
 
         steps_dict = {str(index + 1): step for index, step in enumerate(action_steps)}
+
 
         # 转换为 JSON 字符串
         steps_json = json.dumps(steps_dict, indent=4)
