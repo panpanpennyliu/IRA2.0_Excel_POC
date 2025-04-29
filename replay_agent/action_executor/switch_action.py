@@ -1,31 +1,31 @@
-import win32gui
-import win32con
+import pygetwindow as gw
 
-def switch(window_title):
-    hwnd = find_window_by_title(window_title)
-    if hwnd:
-        print(f"找到窗口，句柄为: {hwnd}")
-        maximize_window(hwnd)
-    else:
-        print(f"未找到标题为 '{window_title}' 的窗口")
-        raise Exception(f"未找到标题为 '{window_title}' 的窗口")
+def switch_window(window_title):
+    try:
+        window = gw.getWindowsWithTitle(window_title)[0]
+        window.activate()
+        window.maximize()
+    except IndexError:
+        print(f"can not find '{window_title}'")
+        raise Exception(f"Window '{window_title}' not found.")
+    except Exception as e:
+        print(f"Switch window error: {e}")
+        raise Exception(f"Error switching to window '{window_title}': {e}")
 
+def fuzzy_match_window(keyword):
+    all_windows = gw.getAllWindows()
+    matching_windows = []
+    for window in all_windows:
+        if window.title and keyword.lower() in window.title.lower():
+            matching_windows.append(window)
 
-def find_window_by_title(title):
-    hwnd = win32gui.FindWindow(None, title)
-    return hwnd
+    if not matching_windows:
+        print(f"Can not find windows containing keyword: '{keyword}'")
 
-def minimize_window(hwnd):
-    if hwnd:
-        win32gui.ShowWindow(hwnd, win32con.SW_MINIMIZE)
+    return matching_windows
 
-def maximize_window(hwnd):
-    if hwnd:
-        win32gui.ShowWindow(hwnd, win32con.SW_MAXIMIZE)
-
-def close_window(hwnd):
-    if hwnd:
-        win32gui.PostMessage(hwnd, win32con.WM_CLOSE, 0, 0)
-
-
-    
+def get_all_window_titles():
+    all_windows = gw.getAllWindows()
+    window_titles = [window.title for window in all_windows if window.title]
+    return window_titles
+ 
