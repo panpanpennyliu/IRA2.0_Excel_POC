@@ -24,110 +24,7 @@ class ExceptionManager:
     def __init__(self):
         self.chat = LLMChat()
         self.executor = ActionExecutor()
-        self.exception = None
-        self.explore = "No"
-        self.explore_history = []
-        self.step_count = 0
-
-
-    def handle(self, description):
-        root = tk.Tk()
-        root.withdraw()
-        global popup
-        while True:
-            self.identify_exception(description)
-            
-            # popup = tk.Toplevel()
-            # popup.title("Exception Handling")
-            # popup.geometry("550x200")
-            # prompt_lable = tk.Label(popup, text="Confirming to continue or stop")
-            # prompt_lable.grid(row=0, column=0, columnspan=2, pady=30, padx=75)
-            # continue_button = tk.Button(popup, text="Continue", command=self.continue_case)
-            # continue_button.grid(row=1, column=0, padx=10)
-            # stop_button = tk.Button(popup, text="Stop", command=self.stop_case)
-            # stop_button.grid(row=1, column=1, padx=10)
-            # popup.protocol("WM_DELETE_WINDOW", self.stop_case)
-            # popup.mainloop()
-            # # return to check if the exception is handled, if not, call ask_for_help
-            if self.explore == "No":
-                break
-        root.destroy()
-        return 
-
-    def continue_case(self):
-        popup.quit()
-        popup.destroy()
-        
-        
-    def stop_case(self):
-        self.explore = "No"
-        popup.quit()
-        popup.destroy()
-
-
-
-    def identify_exception(self, mydescription):
-        # get screenshot of the screen and save them 
-        self.step_count += 1
-        image_path = 'data/input/exception_image/current.png'
-        self.executor.execute_action(f"take_screenshot({image_path})")
-        self.copy_and_rename_file(image_path, 'data/input/exception_image/screenshot_history', f'Image{self.step_count}.png')
-        #image_path = 'data/input/exception_image/Image3.png'
-
-        # identify the type of exception and provide actions
-        current_screen_size = self.executor.execute_action("get_screen_size()")
-
-        response_schemas = [
-            ResponseSchema(name="IsException", description="Indicates if it is an exception (Yes/No)"),
-            ResponseSchema(name="IsExplore", description="Need more actions to explore possible solutions to fix the exception (Yes/No)"),
-            ResponseSchema(name="Action", description="Next action api to call. if no next action, return NoAction"),
-            ResponseSchema(name="ClickElementText", description="If the action is click, return the text of the element to be clicked"),
-            ResponseSchema(name="ExceptionType", description="Type of the exception"),
-            ResponseSchema(name="ActionDescription", description="Description of the action")
-        ]  
-
-        output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
-        response_format = output_parser.get_format_instructions()
-        partial_prompt = PromptTemplate(
-            template=IDENTIFY_EXCEPTION,
-            partial_variables={"response_format": response_format}
-        )
-        prompt = partial_prompt.format(screen_size=current_screen_size, description=mydescription, explore_history=self.explore_history)
-        logger.info(f"Prompt: {prompt}")
-        try:
-            # ai_model = GenAIModel()
-            # response = ai_model.process_image(image_path, prompt)
-            response = self.chat.image_respond(image_path, prompt, os.getenv("DEFAULTM_MODEL"))
-        except Exception as e:
-            logger.error(f"Error: {e}")
-            return
-        if response is None or response == "Running Error":
-            return
-        # logger.info(f"Response: {response}")
-        json_response = json.loads(response)
-        action = json_response.get("Action")
-        click_element_text = json_response.get("ClickElementText")
-        exception_type = json_response.get("ExceptionType")
-        self.explore = json_response.get("IsExplore")
-        action_description = json_response.get("ActionDescription")
-        if self.explore=="Yes":
-            self.explore_history.append(action)
-        if action != "NoAction":
-            if action.lower().startswith("click"):
-                try:
-                    x, y = action.split("(")[1].split(",")
-                    x = int(x)
-                    y = int(y.split(")")[0])
-                    ocr_position = OcrPosition()
-                    c_x, c_y = ocr_position.correct_click_coordinates(action_description, click_element_text, x, y, image_path, f'data/input/exception_image/screenshot_history/Image{self.step_count}_ocr.png')
-                    action = f"Click({round(c_x)},{round(c_y)})"
-                    self.perform_action(action)
-                except Exception as e:
-                    logger.error(f"Error: {e}")
-            else:
-                self.perform_action(action)
-       
-      
+        self.isApply = True
 
     def perform_action(self, action):
         # Logic to perform action based on exception type
@@ -154,7 +51,7 @@ class ExceptionManager:
             template=PLAN_FOR_EXCEPTION,
             partial_variables={"response_format": response_format}
         )
-        prompt = partial_prompt.format(exception_description=exception_description, step_description=step_description, next_step_description=next_step_description)
+        prompt = partial_prompt.format(exception_description=exception_description, step_description=step_description)
         logger.info(f"Prompt: {prompt}")
         try:
             # ai_model = GenAIModel()
@@ -178,61 +75,46 @@ class ExceptionManager:
         screenshot_thread = threading.Thread(target=screenshot_capture.get_screen_snapshot, args=(ask_for_help_path,))
         screenshot_thread.start()
         
-        # screenshot_capture.get_screen_snapshot(os.path.basename(image_path).replace("screenshot", "ask_for_help"))
+        screenshot_capture.get_screen_snapshot(os.path.basename(image_path).replace("screenshot", "ask_for_help"))
         # pyautogui.alert(f"Suggestion: {suggestion} \nPlease click 'OK' to continue", title='Ask for help')
-        # print(f"Number of Tk instances: {len(tk._default_root.children)}")
-
-        # root = tk.Tk()
-        #root.attributes("-topmost", True)
-        # root.withdraw()
-        # messagebox.showinfo("Ask for help", f"Suggestion: {suggestion} \nPlease click 'OK' to continue")
-        # root.destroy()
-        # screenshot_thread.join()        
+        screenshot_thread.join()        
 
         steps_dict = {str(index + 1): step for index, step in enumerate(action_steps)}
 
-
         # 转换为 JSON 字符串
         steps_json = json.dumps(steps_dict, indent=4)
-        return steps_json
+        self.ask_for_help(steps_json)
+        if self.isApply:
+            return steps_json
+        else:
+            logger.info("User choose to handle exception manually")
+            return None
 
-    def ask_for_help(self, step_description, next_step_description):
-        # Logic to ask for help when exception cannot be handled
-        logger.info(f"Ask for help to handle exception: {step_description}")
-        self.step_count += 1
-        image_path = 'data/input/exception_image/current.png'
-        self.executor.execute_action(f"take_screenshot({image_path})")
-        self.copy_and_rename_file(image_path, 'data/input/exception_image/screenshot_history', f'Image{self.step_count}.png')
-        response_schemas = [
-            ResponseSchema(name="ExceptionDescription", description="Description of the exception"),
-            ResponseSchema(name="ActionDescription", description="Description of the action"),
-            ResponseSchema(name="Suggestion", description="Suggestion to handle the exception")
-        ]  
-        output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
-        response_format = output_parser.get_format_instructions()
-        partial_prompt = PromptTemplate(
-            template=ASK_FOR_HELP,
-            partial_variables={"response_format": response_format}
-        )
-        prompt = partial_prompt.format(step_description=step_description, next_step_description=next_step_description)
-        logger.info(f"Prompt: {prompt}")
-        try:
-            # ai_model = GenAIModel()
-            # response = ai_model.process_image(output_path, prompt)
-            response = self.chat.image_respond(image_path, prompt, os.getenv("DEFAULTM_MODEL"))
-        except Exception as e:
-            logger.error(f"Error: {e}")
-            return
-        if response is None or response == "Running Error":
-            return
-        # logger.info(f"Response: {response}")
-        json_response = json.loads(response)
-        suggestion = json_response.get("Suggestion")
-        # send email to the team to ask for help
-        logger.info(f"Sending email for help: {suggestion}")
+    def ask_for_help(self, action_steps):
         root = tk.Tk()
+        root.attributes("-topmost", True)
         root.withdraw()
-        messagebox.showinfo("Ask for help", f"Suggestion: {suggestion} \nPlease click 'OK' to continue")
+        popup = tk.Toplevel()
+        popup.title("Exception Handling")
+        popup.geometry("1100x400")
+        prompt_lable = tk.Label(popup, text=f"Actions:\n {action_steps}", justify="left")
+        prompt_lable.grid(row=0, column=0, columnspan=2, pady=30, padx=75)
+        continue_button = tk.Button(popup, text="Apply actions", command=lambda: self.apply_case(popup, root))
+        continue_button.grid(row=1, column=0, padx=10)
+        stop_button = tk.Button(popup, text="Handle exception manually", command=lambda: self.manual_case(popup, root))
+        stop_button.grid(row=1, column=1, padx=10)
+        popup.protocol("WM_DELETE_WINDOW", lambda: self.manual_case(popup, root))
+        root.mainloop()
+
+
+    def apply_case(self, popup, root):
+        self.isApply = True
+        popup.destroy()
+        root.destroy()
+
+    def manual_case(self, popup, root):
+        self.isApply = False
+        popup.destroy()
         root.destroy()
 
 
