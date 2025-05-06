@@ -81,11 +81,12 @@ class ExceptionManager:
         self.ask_for_help(steps_json)
 
         screenshot_thread.join()        
-        
+
         if self.isApply:
             return steps_json
         else:
             logger.info("User choose to handle exception manually")
+            self.manual_window(step_description)
             return None
 
     def ask_for_help(self, action_steps):
@@ -95,7 +96,7 @@ class ExceptionManager:
         popup = tk.Toplevel()
         popup.attributes("-topmost", True)
         popup.title("Exception Handling")
-        popup.geometry("1100x400")
+        popup.geometry("1400x400")
         prompt_label = tk.Label(popup, text=f"Actions:\n {action_steps}", justify="left")
         prompt_label.grid(row=0, column=0, columnspan=2, pady=30, padx=75)
         continue_button = tk.Button(popup, text="Apply actions", command=lambda: self.apply_case(popup, root))
@@ -115,6 +116,34 @@ class ExceptionManager:
         self.isApply = False
         popup.destroy()
         root.destroy()
+
+    def stop_case(self, popup, root):
+        popup.destroy()
+        root.destroy()
+
+    def manual_window(self, step_description):
+        root = tk.Tk()
+        root.attributes("-topmost", True)
+        root.withdraw()
+        popup = tk.Toplevel()
+        popup.attributes("-topmost", True)
+        popup.title("Ask for help - Manual handling")
+        label = tk.Label(popup, text=f" Step description: {step_description}\n\n Click OK to continue.", justify="left")
+        label.pack()
+        ok_button = tk.Button(popup, text="OK", command=lambda: self.stop_case(popup, root))
+        ok_button.pack(pady=10)
+        popup.protocol("WM_DELETE_WINDOW", lambda: self.stop_case(popup, root))
+        screen_width = root.winfo_screenwidth()
+        screen_height = root.winfo_screenheight()
+
+        popup.update_idletasks()
+        window_width = popup.winfo_width()
+        window_height = popup.winfo_height()
+
+        x = screen_width - window_width - 20
+        y = screen_height - window_height - 150
+        popup.geometry(f"+{x}+{y}")
+        root.mainloop()
 
 
     def copy_and_rename_file(self, source_file, destination_folder, new_name):

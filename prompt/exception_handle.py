@@ -43,12 +43,12 @@ Below is the step description:
 Can you help fix the exception and provide additional actions?
 
 Action MUST be limited to the following types: KEY_PRESS, LEFT_CLICK, RIGHT_CLICK, DOUBLE_CLICK, SCROLL, HOTKEY, SWITCH.
-
+Don't use "if" or "else" in the action description.
 Action example:
-<No>: <ACTION>-<Description of action>
-1: LEFT_CLICK - Left click the G15 cell in Sheet2.
-2: KEY_PRESS - Enter '2' in cell G15 from keyboard.
-3: SWITCH - Switch window to excel via calling api.
+<ACTION>-<Description of action>
+LEFT_CLICK - Left click the G15 cell in Sheet2.
+KEY_PRESS - Enter '2' in cell G15 from keyboard.
+SWITCH - Switch window to excel via calling api.
 
 {response_format}
 
