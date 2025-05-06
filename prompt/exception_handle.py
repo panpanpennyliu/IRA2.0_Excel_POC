@@ -40,10 +40,11 @@ I am a RPA robot. I have performed an action step, but the action failed and ret
 {exception_description}
 Below is the step description:
 {step_description}
-Can you help fix the exception and provide additional actions?
+Can you help fix the exception and provide only one optimal solution(action steps)?
 
 Action MUST be limited to the following types: KEY_PRESS, LEFT_CLICK, RIGHT_CLICK, DOUBLE_CLICK, SCROLL, HOTKEY, SWITCH.
 Don't use "if" or "else" in the action description.
+
 Action example:
 <ACTION>-<Description of action>
 LEFT_CLICK - Left click the G15 cell in Sheet2.
@@ -52,4 +53,8 @@ SWITCH - Switch window to excel via calling api.
 
 {response_format}
 
+Instructions for relevant application:
+{instructions}
+
 """
+

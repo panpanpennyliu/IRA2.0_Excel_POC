@@ -2,7 +2,7 @@ from utils.logger.logger_setup_data_extraction import logger
 from replay_agent.action_executor.action_perform import ActionExecutor
 import os
 import json
-from prompt.exception_handle import IDENTIFY_EXCEPTION
+from prompt.app_instruction import INSTRUCTIONS
 from prompt.exception_handle import ASK_FOR_HELP
 from replay_agent.position_finder.ocr_position import OcrPosition
 from prompt.exception_handle import PLAN_FOR_EXCEPTION
@@ -51,7 +51,7 @@ class ExceptionManager:
             template=PLAN_FOR_EXCEPTION,
             partial_variables={"response_format": response_format}
         )
-        prompt = partial_prompt.format(exception_description=exception_description, step_description=step_description)
+        prompt = partial_prompt.format(exception_description=exception_description, step_description=step_description, instructions=INSTRUCTIONS)
         logger.info(f"Prompt: {prompt}")
         try:
             # ai_model = GenAIModel()
