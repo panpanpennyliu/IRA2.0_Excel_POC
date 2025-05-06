@@ -15,7 +15,7 @@ class OcrPosition:
         self.chat = LLMChat()
 
     def correct_click_coordinates(self, element_name, init_x, init_y, image_path, output_path):
-        elements_in_range = get_elements(image_path, output_path, init_x, init_y, 500)
+        elements_in_range = get_elements(image_path, output_path, init_x, init_y, 700)
         if len(elements_in_range) == 0:
             logger.info("No elements found in the specified range.")
             return

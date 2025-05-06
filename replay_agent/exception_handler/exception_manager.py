@@ -68,22 +68,20 @@ class ExceptionManager:
         action_steps = json_response.get("ActionSteps")
         # send email to the team to ask for help
         logger.info(f"Sending email for help: {suggestion}")
+        steps_dict = {str(index + 1): step for index, step in enumerate(action_steps)}
+
+        steps_json = json.dumps(steps_dict, indent=4)
         
         folder_path = os.path.dirname(image_path)
         screenshot_capture = ScreenshotCapture(folder_path)
         ask_for_help_path= os.path.basename(image_path).replace("screenshot_", "ask_for_help_")
         screenshot_thread = threading.Thread(target=screenshot_capture.get_screen_snapshot, args=(ask_for_help_path,))
         screenshot_thread.start()
-        
-        screenshot_capture.get_screen_snapshot(os.path.basename(image_path).replace("screenshot", "ask_for_help"))
-        # pyautogui.alert(f"Suggestion: {suggestion} \nPlease click 'OK' to continue", title='Ask for help')
-        screenshot_thread.join()        
 
-        steps_dict = {str(index + 1): step for index, step in enumerate(action_steps)}
-
-        # 转换为 JSON 字符串
-        steps_json = json.dumps(steps_dict, indent=4)
         self.ask_for_help(steps_json)
+
+        screenshot_thread.join()        
+        
         if self.isApply:
             return steps_json
         else:

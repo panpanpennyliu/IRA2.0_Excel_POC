@@ -9,7 +9,7 @@ I have an approximate coordinate location ({x},{y}), based on which I found seve
 
 
 INITIAL_COORDINATE = """
-The upper left corner of the image is (0, 0) and the lower right corner is (2240, 1400). Please give the coordinate (x, y) of the center of {element_name}.
+The upper left corner of the image is (0, 0) and the lower right corner is ({width}, {height}). Please give the coordinate (x, y) of the center of {element_name}.
 {{
     "x":"",
     "y":""

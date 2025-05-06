@@ -115,10 +115,14 @@ class PositionExtractor:
 
         # 1.initial coordinate
         index = 0
+        # wight = 
+        replayerAction = ReplayerAction(self.chat)
+        imageEditor = ImageEditor(image_path)
+        height, width = imageEditor.get_image_size()
 
         while index < 3:
 
-            initial_coordinate = INITIAL_COORDINATE.format(element_name = element_name)
+            initial_coordinate = INITIAL_COORDINATE.format(element_name = element_name, width = width, height = height)
 
             replayerAction = ReplayerAction(self.chat)
             initial_coordinate_key_list = ["x", "y"]
@@ -126,6 +130,9 @@ class PositionExtractor:
 
             init_x = initial_coordinate_json["x"]
             init_y = initial_coordinate_json["y"]
+
+            if int(init_x) > width or int(init_y) > height:
+                continue
 
             # 2.ocr
             save_path_ocr = os.path.join(image_folder_path, "position_"+ element_name + "_ocr_"+ str(init_x) + "_"+ str(init_y) + ".png")

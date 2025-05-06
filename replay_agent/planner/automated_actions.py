@@ -11,6 +11,7 @@ from prompt.action_generator import DETERMINE_STEP
 from replay_agent.position_finder.position_extractor import PositionExtractor
 from replay_agent.screenshot_processor.screenshot_capture import ScreenshotCapture
 from replay_agent.exception_handler.exception_manager import ExceptionManager
+from replay_agent.action_executor import switch_action
 
 import os, re
 import json
@@ -243,7 +244,7 @@ class AutomatedActions:
                 # 3
                 screenshot = screenshot_capture.get_screen_snapshot("screenshot_" + str(step_index) + "_" + last_steps_key + "_" + str(executing_step["executing_step"]) + ".png")
                 determine_step = DETERMINE_STEP.format(step = step_description)
-                determine_step_list = ["executed","can_execute","description"]
+                determine_step_list = ["can_execute"]
                 determine_step_json = replayerAction.analyst_image(screenshot, determine_step_list, determine_step)
                 # TODO
                 determine_step_json["executed"] = "False"
@@ -255,7 +256,7 @@ class AutomatedActions:
                         executing_step["status"] = True
                         executing_step["executing_step"] = 0
                         break
-                elif determine_step_json["can_execute"] == "True": # False/Unable ---action
+                elif determine_step_json["can_execute"] == "True" or determine_step_json["can_execute"] == "true": # False/Unable ---action
                     step_to_actions = STEP_TO_ACTION.format(step = step_description)
                     actions_from_step_list = ["actions"]
                     actions_from_step = replayerAction.analyst_image(screenshot, actions_from_step_list, step_to_actions)
@@ -312,6 +313,7 @@ class AutomatedActions:
         for action in actions:
             # action["step_index"] = actions_from_step["step_index"]
             action_type = action["action_type"]
+            logger.info("action_type: " + action_type)
             # key_code = action["key_code"]
             # click_element = action["click_element"]
             # click_element_type = action["click_element_type"]
@@ -321,25 +323,29 @@ class AutomatedActions:
 
             # Execute the action based on its type
             if action_type == "LEFT_CLICK":
-                click_element = action["click_element"]
-                click_element_type = action["click_element_type"]
+                click_element = action["key_element"]
+                click_element_type = action["key_element_type"]
                 position_extractor = PositionExtractor()
                 x_e, y_e = position_extractor.get_position_by_name(self.image_folder_path, screenshot, click_element, click_element_type)
                 action["click_position"] = str(x_e) + "," + str(y_e)
                 pyautogui.click(x_e, y_e)
 
             elif action_type == "KEY_WRITE":
-                key_code = action["key_code"]
+                key_code = action["key_element"]
                 pyautogui.write(key_code)
 
             elif action_type == "KEY_HOTKEY":
-                key_code = action["key_code"]
+                key_code = action["key_element"]
                 keys = [key.lower() for key in key_code.split('+')]
                 pyautogui.hotkey(*keys)
 
             elif action_type == "KEY_PRESS":
-                key_code = action["key_code"]
+                key_code = action["key_element"]
                 pyautogui.press(key_code)
+            
+            elif action_type == "SWITCH":
+                app_name = action["key_element"]
+                switch_action.switch_window(app_name)
 
             actions_list.append(action.copy())
             actions_list[-1]["action_list_index"] = action_index
@@ -392,7 +398,7 @@ class AutomatedActions:
         # executing_step_index = executing_step["executing_step"]
         step_description = executing_step[str(executing_step_index)]
 
-        exception_steps = exception_manager.plan_for_exception(step_description,"",image_path)
+        exception_steps = exception_manager.plan_for_exception("",step_description,"",image_path)
         # error_handle_steps_name = last_steps_key + "_" + str(executing_step_index) +"_handle_steps"
         exception_steps_json = json.loads(exception_steps)
         exception_steps_json["status"] = False

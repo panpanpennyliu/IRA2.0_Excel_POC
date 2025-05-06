@@ -23,7 +23,7 @@ dotenv.load_dotenv(os.path.join('config', '.env'))
 class LLMChat: 
     def __init__(self):
         model_name = os.getenv("DEFAULTM_MODEL")
-        self.chat = ChatOpenAI(model=model_name, temperature=0.1, verbose=True) 
+        self.chat = ChatOpenAI(model=model_name, temperature=0, verbose=True) 
     
     def prompt_respond_default(self, request, system_prompt):               
         prompt = ChatPromptTemplate.from_messages(
@@ -48,7 +48,7 @@ class LLMChat:
         return response    
     
     def prompt_respond(self, request, model_name): 
-        self.chat = ChatOpenAI(model=model_name, temperature=0.1, verbose=True)
+        self.chat = ChatOpenAI(model=model_name, temperature=0, verbose=True)
 
         prompt = ChatPromptTemplate.from_messages(
             [
@@ -114,7 +114,7 @@ class LLMChat:
         logger.info(f"messages_str:\n {messages_str}")
         logger.info("#################################")
 
-        self.chat = ChatOpenAI(model=model_name, temperature=0.1, verbose=True)
+        self.chat = ChatOpenAI(model=model_name, temperature=0, verbose=True)
         
         print("====================================\n\n")
         prompt = ChatPromptTemplate.from_messages(
@@ -171,7 +171,7 @@ class LLMChat:
         #self.logger.info('image_path: %s', full_image_path)
         #self.logger.info('prompt: %s', prompt)
 
-        self.chat = ChatOpenAI(model=model_name, temperature=0.1, verbose=True)  
+        self.chat = ChatOpenAI(model=model_name, temperature=0, verbose=True)  
 
         result = ""
         try:
