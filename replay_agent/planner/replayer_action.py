@@ -64,9 +64,9 @@ class ReplayerAction:
                 # response = self.chat.image_respond_gemini_google(image_path, content, model_name)
                 # response = self.chat.image_respond(image_path, content, model_name)
                 response_json = json_process(response)
-                # for key in key_list:
-                #     if key not in response_json:
-                #         raise KeyError(f"Key '{key}' not found in response JSON.")
+                for key in key_list:
+                    if key not in response_json:
+                        raise KeyError(f"Key '{key}' not found in response JSON.")
                 success = True
             except (KeyError, TypeError):
                 retries += 1

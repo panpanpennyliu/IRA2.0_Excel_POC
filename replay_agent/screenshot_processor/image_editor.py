@@ -16,31 +16,36 @@ class ImageEditor:
         gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         blurred = cv2.GaussianBlur(gray, (5, 5), 0)
         
-        thresh = cv2.adaptiveThreshold(
-            blurred, 255,
-            cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-            cv2.THRESH_BINARY_INV, 11, 2
-        )
+            # 使用 OTSU 阈值方法
+        _, thresh = cv2.threshold(blurred, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
         
         kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (1, 1))
         closed = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)
         
-        contours, _ = cv2.findContours(closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        # 使用 RETR_TREE 提取所有轮廓
+        contours, _ = cv2.findContours(closed, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         input_boxes = []
-        i = 0
         
         for cnt in contours:
             peri = cv2.arcLength(cnt, True)
-            approx = cv2.approxPolyDP(cnt, min(30, peri * 0.05), True)
+            approx = cv2.approxPolyDP(cnt, 0.02 * peri, True)
             (x, y, w, h) = cv2.boundingRect(approx)
-
-            if len(approx) == 4 and w > 30 and h > 30:
+            
+            # 过滤掉面积过小的轮廓
+            if cv2.contourArea(cnt) > 100 and w > 10 and h > 30: 
                 input_boxes.append((x, y, w, h))
-                i += 1
 
+        
+    
+        unique_boxes = []
+
+        for box in input_boxes:
+            if not any(is_overlap(box, other_box) for other_box in unique_boxes):
+                unique_boxes.append(box)
+        
         box_number = 0
 
-        for (x, y, w, h) in input_boxes:
+        for (x, y, w, h) in unique_boxes:
             cv2.rectangle(self.image, (x, y), (x + w, y + h), (255, 0, 0), 2)
             
             circled_char = str(box_number) 
@@ -75,7 +80,7 @@ class ImageEditor:
             box_number += 1
             
         cv2.imwrite(save_path, self.image)
-        return input_boxes
+        return unique_boxes
     
     def detect_table_lines(self, save_path):
         gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
@@ -301,6 +306,10 @@ class ImageEditor:
         cv2.imwrite(save_path, img_resize)
 
         return save_path
+        
+    def get_image_size(self):
+        self.load_image()
+        return self.image.shape[:2]
 
 
 
@@ -378,6 +387,30 @@ def lines_to_mask(image_shape, lines, thickness=2):
         x1, y1, x2, y2 = line
         cv2.line(mask, (x1, y1), (x2, y2), color=255, thickness=thickness)
     return mask
+
+def is_overlap(box1, box2, threshold=0.5):
+    x1, y1, w1, h1 = box1
+    x2, y2, w2, h2 = box2
+
+    # 计算交集区域
+    x_overlap = max(0, min(x1 + w1, x2 + w2) - max(x1, x2))
+    y_overlap = max(0, min(y1 + h1, y2 + h2) - max(y1, y2))
+    overlap_area = x_overlap * y_overlap
+
+    # 计算两个矩形框的面积
+    area1 = w1 * h1
+    area2 = w2 * h2
+
+    # 计算交并比（IoU）
+    iou = overlap_area / float(area1 + area2 - overlap_area)
+
+    return iou > threshold
+
+# folder_path = "log\\screenshot\\0430130056\\screenshot_2_flow_steps_2.png"
+# save_path = "log\\screenshot\\0430130536\\screenshot_2_flow_steps_2.png"
+# image = ImageEditor(folder_path)
+# image.mark_text_box(save_path)
+
 
 
 
