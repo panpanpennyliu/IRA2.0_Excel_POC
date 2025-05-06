@@ -86,7 +86,11 @@ class ExceptionManager:
             return steps_json
         else:
             logger.info("User choose to handle exception manually")
+            ask_for_help_path= os.path.basename(image_path).replace("screenshot_", "ask_for_help_manual_")
+            screenshot_thread = threading.Thread(target=screenshot_capture.get_screen_snapshot, args=(ask_for_help_path,))
+            screenshot_thread.start()
             self.manual_window(step_description)
+            screenshot_thread.join() 
             return None
 
     def ask_for_help(self, action_steps):
@@ -96,13 +100,25 @@ class ExceptionManager:
         popup = tk.Toplevel()
         popup.attributes("-topmost", True)
         popup.title("Exception Handling")
-        popup.geometry("1400x400")
-        prompt_label = tk.Label(popup, text=f"Actions:\n {action_steps}", justify="left")
-        prompt_label.grid(row=0, column=0, columnspan=2, pady=30, padx=75)
-        continue_button = tk.Button(popup, text="Apply actions", command=lambda: self.apply_case(popup, root))
-        continue_button.grid(row=1, column=0, padx=10)
-        stop_button = tk.Button(popup, text="Handle exception manually", command=lambda: self.manual_case(popup, root))
-        stop_button.grid(row=1, column=1, padx=10)
+
+        # 设置内边距
+        popup_frame = tk.Frame(popup, padx=60, pady=60)
+        popup_frame.pack(fill=tk.BOTH, expand=True)
+
+        prompt_label = tk.Label(popup_frame, text=f"Actions:\n {action_steps}", justify="left")
+        prompt_label.pack(pady=30)
+
+        button_frame = tk.Frame(popup_frame)
+        button_frame.pack(pady=30)
+
+        continue_button = tk.Button(button_frame, text="Apply actions",
+                                    command=lambda: self.apply_case(popup, root))
+        continue_button.pack(side=tk.LEFT, padx=10)
+
+        stop_button = tk.Button(button_frame, text="Handle exception manually",
+                                command=lambda: self.manual_case(popup, root))
+        stop_button.pack(side=tk.LEFT, padx=10)
+
         popup.protocol("WM_DELETE_WINDOW", lambda: self.manual_case(popup, root))
         root.mainloop()
 
@@ -127,10 +143,10 @@ class ExceptionManager:
         root.withdraw()
         popup = tk.Toplevel()
         popup.attributes("-topmost", True)
-        popup.title("Ask for help - Manual handling")
-        label = tk.Label(popup, text=f" Step description: {step_description}\n\n Click OK to continue.", justify="left")
+        popup.title("Ask for help")
+        label = tk.Label(popup, text=f" Please help execute below action manually:\n {step_description}", justify="left")
         label.pack()
-        ok_button = tk.Button(popup, text="OK", command=lambda: self.stop_case(popup, root))
+        ok_button = tk.Button(popup, text="Ready for next action", command=lambda: self.stop_case(popup, root))
         ok_button.pack(pady=10)
         popup.protocol("WM_DELETE_WINDOW", lambda: self.stop_case(popup, root))
         screen_width = root.winfo_screenwidth()

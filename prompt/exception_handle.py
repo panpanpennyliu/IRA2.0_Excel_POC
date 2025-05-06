@@ -40,10 +40,13 @@ I am a RPA robot. I have performed an action step, but the action failed and ret
 {exception_description}
 Below is the step description:
 {step_description}
-Can you help fix the exception and provide only one optimal solution(action steps)?
+Can you help fix the exception and execute the current action step?
 
 Action MUST be limited to the following types: KEY_PRESS, LEFT_CLICK, RIGHT_CLICK, DOUBLE_CLICK, SCROLL, HOTKEY, SWITCH.
 Don't use "if" or "else" in the action description.
+Don't provide alternative actions or duplicate actions.
+Don't use "try" or "except" in the action description.
+I only need one definite solution, and it should not include logical branches.
 
 Action example:
 <ACTION>-<Description of action>
