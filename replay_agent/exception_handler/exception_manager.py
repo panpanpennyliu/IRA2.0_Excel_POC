@@ -78,7 +78,7 @@ class ExceptionManager:
         screenshot_thread = threading.Thread(target=screenshot_capture.get_screen_snapshot, args=(ask_for_help_path,))
         screenshot_thread.start()
 
-        self.ask_for_help(steps_json)
+        self.ask_for_help(exception_description, steps_json)
 
         screenshot_thread.join()        
 
@@ -93,7 +93,7 @@ class ExceptionManager:
             screenshot_thread.join() 
             return None
 
-    def ask_for_help(self, action_steps):
+    def ask_for_help(self, exception, action_steps):
         root = tk.Tk()
         root.attributes("-topmost", True)
         root.withdraw()
@@ -104,8 +104,8 @@ class ExceptionManager:
         # 设置内边距
         popup_frame = tk.Frame(popup, padx=60, pady=60)
         popup_frame.pack(fill=tk.BOTH, expand=True)
-
-        prompt_label = tk.Label(popup_frame, text=f"Actions:\n {action_steps}", justify="left")
+        label_text = f"AI recommends the following actions for exception handling.\nException description:\n {exception}\nActions:\n {action_steps}\n\nPlease choose whether to apply the recommended actions or manually handle the exception."
+        prompt_label = tk.Label(popup_frame, text=label_text, justify="left")
         prompt_label.pack(pady=30)
 
         button_frame = tk.Frame(popup_frame)
