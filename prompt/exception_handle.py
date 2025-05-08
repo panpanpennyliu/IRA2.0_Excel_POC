@@ -46,7 +46,9 @@ Action MUST be limited to the following types: KEY_PRESS, LEFT_CLICK, RIGHT_CLIC
 Don't use "if" or "else" in the action description.
 Don't provide alternative actions or duplicate actions.
 Don't use "try" or "except" in the action description.
+Don't use the coordinates form frame information directly in the action description.
 I only need one definite solution, and it should not include logical branches.
+The actions should include the current action step at the end of the action list.
 
 Action example:
 <ACTION>-<Description of action>
@@ -56,8 +58,9 @@ SWITCH - Switch window to excel via calling api.
 
 {response_format}
 
-Instructions for relevant application:
+Below is the frame information of the current action step, which can help you understand the current action step:
 {instructions}
+
 
 """
 
