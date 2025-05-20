@@ -1,9 +1,13 @@
 {
     "knowledgeJson": {
       "business_flow": {
-        "step 1": "Left click on cell A1 in the spreadsheet to select it.",
-        "step 2": "Input the number '1' into the selected cell.",
-        "step 3": "Press Ctrl+S to save the document."
+          "step 1": "Click the 'New' button in Money Manager Ex to create a new transaction.",
+          "step 2": "Switch to IRA_test.xlsx",
+          "step 3": "Select cell A2 in the Excel spreadsheet.",
+          "step 4": "Press Ctrl+C in Excel to copy the selected cell's content.",
+          "step 5": "Switch back to Money Manager Ex.",
+          "step 6": "Press Ctrl+V Past the copied value into the 'Amount' field."
+        
       }
     }
 }

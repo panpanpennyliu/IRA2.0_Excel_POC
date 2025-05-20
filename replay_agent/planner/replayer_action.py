@@ -60,9 +60,9 @@ class ReplayerAction:
 
         while retries < max_retries and not success:
             try:
-                response = self.chat.image_respond_gemini(image_path, content, model_name)
-                # response = self.chat.image_respond_gemini_google(image_path, content, model_name)
-                # response = self.chat.image_respond(image_path, content, model_name)
+                # response = self.chat.image_respond_gemini(image_path, content, model_name)
+                # response = self.chat.image_respond_gemini_google(image_path, content, "gemini-2.0-pro-exp")
+                response = self.chat.image_respond(image_path, content, model_name)
                 response_json = json_process(response)
                 for key in key_list:
                     if key not in response_json:

@@ -1,0 +1,9 @@
+{
+    "steps": [
+        {
+            "1": "Left click on cell G15 in the spreadsheet to select it.",
+            "2": "Input the text 'G2' into the selected cell.",
+            "3": "Press Ctrl+S to save the document."
+        }
+    ]
+}

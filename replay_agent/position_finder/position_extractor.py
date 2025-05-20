@@ -24,9 +24,11 @@ class PositionExtractor:
         elif element_type =="cell":
             x,y = self.get_position_cell(image_folder_path, image_path, element_name)
 
-        elif element_type =="text_button":
+        elif "text" in element_type:
             x,y = self.get_position_text_button(image_folder_path, image_path, element_name)
-
+        
+        elif element_type =="drop_down_box":
+            x,y = self.get_position_drop_down_box(image_folder_path, image_path, element_name)
         return x,y
     
     def get_position_input_box(self, image_folder_path, image_path, element_name):
@@ -51,6 +53,39 @@ class PositionExtractor:
 
             x, y, w, h = input_boxes[number]
             e_x = x + w//2
+            e_y = y + h//2
+
+            position_verify = self.verify_position(e_x, e_y, element_name, image_folder_path, image_path, str(number)+"_"+str(index))
+
+            if position_verify:
+                break
+            else:
+                index += 1
+
+        return e_x, e_y
+    
+    def get_position_drop_down_box(self, image_folder_path, image_path, element_name):
+        
+        imageEditor = ImageEditor(image_path)
+
+        save_path_mark_text_box = os.path.join (image_folder_path, "position_"+ element_name + "_mark_text_box.png")
+
+        input_boxes = imageEditor.mark_text_box(save_path_mark_text_box)
+
+        index = 0
+
+        while index < 3:
+
+            identify_text_box_labels = IDENTIFY_TEXT_BOX_LABELS.format(element_name = element_name)
+
+            replayerAction = ReplayerAction(self.chat)
+
+            text_box_labels_reply_json = replayerAction.analyst_image(save_path_mark_text_box,[], identify_text_box_labels)
+
+            number = int(text_box_labels_reply_json["number"])
+
+            x, y, w, h = input_boxes[number]
+            e_x = x + w - 15
             e_y = y + h//2
 
             position_verify = self.verify_position(e_x, e_y, element_name, image_folder_path, image_path, str(number)+"_"+str(index))

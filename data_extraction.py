@@ -2,7 +2,7 @@ import sys
 from data_extract.concept_analyzer import ConceptAnalyzer
 from data_extract.logic_identifier import LogicIdentifier
 from data_extract.knowledge_generator import KnowledgeGenerator
-from utils.logger_setup_data_extraction import logger
+from utils.logger.logger_setup_data_extraction import logger
 
 
 def run():

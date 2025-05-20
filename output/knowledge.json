@@ -4,11 +4,12 @@
       {
         "picture_information": {
           "id": "250",
-          "action": "LEFT_CLICK",
+          "action_type": "LEFT_CLICK",
           "applicationTitle": "Test.xlsx-Excel",
           "windowLeftUpperPoint": "0,0",
           "windowRightBottomPoint": "2557,1379",
-          "mousePoint": "63,233"
+          "mousePoint": "63,233",
+          "click_Element":"cell A1"
         },
         "action_description": "Left clicked at coordinates (63, 233) in the application Test.xlsx-Excel.",
         "dense_caption": "The image shows a spreadsheet program interface. The main area is a grid of cells, typical of a spreadsheet. The top shows a menu bar with options like File, Home, Insert, etc. A ribbon below the menu bar contains various formatting and editing tools. The spreadsheet itself is mostly empty, with only the cell labels (A1, A2, etc.) and gridlines visible. The color scheme is predominantly green and white, typical of Microsoft Excel. The bottom shows a status bar with information about the sheet and zoom level.",
