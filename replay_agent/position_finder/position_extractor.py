@@ -29,6 +29,7 @@ class PositionExtractor:
         
         elif element_type =="drop_down_box":
             x,y = self.get_position_drop_down_box(image_folder_path, image_path, element_name)
+
         return x,y
     
     def get_position_input_box(self, image_folder_path, image_path, element_name):
@@ -94,6 +95,7 @@ class PositionExtractor:
                 break
             else:
                 index += 1
+
 
         return e_x, e_y
     
