@@ -1,4 +1,4 @@
-from utils.logger_setup_data_extraction import logger
+from utils.logger.logger_setup_data_extraction import logger
 
 class ContextManager:
 

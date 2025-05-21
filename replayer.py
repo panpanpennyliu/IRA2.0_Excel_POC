@@ -7,7 +7,6 @@ from replay_agent.action_executor.switch_action import switch_window
 from replay_agent.screenshot_processor.screenshot_capture import ScreenshotCapture
 
 
-
 def run():
     logger.info(f"started...")    
     

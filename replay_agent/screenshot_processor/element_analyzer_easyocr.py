@@ -58,7 +58,7 @@ def get_elements(image_path, output_path, centerx, centery, radius):
             })
             cv2.rectangle(image, (int(top_left[0]), int(top_left[1])), (int(bottom_right[0]), int(bottom_right[1])), (0, 255, 0), 2)
             # Put the detected text near the bounding box
-            cv2.putText(image, str(id_count), (int(top_left[0]), int(top_left[1]) - 10), 
+            cv2.putText(image, str(id_count), (int(top_left[0] - 35), int(top_left[1]) + 20), 
                     cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 4)
             id_count += 1
     # Save the output image

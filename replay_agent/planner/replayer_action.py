@@ -60,6 +60,7 @@ class ReplayerAction:
 
         while retries < max_retries and not success:
             try:
+
                 response = self.chat.image_respond_gemini(image_path, content, model_name)
                 # response = self.chat.image_respond_gemini_google(image_path, content, model_name)
                 # response = self.chat.image_respond(image_path, content, model_name)
