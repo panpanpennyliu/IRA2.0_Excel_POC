@@ -14,16 +14,13 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from utils.logger.logger_setup_data_extraction import logger
 from prompt.system_context import SYSTEM_CONTEXT, SYSTEM_CONTEXT_WITH_TOOLS
 from utils.logger.logger_setup_data_extraction import logger
-from openai import OpenAI
-from PIL import Image
-from google import genai
 
 dotenv.load_dotenv(os.path.join('config', '.env'))
 
 class LLMChat: 
     def __init__(self):
         model_name = os.getenv("DEFAULTM_MODEL")
-        self.chat = ChatOpenAI(model=model_name, temperature=0, verbose=True) 
+        self.chat = ChatOpenAI(model=model_name, temperature=0.1, verbose=True) 
     
     def prompt_respond_default(self, request, system_prompt):               
         prompt = ChatPromptTemplate.from_messages(
@@ -48,7 +45,7 @@ class LLMChat:
         return response    
     
     def prompt_respond(self, request, model_name): 
-        self.chat = ChatOpenAI(model=model_name, temperature=0, verbose=True)
+        self.chat = ChatOpenAI(model=model_name, temperature=0.1, verbose=True)
 
         prompt = ChatPromptTemplate.from_messages(
             [
@@ -114,7 +111,7 @@ class LLMChat:
         logger.info(f"messages_str:\n {messages_str}")
         logger.info("#################################")
 
-        self.chat = ChatOpenAI(model=model_name, temperature=0, verbose=True)
+        self.chat = ChatOpenAI(model=model_name, temperature=0.1, verbose=True)
         
         print("====================================\n\n")
         prompt = ChatPromptTemplate.from_messages(
@@ -171,7 +168,7 @@ class LLMChat:
         #self.logger.info('image_path: %s', full_image_path)
         #self.logger.info('prompt: %s', prompt)
 
-        self.chat = ChatOpenAI(model=model_name, temperature=0, verbose=True)  
+        self.chat = ChatOpenAI(model=model_name, temperature=0.1, verbose=True)  
 
         result = ""
         try:
@@ -223,73 +220,3 @@ class LLMChat:
                     logger.info(f"Retrying in {sleep_time} seconds" )
                     time.sleep(sleep_time)
         return result   
-    
-    def image_respond_gemini(self, image_path, request, model_name):
-        prompt = "You are a helpful assistant. Put each response in the json format as the output"
-        request = prompt + request
-        result = ""
-        try:
-            base64_image = self.encode_image(image_path)
-        except Exception as e:
-                result = "Running Error"
-                self.logger.error('Exception: \n %s \n', e) 
-        
-        if result != "Running Error":
-            for attempt in range(5): #retry up to 5 times
-                try:
-                    self.openai_model = OpenAI(
-                        api_key=os.getenv("OPENAI_API_KEY"),
-                        base_url=os.getenv("OPENAI_API_BASE")
-                    )
-
-                    response = self.openai_model.chat.completions.create(
-                        model=model_name,
-                        messages=[
-                            {"role": "user", "content": [
-                                {"type": "text", "text": request},
-                                {"type": "image_url", "image_url": {
-                                    "url": f"data:image/png;base64,{base64_image}"}
-                                }
-                            ]}
-                        ],
-                        temperature=0.0,
-                    )
-                    
-                    result = response.choices[0].message.content    
-                    logger.info(f"image_response:\n {result}")             
-                    break
-
-                except Exception as e:
-                    result = "Running Error"
-                    sleep_time = 2 ** attempt
-                    logger.error(f"Exception: {e}")
-                    logger.info(f"Retrying in {sleep_time} seconds" )
-                    time.sleep(sleep_time)
-        return result 
-    
-    def image_respond_gemini_google(self, image_path, request, model_name):
-        result = ""
-        
-        if result != "Running Error":
-            for attempt in range(5): #retry up to 5 times
-                try:
-                    image = Image.open(image_path)
-                    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))  # Replace with your API key
-                    
-                    response = client.models.generate_content(
-                        model=model_name,
-                        contents=[image, request]
-                    )  
-
-                    logger.info(f"image_response:\n {response}")  
-
-                    result = response.candidates[0].content.parts[0].text          
-                    break
-
-                except Exception as e:
-                    result = "Running Error"
-                    sleep_time = 2 ** attempt
-                    logger.error(f"Exception: {e}")
-                    logger.info(f"Retrying in {sleep_time} seconds" )
-                    time.sleep(sleep_time)
-        return result 

@@ -3,7 +3,7 @@ Create a new transaction in Money Manager Ex using value in IRA_test.xlsx.
 """
 
 # PURPOSE = """
-# Enter "a" into the 'Amount' field.
+# Follow the knowledge base steps strictly and do not split the steps.
 # """
 
 ANALYZE_REQUEST_STEPS= """
@@ -227,10 +227,21 @@ According to the screenshot,
 
 """
 
-DETERMINE_STEP="""
+DETERMINE_STEP_0="""
+Identify app in image.
 
-Can I directly execute the operation {step} on the current screen image?
-If the step contains the words "open application" or "switch application", this step can be executed directly and returns True.
+{{
+    "app in image":""
+}}
+
+"""
+
+
+DETERMINE_STEP="""
+Can I directly execute the operation step: {step} on the current screen image?If I already know the value I want.
+IMPORTANT: In any case, if the step contains the instruction "Open" or "Switch to",'can_execute' must return 'True'!!
+1. If the current screen image app does not match the app required by the step, return `False`.
+2. If the current screen image app meets the requirements, return `True`.
 {{
     "can_execute":"True/False",
     "reason":""
@@ -240,25 +251,28 @@ If the step contains the words "open application" or "switch application", this 
 
 STEP_TO_ACTION="""
 According to the screenshot, convert this step into the format of one or more actions.
-Step:{step} 
+Step:{step} (Ignore the final punctuation)
 The action_type describes the type of each operation in the step.
-The action_type MUST be limited to the following types: LEFT_CLICK/RIGHT_CLICK/KEY_WRITE/KEY_PRESS/KEY_HOTKEY/KEY_DOWN/KEY_UP/SWITCH(application).
+Please select the action_type that best matches step from the following action_types: LEFT_CLICK/RIGHT_CLICK/KEY_WRITE/KEY_PRESS/KEY_HOTKEY/KEY_DOWN/KEY_UP/SWITCH(application)/SCROLL/HSCROLL/GET_VALUE/UNKNOWN.
 The click_Element has the following types: text_button, cell, and text_box that can be entered except cells
 If the action_type contains "CLICK", "key_element" and "key_element_type" are returned at the same time, and their values are the element name and element type of the mouse click.
 If action_type contains "KEY", "key_element" is also returned, and its value is the value required in PURPOSE, and it is guaranteed that the input position has been selected in the image.
 Before performing an input action, you must ensure that the input box has been selected or a Click action has been performed.
-If the action_type is "SWITCH", "key_element" is the name of the application to be switched.
-If the action_type is "SCROLL" or "HSCROLL", "key_element" specifies the position of the mouse, and "distance" represents the scroll distance, which can be a positive or negative integer.
+If action_type is "SWITCH", "key_element" is the name of the application to be switched.
+If action_type is "SCROLL" or "HSCROLL", "key_element" specifies the position of the mouse, and "distance" represents the scroll distance, which can be a positive or negative integer.
+If action_type is "GET_VALUE", "key_element" is the name of the value to be obtained, and the value will also be returned.
+Reference: Executed steps:{executed_steps}
 {{
     "actions": 
     [
         {{
-            "action_index":"",
+            "action_index":""(Start from 1),
             "description":"",
-            "action_type": "LEFT_CLICK/RIGHT_CLICK/KEY_WRITE/KEY_PRESS/KEY_HOTKEY/KEY_DOWN/KEY_UP/SWITCH/SCROLL/HSCROLL",
+            "action_type": "LEFT_CLICK/RIGHT_CLICK/KEY_WRITE/KEY_PRESS/KEY_HOTKEY/KEY_DOWN/KEY_UP/SWITCH/SCROLL/HSCROLL/GET_VALUE/UNKNOWN",
             "key_element": "",
-            "key_element_type":"text_button/cell/input_box/unknown",
-            "distance": ""
+            "key_element_type":"text_button/cell/input_box/drop_down_box/unknown",
+            "distance": "",
+            "value":""
         }}
     ]
     

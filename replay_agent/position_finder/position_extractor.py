@@ -24,7 +24,7 @@ class PositionExtractor:
         elif element_type =="cell":
             x,y = self.get_position_cell(image_folder_path, image_path, element_name)
 
-        elif element_type =="text_button":
+        elif "text" in element_type:
             x,y = self.get_position_text_button(image_folder_path, image_path, element_name)
         
         elif element_type =="drop_down_box":
@@ -94,7 +94,6 @@ class PositionExtractor:
                 break
             else:
                 index += 1
-
 
         return e_x, e_y
     
