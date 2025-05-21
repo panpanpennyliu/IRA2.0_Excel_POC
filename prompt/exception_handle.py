@@ -55,12 +55,10 @@ Action example:
 LEFT_CLICK - Left click the G15 cell in Sheet2.
 KEY_PRESS - Enter '2' in cell G15 from keyboard.
 SWITCH - Switch window to excel via calling api.
-
 {response_format}
 
-Below is the frame information of the current action step, which can help you understand the current action step:
+Below is the user guide for related appilcation:
 {instructions}
-
 
 """
 

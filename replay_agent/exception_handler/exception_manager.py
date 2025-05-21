@@ -51,7 +51,7 @@ class ExceptionManager:
             template=PLAN_FOR_EXCEPTION,
             partial_variables={"response_format": response_format}
         )
-        prompt = partial_prompt.format(exception_description=exception_description, step_description=step_description, instructions="")
+        prompt = partial_prompt.format(exception_description=exception_description, step_description=step_description, instructions=INSTRUCTIONS)
         logger.info(f"Prompt: {prompt}")
         try:
             # ai_model = GenAIModel()
