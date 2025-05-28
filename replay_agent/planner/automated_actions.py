@@ -240,6 +240,9 @@ class AutomatedActions:
             while not executing_step["status"]:
                 step_index += 1
                 step_description = executing_step[str(executing_step["executing_step"])]
+                if len(steps_json["values"]) > 0:
+                    step_description += " The value stored in the previous step:" + str(steps_json["values"])
+                logger.info(f"## Start executing {last_steps_key}: {executing_step['executing_step']}: {step_description}")
 
                 # 3
                 screenshot = screenshot_capture.get_screen_snapshot("screenshot_" + str(step_index) + "_" + last_steps_key + "_" + str(executing_step["executing_step"]) + ".png")
@@ -314,11 +317,6 @@ class AutomatedActions:
             # action["step_index"] = actions_from_step["step_index"]
             action_type = action["action_type"]
             logger.info("action_type: " + action_type)
-            # key_code = action["key_code"]
-            # click_element = action["click_element"]
-            # click_element_type = action["click_element_type"]
-            # description = action["description"]
-            # action["step_index"] = actions_from_step["step_index"]
 
 
             # Execute the action based on its type
@@ -347,10 +345,19 @@ class AutomatedActions:
                 app_name = action["key_element"]
                 switch_action.switch_window(app_name)
 
+
             actions_list.append(action.copy())
             actions_list[-1]["action_list_index"] = action_index
             actions_list[-1]["action_index"] = actions_from_step["step_index"] + "#" + str(action["action_index"])
             action_index += 1
+
+            if len(actions)>1 and index < len(actions) - 1:
+                folder_path = os.path.dirname(screenshot)
+                screenshot_capture = ScreenshotCapture(folder_path)
+                screenshot_for_action= os.path.basename(screenshot).replace(".png", "#" + str(index+1) + ".png")
+                screenshot = screenshot_capture.get_screen_snapshot(screenshot_for_action)
+
+
 
         return action_index
         
@@ -399,6 +406,10 @@ class AutomatedActions:
         step_description = executing_step[str(executing_step_index)]
 
         exception_steps = exception_manager.plan_for_exception("",step_description,"",image_path)
+        # error_handle_steps_name = last_steps_key + "_" + str(executing_step_index) +"_handle_steps"
+        if exception_steps == None:
+            executing_step["executing_step"] += 1
+            return
         # error_handle_steps_name = last_steps_key + "_" + str(executing_step_index) +"_handle_steps"
         exception_steps_json = json.loads(exception_steps)
         exception_steps_json["status"] = False
