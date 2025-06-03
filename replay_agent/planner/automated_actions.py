@@ -12,6 +12,11 @@ from replay_agent.position_finder.position_extractor import PositionExtractor
 from replay_agent.screenshot_processor.screenshot_capture import ScreenshotCapture
 from replay_agent.exception_handler.exception_manager import ExceptionManager
 from replay_agent.action_executor import switch_action
+from replay_agent.action_executor import dropdown_select_action
+from replay_agent.action_executor import click_action
+from replay_agent.action_executor import hotkey_action
+
+
 
 import os, re
 import json
@@ -246,14 +251,12 @@ class AutomatedActions:
                 step_index += 1
                 step_description = executing_step[str(executing_step["executing_step"])]
                 if len(steps_json["values"]) > 0:
-                    step_description += " The value stored in the previous step:" + str(steps_json["values"])
+                    step_description += "The following values are available for reference, Only when the following key appears can its value be used:" + str(steps_json["values"])
                 logger.info(f"## Start executing {last_steps_key}: {executing_step['executing_step']}: {step_description}")
-                # 3
                 screenshot = screenshot_capture.get_screen_snapshot("screenshot_" + str(step_index) + "_" + last_steps_key + "_" + str(executing_step["executing_step"]) + ".png")
                 determine_step = DETERMINE_STEP.format(step = step_description)
                 determine_step_list = ["can_execute"]
                 determine_step_json = replayerAction.analyst_image(screenshot, determine_step_list, determine_step)
-                # TODO
                 determine_step_json["executed"] = "False"
                 # determine_step_json["can_execute"] = "True"
                 if determine_step_json["executed"] == "True":
@@ -265,8 +268,7 @@ class AutomatedActions:
                         executing_step["executing_step"] = 0
                         break
                 elif determine_step_json["can_execute"] == "True" or determine_step_json["can_execute"] == "true":
-                    # False/Unable ---action
-                    step_to_actions = STEP_TO_ACTION.format(step = step_description, values = steps_json["values"],executed_steps = actions_execute_list)
+                    step_to_actions = STEP_TO_ACTION.format(step = step_description, values = steps_json["values"], executed_steps = "")
                     actions_from_step_list = ["actions"]
                     actions_from_step = replayerAction.analyst_image(screenshot, actions_from_step_list, step_to_actions)
                     actions_from_step["actions"]
@@ -297,7 +299,6 @@ class AutomatedActions:
                         self.error_handle(screenshot_verify, steps_json, last_steps_key, determine_step_json["reason"])
                         break
 
-                    # execute_actions
                 else:
                     logger.info("Error Handling---Unknow step")
                     self.error_handle(screenshot, steps_json, last_steps_key, determine_step_json["reason"])
@@ -314,8 +315,6 @@ class AutomatedActions:
         actions_execute_path = os.path.join(self.image_folder_path, "action_execute_list.json")
         with open(actions_execute_path, 'w', encoding='utf-8') as f:
             json.dump(action_execute_json, f, ensure_ascii=False, indent=4)
-            
-
 
         return
 
@@ -323,22 +322,18 @@ class AutomatedActions:
     def execute_actions(self, actions_from_step, actions_list, screenshot, action_index, steps_json):
         actions = actions_from_step["actions"]
         for index, action in enumerate(actions):
-            # action["step_index"] = actions_from_step["step_index"]
             action_type = action["action_type"]
             logger.info("action_type: " + action_type)
-            # key_code = action["key_code"]
-            # click_element = action["click_element"]
-            # click_element_type = action["click_element_type"]
-            # description = action["description"]
-            # action["step_index"] = actions_from_step["step_index"]
-            # Execute the action based on its type
             if action_type == "LEFT_CLICK":
                 click_element = action["key_element"]
                 click_element_type = action["key_element_type"]
                 position_extractor = PositionExtractor()
                 x_e, y_e = position_extractor.get_position_by_name(self.image_folder_path, screenshot, click_element, click_element_type)
                 action["click_position"] = str(x_e) + "," + str(y_e)
-                pyautogui.click(x_e, y_e)
+                if click_element_type == "drop_down_box_and_select_value":
+                    dropdown_select_action.select_dropdown_option(x_e, y_e, action["value"])
+                else:
+                    click_action.click(x_e, y_e)
 
             elif action_type == "KEY_WRITE":
                 key_code = action["key_element"]
@@ -347,11 +342,19 @@ class AutomatedActions:
             elif action_type == "KEY_HOTKEY":
                 key_code = action["key_element"]
                 keys = [key.lower() for key in key_code.split('+')]
-                pyautogui.hotkey(*keys)
+                hotkey_action.hotkey(*keys)
 
             elif action_type == "KEY_PRESS":
                 key_code = action["key_element"]
                 pyautogui.press(key_code)
+
+            elif action_type == "KEY_UP":
+                key_code = action["key_element"]
+                pyautogui.up(key_code)
+
+            elif action_type == "KEY_DOWN":
+                key_code = action["key_element"]
+                pyautogui.down(key_code)
             
             elif action_type == "SWITCH":
                 app_name = action["key_element"]
@@ -399,8 +402,6 @@ class AutomatedActions:
         exception_manager = ExceptionManager()
 
         if handle_num > 1:
-            # 当前步骤产生两次error_handle, 重新生成基于flow的error_handle
-            # steps_json[last_steps_key]["status"] = "Unable_execute_" + str(steps_json[last_steps_key]["executing_step"])
             last_steps_key = "flow_steps"
             executing_step = steps_json[last_steps_key]
             executing_step_index = executing_step["executing_step"]
@@ -422,12 +423,9 @@ class AutomatedActions:
             executing_step = steps_json[last_steps_key]
             executing_step_index = executing_step["executing_step"]
             error_handle_steps_name = last_steps_key + "_" + str(executing_step_index) +"_handle_steps"
-        # executing_step = steps_json[last_steps_key]
-        # executing_step_index = executing_step["executing_step"]
         step_description = executing_step[str(executing_step_index)]
 
         exception_steps = exception_manager.plan_for_exception(reason ,step_description,"",image_path)
-        # error_handle_steps_name = last_steps_key + "_" + str(executing_step_index) +"_handle_steps"
         if exception_steps == None:
             executing_step["executing_step"] += 1
             return
@@ -438,8 +436,6 @@ class AutomatedActions:
         exception_steps_json["handle_steps"] = last_steps_key
         exception_steps_json["handle_steps_index"] = executing_step_index
         steps_json[error_handle_steps_name] = exception_steps_json
-
-
 
         return steps_json
 

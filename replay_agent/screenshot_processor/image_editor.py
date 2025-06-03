@@ -61,14 +61,6 @@ class ImageEditor:
             text_x = x 
             text_y = y + h - radius - 15  
             
-            # cv2.circle(
-            #     img,
-            #     (text_x + radius, text_y + radius),
-            #     radius,
-            #     circle_color,
-            #     2  # 填充
-            # )
-            
             cv2.putText(
                 self.image, circled_char,
                 (text_x + radius - text_w//2, text_y + radius + text_h//2),
@@ -91,10 +83,14 @@ class ImageEditor:
             cv2.THRESH_BINARY_INV, 11, 2
         )
         
+        border_size = 0
+        height, width = thresh.shape
+        cropped_thresh = thresh[border_size:height-border_size, border_size:width-border_size]
+
         kernel_h = cv2.getStructuringElement(cv2.MORPH_RECT, (50, 1))  # 水平核
         kernel_v = cv2.getStructuringElement(cv2.MORPH_RECT, (1, 50))  # 垂直核
-        horizontal = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel_h)
-        vertical = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel_v)
+        horizontal = cv2.morphologyEx(cropped_thresh, cv2.MORPH_OPEN, kernel_h)
+        vertical = cv2.morphologyEx(cropped_thresh, cv2.MORPH_OPEN, kernel_v)
         table_lines = cv2.add(horizontal, vertical)
         
         lines = cv2.HoughLinesP(table_lines, 1, np.pi/180, 100, minLineLength=300, maxLineGap=10)
@@ -138,83 +134,7 @@ class ImageEditor:
 
         cv2.imwrite(save_path, self.image)
         return horizontal_table, vertical_table
-    
 
-    
-    def add_star(self, x, y):
-        self.load_image()
-        center = (x, y)
-        radius = 10
-        points = []
-        for i in range(5):
-            angle = np.deg2rad(i * 72 - 90)  
-            a = int(center[0] + radius * np.cos(angle))
-            b = int(center[1] + radius * np.sin(angle))
-            points.append((a, b))
-        star_points = np.array([
-            points[0], points[2], points[4], points[1], points[3]
-        ], np.int32)
-
-        cv2.polylines(self.image, [star_points], isClosed=True, color=(255, 0, 0), thickness=2)
-
-        # text = "("+ str( x ) +", " + str( y )+")"
-        # font = cv2.FONT_HERSHEY_SIMPLEX
-        # font_scale = 0.5
-        # text_thickness = 2
-        # text_color =  (180, 105, 255) 
-        # cv2.putText(image, text, (center[0] + 20, center[1]), font, font_scale, text_color, text_thickness)
-
-        save_path = "input\screenshot\mark_1.png"
-        cv2.imwrite(save_path, self.image)
-        return save_path
-    
-    def add_circle(self, x, y, radius, save_path):
-        self.load_image()
-        
-        center = (x, y)  
-
-        color = (255, 0, 0) 
-        thickness = -1     
-
-        cv2.circle(self.image, center, radius, color, thickness)
-
-        height, width = self.image.shape[:2]
-        resize_width = width // 2
-        resize_height = height // 2
-
-        img_resize  = cv2.resize(self.image,(resize_width,resize_height))
-
-        cv2.imwrite(save_path, img_resize)
-
-
-        return save_path
-    
-
-    def add_square(self, x, y, half_side):
-        """
-        在图片上以 (x, y) 为中心，绘制一个边长为 2 * half_side 的实心正方形
-        :param x: 中心点x坐标
-        :param y: 中心点y坐标
-        :param half_side: 正方形半边长
-        """
-        # 重新加载原始图片，确保操作在未修改图片上进行
-        self.load_image()
-        
-        # 计算正方形的左上角和右下角坐标
-        top_left = (x - half_side, y - half_side)
-        bottom_right = (x + half_side, y + half_side)
-        
-        # 指定颜色和填充：在OpenCV中，(255, 0, 0) 表示蓝色（BGR格式）
-        color =  (255, 0, 0)
-        thickness = 3  # -1 表示填充
-        
-        # 绘制实心正方形
-        cv2.rectangle(self.image, top_left, bottom_right, color, thickness)
-        
-        # 保存图片（请注意路径中的反斜杠需进行转义或使用原始字符串）
-        save_path = "input\\screenshot\\mark_1.png"
-        cv2.imwrite(save_path, self.image)
-        return save_path
     
     def draw_grid_and_labels(self, save_path, label_offset):
         self.load_image()
@@ -352,8 +272,7 @@ def merge_lines(lines, angle_threshold=10, merge_threshold=1):
         max_x = max(max(line[0], line[2]) for line in group)
         avg_y = int(np.mean([(line[1] + line[3])/2 for line in group]))
         final_horizontal.append([min_x, avg_y, max_x, avg_y])
-    
-    # 合并垂直线
+     
     vertical_sorted = sorted(vertical, key=lambda x: (x[0] + x[2])/2)
     merged_v = []
     current_group = []
@@ -392,16 +311,13 @@ def is_overlap(box1, box2, threshold=0.5):
     x1, y1, w1, h1 = box1
     x2, y2, w2, h2 = box2
 
-    # 计算交集区域
     x_overlap = max(0, min(x1 + w1, x2 + w2) - max(x1, x2))
     y_overlap = max(0, min(y1 + h1, y2 + h2) - max(y1, y2))
     overlap_area = x_overlap * y_overlap
 
-    # 计算两个矩形框的面积
     area1 = w1 * h1
     area2 = w2 * h2
 
-    # 计算交并比（IoU）
     iou = overlap_area / float(area1 + area2 - overlap_area)
 
     return iou > threshold

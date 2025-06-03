@@ -27,7 +27,7 @@ class PositionExtractor:
         elif "text" in element_type:
             x,y = self.get_position_text_button(image_folder_path, image_path, element_name)
         
-        elif element_type =="drop_down_box":
+        elif element_type =="drop_down_box_and_select_value":
             x,y = self.get_position_drop_down_box(image_folder_path, image_path, element_name)
         return x,y
     
@@ -35,7 +35,7 @@ class PositionExtractor:
         
         imageEditor = ImageEditor(image_path)
 
-        save_path_mark_text_box = os.path.join (image_folder_path, "position_"+ element_name + "_mark_text_box.png")
+        save_path_mark_text_box = os.path.join (image_folder_path, "position_"+ element_name + "_mark_input_box.png")
 
         input_boxes = imageEditor.mark_text_box(save_path_mark_text_box)
 
@@ -109,8 +109,8 @@ class PositionExtractor:
 
             horizontal_table, vertical_table = imageEditor.detect_table_lines(save_path_mark_text_box)
             
-            x0 = (vertical_table[0][0] + vertical_table[1][0]) // 2
-            y0 = (horizontal_table[0][1] + horizontal_table[1][1]) // 2
+            x0 = (vertical_table[0][0] + vertical_table[1][0]) // 2 
+            y0 = (horizontal_table[0][1] + horizontal_table[1][1]) // 2 
 
             initial_value_add_X_path = os.path.join(image_folder_path, "position_"+ element_name + "_initial_value_" + str(index) + ".png")
             
@@ -132,8 +132,8 @@ class PositionExtractor:
             row_i = int(row_element) - int(row_0)
             column_i = ord(column_element) - ord(column_0)
 
-            e_x = (vertical_table[column_i][0] + vertical_table[column_i + 1][0]) // 2
-            e_y = (horizontal_table[row_i][1] + horizontal_table[row_i + 1][1]) // 2
+            e_x = (vertical_table[column_i][0] + vertical_table[column_i + 1][0]) // 2 + 7
+            e_y = (horizontal_table[row_i][1] + horizontal_table[row_i + 1][1]) // 2 + 7
 
             position_verify = self.verify_position(e_x, e_y, element_name, image_folder_path, image_path, str(row_i)+"_"+str(column_i)+"_"+str(index))
 
@@ -189,7 +189,7 @@ class PositionExtractor:
         
         imageEditor = ImageEditor(image_path)
 
-        verify_add_X_image = imageEditor.add_X(x, y, 8, verify_position_path)
+        verify_add_X_image = imageEditor.add_X(x, y, 5, verify_position_path)
 
         verify_position = VERIFY_POSITION.format(element_name = element_name)
 

@@ -150,7 +150,8 @@ If one of the following conditions occurs, it can be considered selected:
 VERIFY_POSITION= """
 Is red X inside {element_name}?
 {{
-    "position":"yes/no"
+    "position":"yes/no",
+    "description":""
 }}
 
 """
@@ -254,10 +255,10 @@ According to the screenshot, convert this step into the format of one or more ac
 Step:{step} (Ignore the final punctuation)
 The action_type describes the type of each operation in the step.
 Please select the action_type that best matches step from the following action_types: LEFT_CLICK/RIGHT_CLICK/KEY_WRITE/KEY_PRESS/KEY_HOTKEY/KEY_DOWN/KEY_UP/SWITCH(application)/SCROLL/HSCROLL/GET_VALUE/UNKNOWN.
-The click_Element has the following types: text_button, cell, and text_box that can be entered except cells
+The click_Element has the following types: text_button, cell, input_box that can be entered except cells and drop_down_box_and_select_value.
+If key_element_type is drop_down_box_and_select_value, then key_element is the drop-down box to be clicked, and value is the value to be selected. If no value is given, it is an ordinary input_box.
 If the action_type contains "CLICK", "key_element" and "key_element_type" are returned at the same time, and their values are the element name and element type of the mouse click.
-If action_type contains "KEY", "key_element" is also returned, and its value is the value required in PURPOSE, and it is guaranteed that the input position has been selected in the image.
-Before performing an input action, you must ensure that the input box has been selected or a Click action has been performed.
+If action_type contains "KEY", "key_element" is also returned, and its value is the value to be entered by the keyboard in the step. For example, key_element: "123", "ctrl+c".
 If action_type is "SWITCH", "key_element" is the name of the application to be switched.
 If action_type is "SCROLL" or "HSCROLL", "key_element" specifies the position of the mouse, and "distance" represents the scroll distance, which can be a positive or negative integer.
 If action_type is "GET_VALUE", "key_element" is the name of the value to be obtained, and the value will also be returned.
@@ -270,7 +271,7 @@ Reference: Executed steps:{executed_steps}
             "description":"",
             "action_type": "LEFT_CLICK/RIGHT_CLICK/KEY_WRITE/KEY_PRESS/KEY_HOTKEY/KEY_DOWN/KEY_UP/SWITCH/SCROLL/HSCROLL/GET_VALUE/UNKNOWN",
             "key_element": "",
-            "key_element_type":"text_button/cell/input_box/drop_down_box/unknown",
+            "key_element_type":"text_button/cell/input_box/drop_down_box_and_select_value/unknown",
             "distance": "",
             "value":""
         }}
