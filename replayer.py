@@ -1,12 +1,7 @@
 from utils.logger.logger_setup_data_extraction import logger
 from replay_agent.planner.automated_actions import AutomatedActions
-from replay_agent.position_finder.position_extractor import PositionExtractor
 from datetime import datetime
 import os
-from replay_agent.action_executor.switch_action import switch_window
-from replay_agent.screenshot_processor.screenshot_capture import ScreenshotCapture
-import shutil
-import logging
 import cv2
 import numpy as np
 import pyautogui
@@ -22,13 +17,6 @@ def run():
     current_time_str = datetime.now().strftime('%m%d%H%M%S')
     image_folder_path = os.path.join("log", "screenshot", current_time_str)
     os.makedirs(image_folder_path)
-    shutil.copy("output\\knowledge_flow.json", image_folder_path)
-    # for handler in logger.handlers:
-    #     if isinstance(handler, logging.FileHandler):
-    #         handler.close()  
-    #         handler.baseFilename = os.path.join(image_folder_path, "replay.log")
-    #         handler.stream = open(handler.baseFilename, handler.mode)
-
     automated_actions = AutomatedActions(image_folder_path)
 
     screen_size = pyautogui.size()

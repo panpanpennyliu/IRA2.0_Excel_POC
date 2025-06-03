@@ -31,11 +31,14 @@ class AutomatedActions:
     
     def get_knowledge_base(self):
         try:
-            with open('output/knowledge_flow.json', 'r', encoding= 'UTF-8') as file:
+            with open('output/knowledge.json', 'r', encoding='UTF-8') as file:
                 data = file.read()
-            # base = data.replace(':',"=").replace('{','').replace('}','')
-            # print(len(base.split('\n')))
-            return data
+            json_data = json.loads(data)
+
+            business_flow_path = os.path.join(self.image_folder_path, 'business_flow.json')
+            with open(business_flow_path, 'w', encoding='UTF-8') as output_file:
+                json.dump(json_data["knowledgeJson"]["business_flow"], output_file, ensure_ascii=False, indent=4)
+            return str(json_data["knowledgeJson"]["business_flow"])
 
         except Exception as e:
             print(f"Error when reading knowledge json: {e}")
@@ -48,7 +51,6 @@ class AutomatedActions:
         analysis_request = f"ANALYZE_REQUEST:"+ANALYZE_REQUEST_STEPS
         replayerAction = ReplayerAction(self.chat)
 
-        # 3
         steps_replay_json_list = ["steps"] 
         steps_replay_json = replayerAction.get_respond_prompt(steps_replay_json_list, knowledge_base, purpose, analysis_request)
         flow_steps = steps_replay_json["steps"] 

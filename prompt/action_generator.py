@@ -1,10 +1,10 @@
-PURPOSE = """
-Create a new transaction in Money Manager Ex using value in IRA_test.xlsx.
-"""
-
 # PURPOSE = """
-# Follow the knowledge base steps strictly and do not split the steps.
+# Create a new transaction in Money Manager Ex using value in IRA_test.xlsx.
 # """
+
+PURPOSE = """
+Follow the knowledge base steps strictly and do not split the steps.
+"""
 
 ANALYZE_REQUEST_STEPS= """
 Based on the steps in the knowledge base, give the steps to implement PURPOSE.
