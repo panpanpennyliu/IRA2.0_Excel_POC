@@ -11,9 +11,9 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.runnables import RunnablePassthrough
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from utils.logger_setup_data_extraction import logger
+from utils.logger.logger_setup_data_extraction import logger
 from prompt.system_context import SYSTEM_CONTEXT, SYSTEM_CONTEXT_WITH_TOOLS
-from utils.logger_setup_data_extraction import logger
+from utils.logger.logger_setup_data_extraction import logger
 
 dotenv.load_dotenv(os.path.join('config', '.env'))
 

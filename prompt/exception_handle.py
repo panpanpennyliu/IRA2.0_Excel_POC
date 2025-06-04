@@ -1,0 +1,64 @@
+IDENTIFY_EXCEPTION = """
+I am a RPA robot. My current action step description is:
+ {description}
+
+ But it encountered an exception.
+ Can you help identify the exception and provide solution(actions).
+ 
+ The screen resolution is {screen_size}.  
+
+1.If you can find out the solution, please provide the action to solve the exception.
+Below are the four available actions and their parameters:
+- Click(x,y) # x and y are the pixel coordinates of the screen, left upper point's coordinate is (0,0).
+- Type("text") 
+- Scroll(distance, direction) #distance: represents the amount of scrolling, it should be a pixel value that can be converted to an integer. direction: 0 for vertical scroll, 1 for horizontal scroll; when distance is positive, scroll up or left, when distance is negative, scroll down or right
+- PressHotkey('ctrl', 'c') # Press hotkey combination
+
+2.If you can not find out the solution, you are allowed to perform only Click and Scroll actions to explore the screen. For example, you can click on the dropdown buttom to find available values, or scroll down to find more information.
+Don't do the repetitive explorations(actions).
+Explore History:
+{explore_history}
+
+{response_format}
+
+"""
+
+
+ASK_FOR_HELP = """
+I am a RPA robot. I have performed an action step, but the action failed:
+ {step_description}
+And next action step is:
+ {next_step_description}
+Can you give me some suggestions to fix the problem so that I can continue to perform next action step?
+{response_format}
+
+"""
+
+
+PLAN_FOR_EXCEPTION = """
+I am a RPA robot. I have performed an action step, but the action failed and return an exception:
+{exception_description}
+Below is the step description:
+{step_description}
+Can you help fix the exception and execute the current action step?
+
+Action MUST be limited to the following types: KEY_PRESS, LEFT_CLICK, RIGHT_CLICK, DOUBLE_CLICK, SCROLL, HOTKEY, SWITCH.
+Don't use "if" or "else" in the action description.
+Don't provide alternative actions or duplicate actions.
+Don't use "try" or "except" in the action description.
+Don't use the coordinates form frame information directly in the action description.
+I only need one definite solution, and it should not include logical branches.
+The actions should include the current action step at the end of the action list.
+
+Action example:
+<ACTION>-<Description of action>
+LEFT_CLICK - Left click the G15 cell in Sheet2.
+KEY_PRESS - Enter '2' in cell G15 from keyboard.
+SWITCH - Switch window to excel via calling api.
+{response_format}
+
+Below is the user guide for related appilcation:
+{instructions}
+
+"""
+
